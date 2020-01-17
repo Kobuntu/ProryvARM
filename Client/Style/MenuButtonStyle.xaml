@@ -1,0 +1,87 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                     xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="NavigationButtonStyle.xaml"/>
+        <ResourceDictionary Source="BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Storyboard x:Key="StoryboardStart" Timeline.DesiredFrameRate="20" >
+        <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+            <SplineColorKeyFrame KeyTime="00:00:00" Value="#ffccd2e0"/>
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="StoryboardEnd" Timeline.DesiredFrameRate="20">
+        <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+            <SplineColorKeyFrame KeyTime="00:00:00" Value="#ffe8eefa"/>
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+
+  
+    <System:Double x:Key="FontSizeMenuButton">10</System:Double>
+    <SolidColorBrush x:Key="FontColorMenuButton" Color="#FF282828"/>
+    <System:Double x:Key="FontScaleYMenuButton">1.05</System:Double>
+    <System:Double x:Key="FontScaleXMenuButton">1.05</System:Double>
+    <!--<Style TargetType="{x:Type Label}">
+        <Setter Property="Padding" Value="5,0"/>
+        <Setter Property="ContentPresenter.Margin" Value="0,-3"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Label}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                        <ContentPresenter Margin="{TemplateBinding ContentPresenter.Margin}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+   <!--<Style x:Key="DataByTariffStyle" TargetType="{x:Type armControlsMenu:MenuButton}">
+        <Style.Resources>
+            <ImageBrush PresentationOptions:Freeze="True" x:Key="path" ImageSource="/Proryv.ElectroARM.Resources;component/Image/DataByTariff.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="NavigationButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>-->
+
+   
+
+  
+
+   <!--<Style x:Key="GroupTPStyle" TargetType="{x:Type armControlsMenu:MenuButton}">
+        <Style.Resources>
+            <ImageBrush PresentationOptions:Freeze="True" x:Key="path"   ImageSource="/Proryv.ElectroARM.Resources;component/Image/GroupTPBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="NavigationButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>-->
+
+
+   
+    <!--END-->
+    
+    <!--End Это перенести в отделный файл-->
+
+
+
+
+
+
+</ResourceDictionary>

@@ -1,0 +1,900 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/DrawingBrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BaseToolTipStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+	 
+    
+	<Style x:Key="ShowcardButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type ToggleButton}">
+        <Setter Property="ToolTip" Value="Карточный вид"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid x:Name="grid" Background="{x:Null}" Width="23" Height="23">
+                        <Rectangle Stroke="{StaticResource BaseDarkBlue}" Fill="{StaticResource BaseLightGray}" x:Name="rectangle"/>
+                        <!--<Rectangle x:Name="back" Stroke="#FFFFFFFF" Margin="1,1,1,1" Fill="Transparent"/>-->
+                        <Path Fill="{StaticResource BaseDarkBlue}" Data="M1.1523149,5.0509624 L2.7017555,5.0509624 L2.7017555,9.4388733 L2.7277963,9.4388733 C2.7798784,9.3433895 2.8536613,9.2370558 2.9491451,9.1198711 L6.0805774,5.0509624 L7.9359994,5.0509624 L4.2707267,9.5300169 L8.2159405,14.386666 L6.197762,14.386666 L2.9491451,10.11594 C2.8276203,9.9553528 2.7538373,9.8468494 2.7277963,9.7904272 L2.7017555,9.7904272 L2.7017555,14.386666 L1.1523149,14.386666 z" HorizontalAlignment="Left" Height="9.336" Margin="4.275,7.259,0,0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" VerticalAlignment="Top" Width="7.064">
+                        </Path>
+                        <Path x:Name="path2" Fill="{StaticResource BaseMoreDarkGray}" Stretch="Fill" StrokeEndLineCap="Round" StrokeLineJoin="Round" StrokeThickness="0.2" HorizontalAlignment="Right" Margin="0,2,5,0" VerticalAlignment="Center" Width="6" Data="M279.93574,-467.17671 L286.36118,-467.17671 286.36118,-473.2005 283.78267,-470.78317 C284.2983,-469.58409 283.70144,-469.12352 282.4752,-469.55743 z" Height="6" RenderTransformOrigin="0.5,0.5" Stroke="White">
+                        	<Path.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-45"/>
+                                </TransformGroup>
+                        	</Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                		<Trigger Property="IsChecked" Value="True">
+                			<Setter Property="RenderTransform" TargetName="path2">
+                				<Setter.Value>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="45"/>
+                                    </TransformGroup>
+                				</Setter.Value>
+                			</Setter>
+                			<Setter Property="Margin" TargetName="path2" Value="0,9.332,4.75,7.668"/>
+                		</Trigger>
+                		<Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rectangle" Value="{StaticResource BaseDarkGray}"/>
+						</Trigger>
+                		<Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Stroke" TargetName="rectangle" Value="{StaticResource BaseMoreDarkBlue}"/>
+                		</Trigger>
+                	</ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+   
+
+    <Style x:Key="SelectNewDialogButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Content" Value="..."/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type Button}">
+                    <Grid Background="{x:Null}">
+                        <Rectangle Stroke="{StaticResource BaseLightBlue}" Margin="0,0,0,0" Fill="{StaticResource BaseLightGray}" RadiusX="0" RadiusY="0" Opacity="1" x:Name="rectangle"/>
+                        <!--<Rectangle Stroke="#FFFFFFFF" Margin="1,1,1,1" Fill="{x:Null}"  Opacity="1"/>-->
+                        <ContentPresenter  Margin="0.5,0,0,0" TextBlock.FontSize="{TemplateBinding FontSize}" x:Name="content"
+                        	HorizontalAlignment="Center" Content="{TemplateBinding Content}"
+                        	RecognizesAccessKey="True"  VerticalAlignment="Center">
+                        </ContentPresenter>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rectangle" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Stroke" TargetName="rectangle" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="DeleteFieldButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type Button}">
+                    <Grid Background="{x:Null}">
+                        <Rectangle Stroke="{StaticResource BaseLightBlue}" Margin="0,0,0,0" Fill="{StaticResource BaseLightGray}" RadiusX="0" RadiusY="0" Opacity="1" x:Name="rectangle"/>
+                        <Path x:Name="content"  Data="M0.29621822,10.036833 L2.5813305,10.036833 L4.0793486,12.855138 C4.1921935,13.063902 4.3022175,13.278307 4.4094205,13.498355 L4.4348106,13.498355 L6.3729243,10.036833 L8.5226231,10.036833 L5.6366105,14.420863 L8.4887695,18.703333 L6.2121201,18.703333 L4.6887121,16.020441 C4.5927935,15.856816 4.4799485,15.648053 4.3501768,15.394152 L4.3163233,15.394152 C4.2937541,15.444932 4.1752672,15.653695 3.9608614,16.020441 L2.4120631,18.703333 L0.14387739,18.703333 L3.0891333,14.454717 z" Fill="#FFEC0101" HorizontalAlignment="Center" Height="7" Margin="0"  Stretch="Fill"  VerticalAlignment="Center" Width="7">
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rectangle" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Stroke" TargetName="rectangle" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="AddNewObjectButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="1,1,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type Button}">
+                    <Grid Background="{x:Null}" >
+                        <Rectangle Stroke="{StaticResource BaseLightBlue}"  Margin="0,0,-1,-1" Fill="{StaticResource BaseLightGray}"  x:Name="rectangle"/>
+                        <!--<Rectangle Stroke="#FFFFFFFF" Margin="1,1,1,1" Fill="{x:Null}" />-->
+                        <Image  x:Name="icon"  Margin="{TemplateBinding Padding}"  Source="{DynamicResource path}" Stretch="None"  Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rectangle" Value="{StaticResource BaseDarkGray}"/> 
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Stroke" TargetName="rectangle" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+	<Style x:Key="AddNewButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/Add.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="CLeanFieldButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/EditNo.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+    
+
+    <Style x:Key="EditItemButtonBackStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/Edit_Brush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+
+    <Style x:Key="Summary_SubButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/Summary_sub.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+
+
+
+
+
+
+
+
+
+    <Style x:Key="AddNewReactorButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewReactorBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="AddNewTIButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewTIBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="AddNewTPButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewTPBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="AddNewFormulaButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewFormulBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="AddNewSectionButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewSectionBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="AddNewTransformatorButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewTransformatorBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="AddSignButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddSignBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+	 <Style x:Key="AddNewAbonentButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewAbonentBrush.png"/>
+        </Style.Resources>
+	 	<Style.BasedOn>
+	 		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+	 	</Style.BasedOn>
+    </Style>
+    <Style x:Key="LinkButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/LinkBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+    <Style x:Key="LinkToTarifButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/LinkToTarif.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+
+    <Style x:Key="AddNewJuridicalButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewJuridicalBrush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+   <Style x:Key="AddNewContractButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewContractBrush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+    <Style x:Key="AddChildrenObjectButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddChildrenObject.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+    <Style x:Key="RemovChildrenObjectButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/RemoveFromCollectionicon.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+    <Style x:Key="AddNewTarifBrushStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewTarifBrush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+    
+    <Style x:Key="AddPeriodButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddPeriod.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+    <Style x:Key="LinkContractButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/LinkContractBrush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+	
+
+
+
+	
+
+
+	 <Style x:Key="AddNewLostButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/LostBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+
+	<Style x:Key="DeleteMonthValuesButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/DeleteBrush.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+   
+
+
+
+
+ 
+
+
+
+
+
+
+    <Style x:Key="SaveChangeButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/Save_Change.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+    <Style x:Key="UnfixButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/unfix.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+    <Style x:Key="UnfixWChildButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/unfixwchild.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+    <Style x:Key="FixButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/fix.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+    <Style x:Key="SetMonthValuesButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/SetMonthValues.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+
+	<Style x:Key="ImportXmlValuesButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/ImportXmlBrust.png"/>
+        </Style.Resources>
+    	<Style.BasedOn>
+    		<StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+    	</Style.BasedOn>
+    </Style>
+
+
+    <Style x:Key="PowerManualSetStateButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/ManualChangePlantBrush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+
+
+    <Style x:Key="AddNewFormulaCAButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/AddNewFormulCABrush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+    
+    <Style x:Key="TableViewButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <BitmapImage x:Key="path"  UriSource="/Proryv.ElectroARM.Resources;component/Image/TableView_Brush.png"/>
+        </Style.Resources>
+        <Style.BasedOn>
+            <StaticResource ResourceKey="AddNewObjectButtonStyle"/>
+        </Style.BasedOn>
+    </Style>
+
+
+
+
+    <Style x:Key="PopupShowObjectsCalculationButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <DrawingBrush x:Key="PopupShowObjectsCalculationBrush">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <DrawingGroup.Children>
+                            <GeometryDrawing Brush="Transparent" Geometry="F1 M 24,24L 0,24L 0,0L 24,0L 24,24 Z "/>
+                            <GeometryDrawing Brush="#FF9DA3AC" Geometry="F1 M 8,10.6667L 5.33333,10.6667L 5.33333,8L 8,8L 8,10.6667 Z M 12,8L 9.33333,8L 9.33333,10.6667L 12,10.6667L 12,8 Z M 16,8L 14.6667,8L 14.6667,10.6667L 16,10.6667L 16,8 Z M 8,12L 5.33333,12L 5.33333,14.6667L 8,14.6667L 8,12 Z M 8,16L 5.33333,16L 5.33333,18.6667L 8,18.6667L 8,16 Z M 10.6667,16L 9.33333,16L 9.33333,18.6667L 10.6667,18.6667L 10.6667,16 Z M 9.33333,14.6667L 10.6667,14.6667L 10.6667,12L 9.33333,12L 9.33333,14.6667 Z M 10.6667,13.3333L 12,13.3333L 12,12L 10.6667,12L 10.6667,13.3333 Z M 10.6667,21.3333L 10.6667,20L 4,20L 4,2.66667L 17.3333,2.66667L 17.3333,13.3333L 18.6667,13.3333L 18.6667,1.33333L 2.66667,1.33333L 2.66667,21.3333L 10.6667,21.3333 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGreen}" Geometry="F1 M 16,6.66667L 5.33333,6.66667L 5.33333,4L 16,4L 16,6.66667 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGray}" Geometry="F1 M 18.6667,17.3333L 18.6667,13.3333L 20,13.3333L 20,24L 13.3333,24L 13.3333,21.3333L 12,21.3333L 12,20L 10.6667,20L 10.6667,13.3333L 12,13.3333L 12,17.3333L 13.3333,17.3333L 13.3333,8L 14.6667,8L 14.6667,17.3333L 16,17.3333L 16,12L 17.3333,12L 17.3333,17.3333L 18.6667,17.3333 Z "/>
+                            <GeometryDrawing Brush="#FFAAA78C" Geometry="F1 M 13.3333,17.3333L 12,17.3333L 12,8L 13.3333,8L 13.3333,17.3333 Z M 16,10.6667L 14.6667,10.6667L 14.6667,17.3333L 16,17.3333L 16,10.6667 Z M 16,12L 17.3333,12L 17.3333,10.6667L 16,10.6667L 16,12 Z M 18.6667,13.3333L 17.3333,13.3333L 17.3333,17.3333L 18.6667,17.3333L 18.6667,13.3333 Z "/>
+                        </DrawingGroup.Children>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+        </Style.Resources>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type Button}">
+                    <Grid Background="{x:Null}" Height="20"  Width="20">
+                        <Rectangle Stroke="{StaticResource BaseLightBlue}"  Margin="0,0,0,0" Fill="{StaticResource BaseLightGray}"  x:Name="rectangle"/>
+                        <Rectangle Margin="0,0,0,0" Height="18" Width="18"  Fill="{StaticResource PopupShowObjectsCalculationBrush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <!--<Image  x:Name="icon"  Margin="{TemplateBinding Padding}"  Source="{DynamicResource path}" Stretch="None"  Width="18" Height="18" HorizontalAlignment="Left" VerticalAlignment="Top"></Image>-->
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rectangle" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Stroke" TargetName="rectangle" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="PopupShowObjectsMeterSchemeButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <DrawingBrush x:Key="PopupShowObjectsMeterSchemeBrush">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <DrawingGroup.Children>
+                            <GeometryDrawing Brush="Transparent" Geometry="F1 M 24,24L 0,24L 0,0L 24,0L 24,24 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGreen}" Geometry="F1 M 13.3333,9.33333L 13.3333,4L 14.6667,4L 14.6667,5.33333L 16,5.33333L 16,2.66667L 8,2.66667L 8,5.33333L 9.33333,5.33333L 9.33333,4L 10.6667,4L 10.6667,9.33333L 13.3333,9.33333 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGray}" Geometry="F1 M 6.66667,14.6667L 6.66667,13.3333L 4,13.3333L 4,17.3333L 1.33333,17.3333L 1.33333,18.6667L 2.66667,18.6667L 2.66667,20L 4,20L 4,21.3333L 5.33333,21.3333L 5.33333,20L 6.66667,20L 6.66667,18.6667L 8,18.6667L 8,17.3333L 5.33333,17.3333L 5.33333,14.6667L 6.66667,14.6667 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGray}" Geometry="F1 M 17.3333,14.6667L 17.3333,13.3333L 20,13.3333L 20,17.3333L 22.6667,17.3333L 22.6667,18.6667L 21.3333,18.6667L 21.3333,20L 20,20L 20,21.3333L 18.6667,21.3333L 18.6667,20L 17.3333,20L 17.3333,18.6667L 16,18.6667L 16,17.3333L 18.6667,17.3333L 18.6667,14.6667L 17.3333,14.6667 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 10.6667,12L 10.6667,10.6667L 13.3333,10.6667L 13.3333,12L 14.6667,12L 14.6667,13.3333L 16,13.3333L 16,14.6667L 14.6667,14.6667L 14.6667,16L 13.3333,16L 13.3333,17.3333L 10.6667,17.3333L 10.6667,16L 9.33333,16L 9.33333,14.6667L 8,14.6667L 8,13.3333L 9.33333,13.3333L 9.33333,12L 10.6667,12 Z "/>
+                        </DrawingGroup.Children>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+        </Style.Resources>
+        <Setter Property="Padding" Value="1,1,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate  TargetType="{x:Type Button}">
+                    <Grid Background="{x:Null}" >
+                        <Rectangle Stroke="{StaticResource BaseLightBlue}"  Margin="0,0,0,0" Fill="{StaticResource BaseLightGray}"  x:Name="rectangle"/>
+                        <Rectangle Margin="0,0,0,0" Height="18" Width="18"  Fill="{StaticResource PopupShowObjectsMeterSchemeBrush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <!--<Image  x:Name="icon"  Margin="{TemplateBinding Padding}"  Source="{DynamicResource path}" Stretch="None"  Width="18" Height="18" HorizontalAlignment="Left" VerticalAlignment="Top"></Image>-->
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rectangle" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Stroke" TargetName="rectangle" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <!--Кнопка для Toolbara c пустым ContentPresenter -->
+
+    <Style x:Key="BaseToolBarButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="{StaticResource BaseLightGray}" />
+        <Setter Property="BorderBrush" Value="{StaticResource BaseLightBlue}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <ContentPresenter TextElement.Foreground="{StaticResource Button.Static.Foreground}"  x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsDefaulted" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    
+<!--Кнопки с прозрачным фоном используются в основном в табличных темплейтах -->
+    <Style x:Key="DeleteItemButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <Style x:Key="{x:Type ToolTip}" BasedOn="{StaticResource tooltipStyle}"  TargetType="{x:Type ToolTip}" />
+        </Style.Resources>
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="18" Width="18"  Fill="{StaticResource FavouritItemDelBrush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="EditItemButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource  Edit_Brush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+
+
+
+
+    <Style x:Key="LogProcesButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource Proces_Brush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LinkAlarmsButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource LinkAlarm_Brush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="UnloadItemButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource UpLoad_Brush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LoadItemButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource Load_Brush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PreviewItemButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource  PreviewItem_Brush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ScheduleItemButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource  Schedule_Brush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+   
+    
+    <Style x:Key="FormBalanceButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource  FormBalanceButtonBrush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="ConfirmButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="20px"/>
+        <Setter Property="Width" Value="20px"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid  Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Rectangle Margin="0,0,0,0" Height="16" Width="16"  Fill="{StaticResource  ConfirmBrush}"     VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
+
+
+
+    <!--End  -->
+
+
+
+ <Style x:Key="ManagerButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+
+	   <Setter Property="BorderBrush" Value="Transparent"/>
+	   <Setter Property="BorderThickness" Value="1,1,1,1"/>
+	   <Setter Property="Background" Value="Transparent"/>
+	    <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Margin="0" x:Name="viewbox1" RenderTransformOrigin="0.5,0.5" Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center">
+                		<Grid.RenderTransform>
+                			<TransformGroup>
+                				<ScaleTransform ScaleX="1" ScaleY="1"/>
+                			</TransformGroup>
+                		</Grid.RenderTransform>
+                		<Ellipse HorizontalAlignment="Stretch" Margin="1.573,1.599,1.741,1.49" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
+                			<Ellipse.Fill>
+                				<LinearGradientBrush EndPoint="0.859,0.854" StartPoint="0.141,0.146">
+                					<GradientStop Color="#E5002B3B" Offset="0.792"/>
+                					<GradientStop Color="#E500445D"/>
+                				</LinearGradientBrush>
+                			</Ellipse.Fill>
+                		</Ellipse>
+                		<Path Stretch="Fill" HorizontalAlignment="Stretch" Margin="0,0,0.207,0" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Data="M7.9999998,1.918 C4.6411139,1.9180018 1.9180018,4.6411139 1.918,7.9999998 1.9180018,11.359163 4.6410416,14.082 7.9999998,14.082 11.359236,14.082 14.082,11.359236 14.082,7.9999998 14.082,4.6410416 11.359163,1.9180018 7.9999998,1.918 z M7.9999998,0 C12.418058,0 16,3.5816776 16,7.9999998 16,12.418294 12.418294,16 7.9999998,16 3.5816776,16 0,12.418058 0,7.9999998 0,3.5819137 3.5819137,0 7.9999998,0 z">
+                			<Path.Fill>
+                				<LinearGradientBrush StartPoint="0.777,0.207" EndPoint="-0.002,0.986">
+                					<GradientStop Color="#FFE7695D" Offset="0.111"/>
+                					<GradientStop Color="#FFCDD811" Offset="0.413"/>
+                					<GradientStop Color="#FF03508E" Offset="0.665"/>
+                					<GradientStop Color="#FD0FC57C" Offset="1"/>
+                					<GradientStop Color="Red" Offset="0.014"/>
+                				</LinearGradientBrush>
+                			</Path.Fill>
+                		</Path>
+                		<Path Data="M8.3404998,0 L9.7545004,0 9.7545004,8.2674999 17.694,8.2674999 17.694,9.8114998 9.7545004,9.8114998 9.7545004,17.707 8.3404998,17.707 8.3404998,9.8114998 0,9.8114998 0,8.2674999 8.3404998,8.2674999 z" Fill="#B2FFFFFF" HorizontalAlignment="Stretch" Height="Auto" Margin="0,-0.125,0.207,0.113" Stretch="Fill" StrokeThickness="1" VerticalAlignment="Stretch" Width="Auto" />
+                		<Ellipse HorizontalAlignment="Stretch" Margin="3.759,3.569,3.925,3.908" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
+                			<Ellipse.Fill>
+                				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                					<GradientStop Color="#FFFFFFFF" Offset="0.476"/>
+                					<GradientStop Color="#FFE2E2EA" Offset="0.484"/>
+                				</LinearGradientBrush>
+
+
+                			</Ellipse.Fill>
+                		</Ellipse>
+                		<Path Data="M2.0350001,0 L4.1590002,0 4.1590002,3.125 6.1340001,3.125 3.0945932,6.2059999 0,3.125 2.0350001,3.125 z" Fill="#CC000000" Height="Auto" Margin="5.938,5.771,5.928,6.023" Stretch="Fill" StrokeThickness="1.5" VerticalAlignment="Stretch"/>
+                	</Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        	 <Setter Property="RenderTransform" TargetName="viewbox1">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"/>
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    
+
+
+
+</ResourceDictionary>

@@ -1,0 +1,192 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ig="http://schemas.infragistics.com/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    mc:Ignorable="PresentationOptions">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="LowVoltageBrush" Color="#CC81CA81"/> 
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="MediumVoltage1Brush" Color="#CCBACA81"/>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="MediumVoltage2Brush" Color="#CCCABC81"/>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="HighVoltageBrush" Color="#FFCA8781"/>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="GenerationVoltageBrush" Color="#FF9D81CA"/>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="HighVoltage1Brush" Color="#FFCA81AE"/>
+
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="GenerationHighVoltageBrush" Color="#FFCA8781"/>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="GenerationMediumVoltage1Brush" Color="#CCBACA81"/>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="GenerationMediumVoltage2Brush" Color="#CCCABC81"/>
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="GenerationLowVoltageBrush" Color="#CC81CA81"/>
+
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="UnknowApBrush" Color="#DD9DB1CC"/>
+    
+    <Style x:Key="TimeLineVoltage_LowVoltage" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource LowVoltageBrush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource LowVoltageBrush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="НН 0.4 кВ и ниже" Opacity="0.8"/>
+                        <TextBlock Text="НН" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="НН 0.4 кВ и ниже"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_MediumVoltage1" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource MediumVoltage1Brush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource MediumVoltage1Brush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="СН1 35 кВ" Opacity="0.8"/>
+                        <TextBlock Text="СН1" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="СН1 35 кВ"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_MediumVoltage2" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource MediumVoltage2Brush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource MediumVoltage2Brush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="СН2 1-20 кВ" Opacity="0.8"/>
+                        <TextBlock Text="СН2" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="СН2 1-20 кВ"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_HighVoltage" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource HighVoltageBrush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource HighVoltageBrush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="ВН 110 кВ и выше" Opacity="0.8"/>
+                        <TextBlock Text="ВН" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="ВН 110 кВ и выше"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_GenerationVoltage" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource GenerationVoltageBrush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource GenerationVoltageBrush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="Генераторное напряжение" Opacity="0.8"/>
+                        <TextBlock Text="ГН" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Генераторное напряжение"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_HighVoltage1" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource HighVoltage1Brush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource HighVoltage1Brush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="ВН1 110 кВ и выше" Opacity="0.8"/>
+                        <TextBlock Text="ВН1" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="ВН1 110 кВ и выше"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_GenerationHighVoltage" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource GenerationHighVoltageBrush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource GenerationHighVoltageBrush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="Генераторное напряжение (ВН)" Opacity="0.8"/>
+                        <TextBlock Text="ГН(ВН)" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Генераторное напряжение (ВН)"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_GenerationMediumVoltage1" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource GenerationMediumVoltage1Brush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource GenerationMediumVoltage1Brush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="Генераторное напряжение (СН1)" Opacity="0.8"/>
+                        <TextBlock Text="ГН(СН1)" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Генераторное напряжение (СН1)"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_GenerationMediumVoltage2" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource GenerationMediumVoltage2Brush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource GenerationMediumVoltage2Brush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="Генераторное напряжение (СН2)" Opacity="0.8"/>
+                        <TextBlock Text="ГН(СН2)" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Генераторное напряжение (СН2)"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_GenerationLowVoltage" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource GenerationLowVoltageBrush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource GenerationLowVoltageBrush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center" ToolTip="Генераторное напряжение (НН)" Opacity="0.8"/>
+                        <TextBlock Text="ГН(НН)" HorizontalAlignment="Center" VerticalAlignment="Center" ToolTip="Генераторное напряжение (НН)"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_UnknowAp" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource UnknowApBrush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource UnknowApBrush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center"  ToolTip="&lt;Напряжение не задано&gt;" Opacity="0.8"/>
+                        <TextBlock Text="&lt;Не задано&gt;" HorizontalAlignment="Center" VerticalAlignment="Center"  ToolTip="&lt;Напряжение не задано&gt;"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TimeLineVoltage_UnknowTransit" TargetType="ig:EventSpan">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ig:EventSpan">
+                    <Grid Margin="0,2,0,2">
+                        <Rectangle Height="10" Fill="{StaticResource UnknowApBrush}" RadiusX="3" RadiusY="3" Stroke="{StaticResource UnknowApBrush}" StrokeThickness="0" 
+                                   VerticalAlignment="Center"  ToolTip="&lt;Напряжение не задано&gt;" Opacity="0.8"/>
+                        <TextBlock Text="&lt;Не задано&gt;" HorizontalAlignment="Center" VerticalAlignment="Center"  ToolTip="&lt;Напряжение не задано&gt;"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual"
+                    xmlns:local="clr-namespace:Proryv.ElectroARM.Controls.Styles">
+
+    <arm:DataSectionTree_ItemSelector x:Key="data_section_itemSelector" IsTPSelectable="True"/>
+    <arm:DataSectionTree_ItemSelector x:Key="data_section_itemSelector_2" IsTPSelectable="False"/>
+
+
+    <HierarchicalDataTemplate x:Key="HierLev1_Section_Template" ItemsSource="{Binding Path=Children}">
+        <arm:HierLev1 DataContext="{Binding Path=Item}" />
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="HierLev2_Section_Template" ItemsSource="{Binding Path=Children}">
+        <arm:HierLev2 DataContext="{Binding Path=Item}"/>
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="HierLev3_Section_Template" ItemsSource="{Binding Path=Children}">
+        <arm:HierLev3 DataContext="{Binding Path=Item}"/>
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="PS_Section_Template" ItemsSource="{Binding Path=Children}">
+        <arm:PS DataContext="{Binding Path=Item}"/>
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="TI_Section_Template" ItemsSource="{Binding Path=Children}">
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding Path=IsChecked}" Focusable="False" VerticalAlignment="Center"/>
+            <arm:TI DataContext="{Binding Path=Item}"/>
+        </StackPanel>
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="ContrTI_Section_Template" ItemsSource="{Binding Path=Children}">
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding Path=IsChecked}" Focusable="False" VerticalAlignment="Center"/>
+            <arm:ContrTI DataContext="{Binding Path=Item}"/>
+        </StackPanel>
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="TP_Section_Template" ItemsSource="{Binding Path=Children}">
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding Path=IsChecked}" Focusable="False" VerticalAlignment="Center"/>
+            <arm:TP DataContext="{Binding Path=Item}"/>
+        </StackPanel>
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="TP_Section_Template_2" ItemsSource="{Binding Path=Children}">
+        <arm:TP DataContext="{Binding Path=Item}"/>
+    </HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="Section_Section_Template" ItemsSource="{Binding Path=Children}">
+        <StackPanel Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding Path=IsChecked}" Focusable="False" VerticalAlignment="Center"/>
+            <arm:Section DataContext="{Binding Path=Item}"/>
+        </StackPanel>
+    </HierarchicalDataTemplate>
+</ResourceDictionary>

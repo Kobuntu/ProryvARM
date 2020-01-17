@@ -1,0 +1,113 @@
+<UserControl x:Class="Proryv.AskueARM2.Client.Visual.Header"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual"             
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    PreviewMouseDoubleClick="Header_PreviewMouseDoubleClick" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Storyboard x:Key="alarmBlinking" RepeatBehavior="Forever">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="lamp">
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="#FFE00000"/>
+                <EasingColorKeyFrame KeyTime="0:0:1" Value="Black"/>
+                <EasingColorKeyFrame KeyTime="0:0:1.1" Value="#FF919191"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Border Margin="-5,1,0,-2"  VerticalAlignment="Stretch" x:Name="UpPanel">
+        <DockPanel Margin="115,0,0,0">
+            <Border HorizontalAlignment="Right" BorderThickness="0,0,0,0" CornerRadius="0,0,0,0" DockPanel.Dock="Right" x:Name="NavigationPanel" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0" VerticalAlignment="Center">
+
+                <Border Margin="-1,0,0,0" Padding="10,18,10,0" BorderBrush="{x:Null}">
+
+                    <StackPanel Orientation="Horizontal">
+                        <Button  Style="{StaticResource HeaderButtonStyle}" Tag="{StaticResource HeaderRequestButtonStyle}" x:Name="Request" ToolTipService.ToolTip="Запросы пользователя" Click="UserRequest_Click" Margin="0,0,20,0" HorizontalAlignment="Left" />
+                        <!--<Button  Style="{StaticResource RequestButtonStyle}" Content="" BorderThickness="0,0,0,0" Padding="0,0,1,0" x:Name="Request" ToolTipService.ToolTip="Запросы пользователя" Click="UserRequest_Click" Margin="0,0,10,0" HorizontalAlignment="Left" />-->
+
+                        <Button  Style="{StaticResource HeaderButtonStyleContent}" VerticalAlignment="Center" Height="32" Width="32" BorderThickness="0,0,0,0" Padding="0" x:Name="alarm" ToolTipService.ToolTip="Тревоги" Click="alarm_Click" Margin="0,0,20,0" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <Grid>
+                            
+                                <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="1,0,0,0">
+                                        <Canvas Width="40" Height="40">
+                                        <Path Width="40" Height="17.3333" Canvas.Left="0" Canvas.Top="10.6667" Stretch="Fill" Fill="{StaticResource IconOrange}" Data="M 6.66667,16L 6.66667,22.6667L 8,22.6667L 8,25.3333L 6.66667,25.3333L 6.66667,24L 5.33333,24L 5.33333,21.3333L 4,21.3333L 4,17.3333L 5.33333,17.3333L 5.33333,14.6667L 6.66667,14.6667L 6.66667,13.3333L 8,13.3333L 8,16L 6.66667,16 Z M 4,14.6667L 4,10.6667L 2.66667,10.6667L 2.66667,12L 1.33333,12L 1.33333,16L 0,16L 0,22.6667L 1.33333,22.6667L 1.33333,26.6667L 2.66667,26.6667L 2.66667,28L 4,28L 4,24L 2.66667,24L 2.66667,14.6667L 4,14.6667 Z M 32,22.6667L 32,25.3333L 33.3333,25.3333L 33.3333,24L 34.6667,24L 34.6667,21.3333L 36,21.3333L 36,17.3333L 34.6667,17.3333L 34.6667,14.6667L 33.3333,14.6667L 33.3333,13.3333L 32,13.3333L 32,16L 33.3333,16L 33.3333,22.6667L 32,22.6667 Z M 36,24L 36,28L 37.3333,28L 37.3333,26.6667L 38.6667,26.6667L 38.6667,22.6667L 40,22.6667L 40,16L 38.6667,16L 38.6667,12L 37.3333,12L 37.3333,10.6667L 36,10.6667L 36,14.6667L 37.3333,14.6667L 37.3333,24L 36,24 Z "/>
+                                        <Path x:Name="lamp" Width="24" Height="29" Canvas.Left="8" Canvas.Top="6.66667" Stretch="Fill" Fill="DimGray" Data="M 22.6667,35.6667L 16,35.6667L 16,33.3333L 22.6667,33.3333L 22.6667,35.6667 Z M 28.9309,25.9395C 28.9062,20.2331 29.6197,12.6757 23.7682,9.5684C 21.7617,8.50321 22.6757,9.73055 22.0234,7.93945C 21.7539,7.20052 21.3333,6.66667 20,6.66667C 18.6667,6.66667 18.2461,7.20052 17.9766,7.93945C 17.3243,9.73055 18.2381,8.50321 16.2318,9.5684C 10.3803,12.6757 11.0938,20.2331 11.0691,25.9395C 9.35417,26.8372 8,27.6192 8,32L 20,32L 32,32C 32,27.6192 30.6458,26.8372 28.9309,25.9395 Z "/>
+                                        <Path Width="6.29304" Height="11.4976" Canvas.Left="12.8241" Canvas.Top="11.5442" Stretch="Fill" Fill="{StaticResource BaseLightBackground}" Data="M 17.8972,11.5892C 16.2122,12.0254 14.2109,14.8737 13.4752,16.9454C 12.991,18.2988 12.0248,23.2839 14.1028,23.0326C 16.1251,22.7877 12.9987,17.8523 18.0208,13.8053C 18.4596,13.4479 19.0574,13.2213 19.1134,12.5C 19.1654,11.8873 18.6746,11.3887 17.8972,11.5892"/>
+                                        </Canvas>
+                                </Viewbox>
+
+
+                                <TextBlock Text="{Binding ElementName=alarmCount, Path=Text}" Foreground="#33FFFFFF" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                           FontSize="{StaticResource BaseFontSizeS}" Margin="{Binding ElementName=alarmCount, Path=Margin}"  FontWeight="ExtraBold"/>
+
+                                <TextBlock x:Name="alarmCount" Background="{StaticResource IconGray}" Foreground="{StaticResource BaseLightBackground}" Visibility="Collapsed" Padding="2,0,2,0" MinWidth="15" VerticalAlignment="Top" FontWeight="SemiBold"  TextAlignment="Center" HorizontalAlignment="Left" FontSize="{StaticResource BaseFontSizeS}" 
+                                           Margin="18,-15,-100,3"/>
+                                <Path x:Name="alarmCountPath" Visibility="Collapsed" Data="M0,0 L1.0000001,0 2.0000001,0 3.0000001,0 4.0000001,0 5.0000001,0 6.0000001,0 6.0000001,1 5.0000001,1 5.0000001,2 4.0000001,2 4.0000001,3 3.0000001,3 3.0000001,4.0000001 2.0000001,4.0000001 2.0000001,5 1.0000001,5 1.0000001,6 8.9406967E-08,6 8.9406967E-08,5 8.9406967E-08,4.0000001 8.9406967E-08,3 8.9406967E-08,2 8.9406967E-08,1&#xD;&#xA; z" Fill="{StaticResource IconGray}" HorizontalAlignment="Left" Height="6" Margin="22,-2,-100,3" Stretch="Fill" VerticalAlignment="Top" Width="6"/>
+
+
+                            </Grid>
+
+                        </Button>
+
+                        <!--<Button  Style="{StaticResource LampButtonStyle}" VerticalAlignment="Center" BorderThickness="0,0,0,0" Padding="0,0,1,0" x:Name="alarm" ToolTipService.ToolTip="Тревоги" Click="alarm_Click" Margin="0,0,10,0" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <Grid Height="20" Width="20" VerticalAlignment="Center">
+
+                                <Ellipse Stroke="Black" Margin="-5.2,-5.126,-5.2,-5.229" Visibility="Collapsed">
+                                    <Ellipse.OpacityMask>
+                                        <LinearGradientBrush EndPoint="0.5,0.849" StartPoint="0.5,0.238">
+                                            <GradientStop Color="Black" Offset="0.523"/>
+                                            <GradientStop Offset="1"/>
+                                            <GradientStop Color="#00000000"/>
+                                        </LinearGradientBrush>
+                                    </Ellipse.OpacityMask>
+                                </Ellipse>
+                                <Path Data="M0.30333962,2.1899992 L4.9446606,2.1899992 C5.1125302,2.1899992 5.2480001,2.3268818 5.2480001,2.4949817 5.2480001,2.662883 5.1125302,2.7984641 4.9446606,2.7984641 L4.0435624,2.7984641 C4.0370626,3.1098495 3.7843828,3.3599992 3.4726433,3.3599992 L1.7753567,3.3599992 C1.4627872,3.3599992 1.2109276,3.1098495 1.2043677,2.7984641 L0.30333962,2.7984641 C0.13533971,2.7984641 0,2.662883 0,2.4949817 0,2.3268818 0.13533971,2.1899992 0.30333962,2.1899992 z M0.30333947,1.0950005 L4.9446606,1.0950005 C5.1125302,1.0950005 5.2480001,1.2303001 5.2480001,1.3995996 5.2480001,1.5661991 5.1125302,1.7029988 4.9446606,1.7029988 L0.30333947,1.7029988 C0.13533979,1.7029988 4.2495408E-08,1.5661991 7.8201296E-08,1.3995996 4.2495408E-08,1.2303001 0.13533979,1.0950005 0.30333947,1.0950005 z M0.30333947,0 L4.9446606,0 C5.1125302,0 5.2480001,0.13539982 5.2480001,0.30199957 5.2480001,0.46999931 5.1125302,0.60799921 4.9446606,0.60799921 L0.30333947,0.60799921 C0.13533979,0.60799921 4.2495408E-08,0.46999931 7.8201296E-08,0.30199957 4.2495408E-08,0.13539982 0.13533979,0 0.30333947,0 z" Fill="Black" Height="5.213" Margin="5.933,0,5.924,-3.523" Stretch="Fill" VerticalAlignment="Bottom"/>
+                                <Path x:Name="lamp" Stretch="Fill" Fill="Black" Data="F1 M 6.10214,0C 2.73758,0 0,2.73825 0,6.10278C 0,7.63278 0.955048,9.23035 1.24796,9.68607L 1.67957,10.3737C 2.44852,11.5768 3.17252,12.7148 3.34305,14.1041C 3.37961,14.4011 3.63013,14.6237 3.92905,14.6237L 8.36719,14.6237C 8.66531,14.6237 8.91733,14.4011 8.95374,14.1054C 9.13864,12.6079 9.89383,11.3945 10.694,10.112L 10.9648,9.67575C 11.2513,9.23172 12.205,7.63416 12.205,6.10278C 12.205,2.73825 9.4668,0 6.10214,0 Z M 2.8248,7.04294C 2.93875,7.34891 2.7825,7.68875 2.47717,7.80197C 2.17117,7.91663 1.832,7.76038 1.71863,7.45438C 1.58517,7.09763 1.42838,6.5741 1.42838,6.10278C 1.42838,4.35413 2.39905,2.77213 3.96158,1.97653C 4.25131,1.82678 4.60678,1.94131 4.75516,2.23303C 4.90356,2.52344 4.78836,2.87891 4.49731,3.02866C 3.33334,3.62106 2.60864,4.80078 2.60864,6.10278C 2.60864,6.23557 2.63733,6.53381 2.8248,7.04294 Z " Margin="1.914,-1.421,1.907,2.038" Stroke="#3F000000"/>
+                                <Path  Stretch="Fill" Data="F1 M6.10214,0 C2.73758,0 0,2.73825 0,6.10278 0,7.63278 0.955048,9.23035 1.24796,9.68607 L1.67957,10.3737 C2.44852,11.5768 3.17252,12.7148 3.34305,14.1041 3.37961,14.4011 3.63013,14.6237 3.92905,14.6237 L8.36719,14.6237 C8.66531,14.6237 8.91733,14.4011 8.95374,14.1054 9.13864,12.6079 9.89383,11.3945 10.694,10.112 L10.9648,9.67575 C11.2513,9.23172 12.205,7.63416 12.205,6.10278 12.205,2.73825 9.4668,0 6.10214,0 z" Margin="0.589,-3.008,0.582,0.452" Stroke="#5A000000" StrokeThickness="0.5">
+                                    <Path.Fill>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#72FFFFFF" Offset="0.432"/>
+                                            <GradientStop Offset="0.451" Color="#33FFFFFF"/>
+                                        </LinearGradientBrush>
+                                    </Path.Fill>
+                                </Path>
+
+                                <TextBlock Text="{Binding ElementName=alarmCount, Path=Text}" Foreground="#33FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                            Margin="{Binding ElementName=alarmCount, Path=Margin}" FontWeight="ExtraBold"/>
+
+                                <TextBlock x:Name="alarmCount" Foreground="#FF011933" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           Margin="-13,0,-13,3"/>
+                            </Grid>
+                        </Button>-->
+                        <!--<Button  Style="{StaticResource LampButtonStyle}" VerticalAlignment="Center" BorderThickness="0,0,0,0" Padding="0,0,1,0" x:Name="bJournals" 
+                                 ToolTipService.ToolTip="Журнал" Click="BJournalsOnClick" Margin="0,0,10,0" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                            <Viewbox Width="21.5" Height="20" Stretch="Fill" Margin="0,2,0,0">
+                                <Grid Height="6.998" Width="7.534" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Path Stretch="Fill" Fill="{StaticResource IconOrange}" Data="M 4.0555,4.5633C 4.29657,4.1653 4.60803,3.8641 5.14363,3.7065C 5.5967,3.57343 6.07257,3.6165 6.4959,3.8081C 6.63203,3.8697 6.77897,3.95397 6.88897,4.00543L 6.8931,1.23543C 6.8935,1.11183 6.87657,0.956501 6.75177,0.919034C 6.4959,0.843433 5.1315,1.07143 4.70257,1.1825C 4.33963,1.27583 4.07897,1.49917 4.0627,1.50263L 4.0555,4.39623L 4.0555,4.5633 Z M 3.74257,5.9825L 3.74257,1.50263C 3.74257,1.34237 3.30977,1.1821 3.1027,1.1825C 2.50137,1.02597 1.9975,0.9485 1.3675,0.9213C 0.806566,0.897167 0.9071,0.795034 0.9071,1.85677L 0.9071,4.68503C 0.9071,4.91517 0.9007,5.15397 0.906433,5.38343C 0.912433,5.62717 1.0231,5.55917 1.4287,5.58343C 2.0243,5.6181 2.69563,5.6937 3.26137,5.86263L 3.74257,5.9825 Z " Margin="0.678,0,0.863,1.919"/>
+                                    <Path Width="3.693" Stretch="Fill" Fill="#FF205578" Data="M 5.70483,4.21103C 3.99723,4.42463 3.54523,6.49503 4.71083,7.45997C 5.50643,8.11863 6.63123,8.03783 7.32177,7.24263C 7.5923,6.93117 7.81083,6.39943 7.7439,5.83583C 7.63283,4.8981 6.77563,4.0773 5.70483,4.21103 Z " HorizontalAlignment="Right" Margin="0,3.293,0,0"/>
+                                    <Path Width="3.521" Stretch="Fill" Fill="#FF5F6362" Data="M 3.42283,6.14237L 1.1827,6.14237L 0.542833,5.66237L 0.534833,1.82157C 0.2227,1.82237 0.2219,1.86397 0.2219,2.68597L 0.2219,6.07543L 0.862566,6.62237L 3.74257,6.62237L 3.42283,6.14237 Z " HorizontalAlignment="Left" Margin="0,0.918,0,1.28"/>
+                                    <Path Width="0.322" Stretch="Fill" Fill="#FF5F6362" Data="M 7.5807,4.64983L 7.5807,2.3961C 7.5807,2.05183 7.60857,1.86437 7.25937,1.81863L 7.25897,4.09117C 7.2583,4.19823 7.50163,4.56063 7.5807,4.64983" HorizontalAlignment="Right" Margin="0,0.915,0.175,3.252"/>
+                                    <Path Width="2.595" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 4.6123,5.79719L 4.98291,5.79719L 5.35354,6.16781L 5.72415,6.53843L 7.20665,4.31471L 5.72415,7.65029L 5.35354,6.90905L 4.6123,5.79719 Z " HorizontalAlignment="Right" Margin="0,3.411,0.549,0.252"/>
+                                </Grid>
+
+                            </Viewbox>
+                        </Button>-->
+                        <Button  Style="{StaticResource HeaderButtonStyle}"  Tag="{StaticResource HeaderJournalButtonStyle}" VerticalAlignment="Center" BorderThickness="0,0,0,0" Padding="0,0,1,0" x:Name="bJournals" 
+                                 ToolTipService.ToolTip="Журнал" Click="BJournalsOnClick" Margin="0,0,10,0" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}">
+                           
+                        </Button>
+
+                        <!--<Button ToolTip="Вернуть все настройки" Click="ResetSettingsClick" Height="10" Width="10" VerticalAlignment="Top">
+                            x
+                        </Button>-->
+
+                        <!--<Button  Style="{StaticResource MagnifyButtonStyle}"  Content="" Width="27" Height="27" BorderThickness="0,0,0,0" Padding="0,0,1,0" x:Name="MagnifyButton" ToolTipService.ToolTip="Лупа"  Margin="0,0,0,5" IsEnabled="False"  ToolTip="Лупа" Click="MagnifyButton_Click" HorizontalAlignment="Left" />-->
+                        <!--<Button  Content="" Width="35" Height="35" BorderThickness="0,0,0,0" Padding="0,0,1,0" x:Name="history" ToolTipService.ToolTip="История изменений" Click="history_Click" Margin="0,0,0,0" HorizontalAlignment="Left" />-->
+                    </StackPanel>
+                </Border>
+            </Border>
+            <ScrollViewer Margin="0,7,5,0" x:Name="scroll" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" Style="{StaticResource SimpleScrollViewerNoBar}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Visibility="Visible">
+                <StackPanel x:Name="TabsStackPanel"  Orientation="Horizontal" Margin="0" VerticalAlignment="Bottom"/>
+            </ScrollViewer>
+        </DockPanel>
+    </Border>
+</UserControl>

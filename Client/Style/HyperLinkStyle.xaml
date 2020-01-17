@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"                    
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="hyperLinkStyle" TargetType="{x:Type Hyperlink}">
+        <Setter Property="FontFamily" Value="{StaticResource BaseNormalFontFamily}"/>
+        <Setter Property="FontSize" Value="{StaticResource BaseFontSizeM}"/>
+        <Setter Property="Foreground" Value="#FF749BC4"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard TargetProperty="Foreground.Color">
+                            <ColorAnimation From="#FF749BC4" To="#FFFF6300" Duration="0:0:.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard TargetProperty="Foreground.Color">
+                            <ColorAnimation To="#FF749BC4" Duration="0:0:.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{StaticResource BaseMoreLightBlue}"/>
+            </Trigger>
+
+
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="TableHyperLinkStyle" TargetType="{x:Type Button}">
+        <Setter Property="FontFamily" Value="{StaticResource BaseNormalFontFamily}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{StaticResource BaseLightBlue}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel Orientation="Horizontal" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}">Заместить</TextBlock>
+                            <!--<ContentPresenter x:Name="contentPresenter" TextBlock.FontSize="{TemplateBinding FontSize}"  Margin="0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Content="Заместить" />-->
+                            <Rectangle Fill="{TemplateBinding Foreground}" Height="1" Margin="0,-3,0,0" />
+                        </StackPanel>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource BaseDarkBlue}"/> 
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

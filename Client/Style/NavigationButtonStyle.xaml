@@ -1,0 +1,132 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <!--NavigationButtonStyle-->
+    <Style x:Key="NavigationButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Padding" Value="0,10,0,0"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="StoryboardStart" Timeline.DesiredFrameRate="20" >
+                            <!--<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="caption" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Duration="00:00:00.0010000">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                            </ColorAnimationUsingKeyFrames>-->
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#ffccd2e0"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="StoryboardEnd" Timeline.DesiredFrameRate="20">
+                            <!--<ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="caption" Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Duration="00:00:00.0010000">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                            </ColorAnimationUsingKeyFrames>-->
+                            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF00A77B"/>
+                            </ColorAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid  x:Name="menubutton" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="56"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle x:Name="rectangle" Fill="{DynamicResource BaseLightGray}" Grid.RowSpan="2" />
+                        <Rectangle x:Name="icon"  SnapsToDevicePixels="True" Fill="{DynamicResource path}"  VerticalAlignment="Top"  Width="46" Height="46" Grid.RowSpan="1" Margin="{TemplateBinding Padding}"/>
+                        <TextBlock  x:Name="caption" Text="{DynamicResource caption}"   RenderTransformOrigin="0.5,0.5" TextWrapping="Wrap" Margin="2,0,2,0"    FontSize="{StaticResource BaseFontSizeXS}"  TextAlignment="Center" MaxWidth="86" VerticalAlignment="Top" Grid.Row="1">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="1.2"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                        </TextBlock >
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                            <BeginStoryboard Storyboard="{StaticResource StoryboardStart}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource StoryboardEnd}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ButtonBase.Click"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SideBarHomeButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Height="48" Width="48"  Background="Transparent">
+                        <Viewbox Stretch="Fill" Width="24.5" Height="24.5" Margin="1,5,0,0" SnapsToDevicePixels="True" >
+                            <Canvas  Width="33.3333" Height="33.3333" Canvas.Left="0" Canvas.Top="0">
+                                <Path Width="25.3396" x:Name="path1" Height="23.6065" Canvas.Left="4.07882" Canvas.Top="8.393" Stretch="Fill" Fill="#FFE9E9E9" Data="M 16.7164,8.41263C 16.2658,8.55597 14.9964,9.6565 14.5492,9.99816C 13.1287,11.0831 4.30548,17.5653 4.07882,17.9997L 4.07882,31.9995L 13.4126,31.9995C 13.3759,29.4956 13.4487,23.8357 13.4126,21.3319L 20.0786,21.3319L 20.0786,31.9995L 29.4123,31.9995L 29.4184,29.0012L 29.4123,17.9997L 18.9697,9.75872C 18.3919,9.29762 17.2736,8.23597 16.7164,8.41263"/>
+                                <Path Width="31.5381" x:Name="path2" Height="14.0668" Canvas.Left="1.12821" Canvas.Top="2.66773" Stretch="Fill" Fill="#FFE9E9E9" Data="M 24.0785,7.99986C 23.6246,7.79542 18.9002,3.7766 18.2141,3.26272C 16.6392,2.08996 16.2881,2.76384 14.0503,4.57159C 10.4154,7.50709 6.41878,10.4487 2.85828,13.3576C 2.24274,13.8614 1.32275,14.4153 1.17164,15.0625C 0.932203,16.0975 1.71663,16.8614 2.69273,16.6814C 3.19494,16.5886 3.42216,16.3069 3.74938,16.0453L 15.8014,6.53544C 17.1758,5.46435 16.9853,5.78101 19.8219,7.99653L 30.0451,16.0597C 30.3523,16.3036 30.6895,16.6169 31.0973,16.7036C 32.0528,16.9053 32.8578,16.0925 32.6261,15.0692C 32.4045,14.0909 28.2784,11.0909 28.0784,10.6676L 28.0784,2.66773L 24.0785,2.66773L 24.0785,7.99986 Z "/>
+                            </Canvas>
+                        </Viewbox>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="path1" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="Fill" TargetName="path2" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SideBarSettingButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Height="48" Width="48"  Background="Transparent">
+                        <Viewbox Stretch="Fill" Width="25" Height="25" Margin="1,5,0,0" SnapsToDevicePixels="True">
+                            <Canvas  Width="33.3333" Height="33.3333" Canvas.Left="0" Canvas.Top="0">
+                                <Path Width="18.5001" x:Name="path1" Height="21.0398" Canvas.Left="11.9233" Canvas.Top="12.2921" Stretch="Fill" Fill="#FFE9E9E9" Data="M 16.7192,12.3498L 16.5431,12.4676C 16.2564,12.6015 16.2753,12.6426 16.0992,12.737L 16.9414,13.8659L 17.1019,14.107L 18.3825,15.6142L 18.9869,16.3781L 19.2736,16.7303C 19.3808,16.8014 19.6152,17.4142 19.113,17.8658L 17.3208,19.3208C 17.0153,19.5602 16.7464,19.8452 15.8847,19.3858L 15.3225,18.6736L 13.4992,16.3481L 12.7398,15.4786C 12.3715,15.7131 12.0642,16.1275 11.9509,16.5919C 11.9098,17.0442 11.9181,17.0897 11.9526,17.5353L 12.2265,18.2158L 13.3209,19.8202L 13.8614,20.6158L 14.3981,21.4252L 15.7225,22.7291L 16.0847,22.8441C 16.4769,22.8802 16.6531,22.8691 17.3397,22.663C 17.5869,22.5385 18.003,22.1791 19.8074,24.1635L 20.9746,25.7685L 21.3396,26.2535L 22.0719,27.299C 22.1946,27.3257 22.228,27.5034 22.4357,27.7195L 22.4846,27.7634C 22.5002,27.8923 22.9191,28.3806 23.0329,28.5712L 23.4218,29.0973L 23.784,29.6656L 24.3746,30.4517L 24.7129,30.9334L 24.9179,31.1573L 25.839,32.4611L 26.1507,32.8106L 26.669,33.1411C 27.6579,33.68 28.2595,32.9683 28.9945,32.3539L 29.349,32.0656C 29.6751,31.79 30.1634,31.4878 30.3539,31.13L 30.4234,30.2628C 30.3945,30.0723 30.3428,30.0612 29.584,28.809L 27.9395,26.9479L 26.7979,25.7207L 26.6529,25.5196L 22.5224,20.8802L 21.9163,20.1997L 21.3146,19.5369L 22.2907,18.5858L 22.5052,18.1575C 22.5035,17.883 22.5774,17.6425 22.5413,17.2453L 21.8769,15.9875L 21.2341,15.3292L 20.8991,14.9981L 20.5663,14.6453L 18.2375,12.4942L 17.7191,12.3054C 17.5286,12.2848 17.3492,12.2804 16.7192,12.3498"/>
+                                <Path Width="33.1556" x:Name="path2" Height="32.9338" Canvas.Left="0.169933" Canvas.Top="0.400002" Stretch="Fill" Fill="#FFE9E9E9" Data="M 15.1431,1.25831L 14.8453,2.05997L 14.537,3.26328C 14.5114,3.44105 14.3936,4.13549 14.3098,4.21882C 14.3303,4.42215 14.2281,4.89936 14.1603,5.08992C 13.872,5.12602 13.0959,5.39047 12.9276,5.37491L 12.8187,5.44547L 12.1398,5.66324C 12.0615,5.73046 11.5587,5.9199 11.0015,6.20767L 10.4598,5.89434L 8.20486,4.03604L 7.34488,3.42828C 7.03432,3.39717 7.33821,3.16384 6.66933,3.68327L 6.19489,4.04271L 5.03602,5.02992L 5.11158,5.56046L 5.37324,6.20656C 5.44879,6.41711 5.55713,6.56378 5.72879,7.0771L 5.9699,7.66765L 6.86266,9.24874L 6.85655,9.60484C 6.78711,9.8015 6.45211,10.1826 6.07878,10.7498L 5.62379,11.6254L 5.18713,12.5498L 5.03602,12.5559C 4.43603,12.5431 3.9116,12.4959 3.29939,12.4959C 2.71162,12.4959 2.20329,12.5403 1.63441,12.5576L 1.51664,12.562L 1.16998,12.5748L 0.508877,12.6615C 0.356101,12.8959 -0.0788914,15.0186 0.362212,15.6409L 1.08331,16.0503L 1.79219,16.4536L 2.7494,16.9019L 3.76216,17.3086L 4.26437,17.4408L 4.2977,17.5747L 4.41881,18.7086L 4.50048,19.348L 4.52603,19.5525L 4.70992,20.2752C 4.75603,20.463 4.89436,20.8047 4.88658,21.0091L 3.96382,21.713C 3.26272,22.2613 2.87884,22.6074 2.2094,23.2441L 1.38886,24.069C 1.39497,24.2724 1.46442,24.179 1.6333,24.6735L 2.12774,25.6029L 3.17772,26.4957L 3.93382,26.3273C 4.23159,26.2973 4.85214,26.0501 5.73212,25.9035L 10.1115,27.609C 10.0865,27.7934 10.0282,28.014 9.97928,28.1856C 9.9465,28.3634 9.86428,28.9479 9.77483,29.0345C 9.79206,29.2406 9.66761,29.6278 9.65317,29.8628L 9.58539,30.2723L 9.46151,31.3589L 10.1398,32.6545L 10.8109,32.8722L 11.0154,32.9933C 11.2643,32.9522 11.7398,33.2628 12.0237,33.2483L 12.3981,32.8295L 12.7842,32.4028C 12.8237,32.2517 13.5353,31.3711 13.8737,30.9206L 14.7809,29.3428L 15.1947,29.3934L 15.7653,29.4534L 15.9936,29.4578L 17.1964,29.4595L 18.173,29.3823L 18.5002,29.6628L 20.5019,32.9917L 20.7474,33.3272C 21.0469,33.3617 21.2658,33.2517 21.5019,33.2061C 21.6407,33.1289 21.9746,33.0294 22.1757,32.9728C 22.3852,32.9128 22.7146,32.7256 23.0107,32.6406L 23.4218,32.4911L 23.4296,31.4706L 22.8624,30.675L 22.4452,30.1495L 22.0624,29.6028C 21.8485,29.4295 21.6013,28.8706 20.9285,28.0184C 20.7635,27.9634 20.4958,27.3618 20.2974,27.2407L 19.7558,26.4107L 19.4486,25.9823C 19.233,25.9685 19.0408,26.0218 18.8597,26.0562C 18.7758,26.1273 17.8908,26.2562 17.6547,26.2707C 17.3053,26.3051 15.8297,26.4373 15.5936,26.244C 15.3464,26.2751 15.2709,26.2262 14.6642,26.0923L 10.9287,24.354L 10.3948,23.9635L 9.55873,23.0724L 7.94653,20.5197L 7.7682,19.9574L 7.50376,19.1163C 7.3871,18.9686 7.3621,18.6736 7.3371,18.4452L 7.34932,18.2236L 7.25043,17.6847C 7.24099,17.4597 7.21099,17.318 7.21099,17.083L 7.34765,15.592C 7.27876,15.3714 7.43598,14.8392 7.68987,14.0487C 7.63765,13.762 8.18097,12.6915 8.36375,12.3998C 8.43319,12.1415 8.92596,11.447 9.09929,11.2126C 9.34651,10.8787 9.63761,10.5526 9.96039,10.2221C 10.3193,9.85483 11.5904,8.75763 12.137,8.61875C 12.2959,8.45819 13.4598,7.9182 13.7209,7.95598L 14.1131,7.79709L 14.5542,7.68043C 14.7525,7.64543 14.787,7.58098 15.0564,7.61709C 15.1747,7.44543 17.5525,7.35765 17.7569,7.54321L 18.5275,7.65654L 19.6436,7.93709L 20.6924,8.38097C 20.8752,8.39708 21.0641,8.54152 23.7052,10.6737L 24.0329,11.0015L 24.3413,11.4265L 24.699,12.022L 24.8718,12.2976L 25.1112,12.7748L 25.3335,13.1953L 25.4907,13.6392L 25.6768,14.1731L 25.7962,14.6942L 25.9412,15.2659C 25.9601,15.4453 26.064,15.6658 26.0801,16.5197L 26.0735,17.483L 26.0151,17.9414C 25.9979,18.4375 25.9035,18.743 25.7112,19.5558L 25.5729,19.8519C 25.6057,20.0391 25.0896,21.2219 25.7712,22.4424L 26.3412,23.1241L 26.7001,23.4974L 27.0529,23.8829L 28.1695,25.1412L 30.1506,26.8784L 30.8012,26.1162L 30.8295,23.4263L 30.5084,23.1068L 30.0656,22.6452L 28.7901,21.4391L 28.3162,21.1035L 28.3823,20.8958L 28.609,20.198L 28.6973,19.6358C 28.7523,19.4169 28.7601,19.3636 28.7945,19.1208C 28.8045,18.9386 28.8056,18.688 28.8845,18.5686C 28.8717,18.398 28.9256,17.8075 28.9445,17.578C 29.1095,17.4897 29.4562,17.4075 29.6895,17.3369C 29.8828,17.2786 30.2878,17.1275 31.0578,16.8925C 31.1756,16.8014 31.5867,16.6725 31.7728,16.5886L 32.4922,16.302L 33.3256,15.5714C 33.2861,15.1525 33.2072,14.7292 33.1445,14.3209C 33.0878,13.9481 33.0139,13.4581 32.8878,13.1037L 32.3445,12.9809C 32.165,12.9603 31.9411,12.9653 31.8328,12.8753C 31.5978,12.9053 31.5178,12.8581 31.3223,12.8265L 30.4467,12.6898C 30.2784,12.732 30.0862,12.6915 29.4578,12.6187C 29.2201,12.6992 28.8595,12.6359 28.5917,12.6409L 28.2329,12.6442L 27.6234,11.5687L 27.2295,10.8348L 26.669,9.96539L 26.3412,9.56873L 26.8184,8.84874L 27.6045,7.47543L 28.3662,5.98879C 28.409,5.72268 28.5979,5.58435 28.5567,5.33713L 27.4312,4.29159L 27.234,4.1766L 26.9207,3.92271L 26.7618,3.76883C 26.5368,3.70382 26.6407,3.62383 26.4057,3.61272L 26.269,3.71827C 25.4768,4.1716 25.2074,4.3227 24.4185,4.85492C 24.2424,4.97492 23.8829,5.26769 23.7635,5.28047C 23.7129,5.43158 23.2924,5.68324 23.0829,5.86157C 22.8502,6.06157 22.5035,6.44711 21.3052,5.7149L 20.4341,5.40324C 20.2263,5.4238 19.9808,5.26603 19.2897,5.1388L 19.0658,4.08493C 19.0519,3.89271 18.9841,3.91327 19.0236,3.66938L 18.8736,2.92273L 18.7525,2.18441L 18.598,1.71164C 18.5225,1.57831 18.4908,1.29942 18.3447,0.79554L 18.228,0.483322C 17.9369,0.425549 16.0958,0.359436 15.5792,0.43166C 15.3464,0.48666 15.3414,0.804985 15.1431,1.25831"/>
+                            </Canvas>
+                        </Viewbox>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="path1" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="Fill" TargetName="path2" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SideBarLoopButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Height="48" Width="48" Background="Transparent">
+                        <Viewbox Stretch="Fill" Width="25" Height="25" Margin="0,5,0,0" >
+                            <Canvas  Width="33.3333" Height="33.3333" Canvas.Left="0" Canvas.Top="0">
+                                <Path Width="25.105" Height="31.7422"  x:Name="path1" Canvas.Left="4.35039" Canvas.Top="1.67859" Stretch="Fill" Fill="#FFE9E9E9" Data="M 14.9286,4.78821C 12.6737,4.90012 11.3559,5.36314 9.97761,6.54703C 8.62374,7.71336 7.42821,9.79092 7.50376,12.0396C 7.71654,18.3283 14.8803,21.4646 19.6674,17.4044C 24.8374,13.0222 21.318,4.46782 14.9286,4.78821M 19.9524,21.051C 18.2897,23.4758 19.9886,24.9154 22.2391,28.4237C 23.7368,30.7563 25.4168,34.6865 28.1945,33.021C 31.2295,31.198 27.984,27.5997 26.7946,25.7432C 26.0279,24.5423 25.3696,23.5142 24.6074,22.3122C 23.7652,20.9857 23.2074,20.2083 20.9935,20.4168C 21.4152,19.9735 21.7869,19.7728 22.3018,19.2395C 26.0296,15.3768 26.2201,10.5666 23.4518,6.08785C 19.1758,-0.822906 6.71489,0.390053 4.60603,9.72564C 3.37772,15.1574 6.691,20.5304 12.0709,21.9545C 15.4453,22.8488 17.6941,22.0451 19.9524,21.051 Z "/>
+                                <Path Width="7.99987" Height="7.89989"  x:Name="path2" Canvas.Left="10.7732" Canvas.Top="7.84063" Stretch="Fill" Fill="#FFE9E9E9" Data="M 13.4392,7.84063L 16.1053,7.84063L 16.1053,10.4734L 18.773,10.4734L 18.773,13.1061L 16.1053,13.1061L 16.1053,15.7405L 13.4392,15.7405L 13.4392,13.1061L 10.7732,13.1061L 10.7732,10.4734L 13.4392,10.4734L 13.4392,7.84063 Z "/>
+                            </Canvas>
+                        </Viewbox>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="path1" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="Fill" TargetName="path2" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+</ResourceDictionary>

@@ -1,0 +1,18 @@
+﻿<sap:WorkflowElementDialog x:Class="Proryv.Workflow.Activity.ARM.MinuteCountPropertyDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="292" Height="81" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+    <Grid>
+        <Label Content="Введите время актуальности воздействия :" Height="28" HorizontalAlignment="Left" Margin="0,12,0,0" Name="label1" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Left" Margin="72,46,0,0" VerticalAlignment="Top" Width="173">
+            <TextBlock Text="Дни " Margin="0,3,0,0"  />
+            <TextBox Width="25" x:Name="days"/>
+            <TextBlock Text=" Часы " Margin="0,3,0,0"  />
+            <TextBox Width="25" x:Name="hours"/>
+            <TextBlock Text=" Мин " Margin="0,3,0,0"  />
+            <TextBox Width="25" x:Name="mins"/>
+        </StackPanel>
+    </Grid>
+</sap:WorkflowElementDialog>

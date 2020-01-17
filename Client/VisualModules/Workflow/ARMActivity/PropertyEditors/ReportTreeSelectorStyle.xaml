@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/TreeViewStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <!--<SolidColorBrush Color="Orange" x:Key="{x:Static SystemColors.HighlightBrushKey}"/>-->
+    <Style TargetType="{x:Type TreeViewItem}">
+        <Setter Property="Foreground" Value="Blue" />
+        <Setter Property="FontWeight" Value="Thin"/>
+        <Style.Triggers>
+            <Trigger Property="Tag" Value="null" >
+                <!---->
+                <Setter Property="Foreground" Value="Orange" />
+            </Trigger>
+            <!--<Trigger Property="IsSelected" Value="False" >
+                
+            </Trigger>-->
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
+

@@ -1,0 +1,76 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="ToolbarThumb" TargetType="{x:Type Thumb}">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Padding="{TemplateBinding Control.Padding}" Background="#00FFFFFF" SnapsToDevicePixels="True">
+                        <Rectangle>
+                            <Rectangle.Fill>
+                                <DrawingBrush Viewbox="0,0,4,4" Viewport="0,0,4,4" TileMode="Tile" ViewportUnits="Absolute" ViewboxUnits="Absolute">
+                                    <DrawingBrush.Drawing>
+                                        <DrawingGroup>
+                                            <DrawingGroup.Children>
+                                                <GeometryDrawing Brush="{StaticResource BaseLightBackground}" Geometry="M1,1L1,3 3,3 3,1z" />
+                                                <GeometryDrawing Brush="{StaticResource BaseLightBlue}" Geometry="M0,0L0,2 2,2 2,0z" />
+                                            </DrawingGroup.Children>
+                                        </DrawingGroup>
+                                    </DrawingBrush.Drawing>
+                                </DrawingBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                            <Setter Property="FrameworkElement.Cursor" Value="SizeAll" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="NoOverflowItems" TargetType="ToolBar" BasedOn="{StaticResource {x:Type ToolBar}}">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToolBar}">
+                    <Grid Name="Grid" Margin="3,1,1,1" SnapsToDevicePixels="True">
+                        <Border Name="MainPanelBorder" Background="{StaticResource BaseLightGray}" BorderBrush="{StaticResource BaseLightBlue}" BorderThickness="1" Padding="{TemplateBinding Control.Padding}">
+                            <DockPanel KeyboardNavigation.TabIndex="1" KeyboardNavigation.TabNavigation="Local">
+                                <Thumb Name="ToolBarThumb" Style="{StaticResource ToolbarThumb}" Margin="-3,-1,0,0" Width="10" Padding="6,5,1,6" />
+                                <ContentPresenter Name="ToolBarHeader" ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="4,0,4,0" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                                <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="True" Margin="0,1,2,2" VerticalAlignment="Stretch" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                            </DockPanel>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Value="{x:Null}" Property="HeaderedItemsControl.Header">
+                            <Setter TargetName="ToolBarHeader" Property="UIElement.Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="ToolBarTray.IsLocked" Value="True">
+                            <Setter TargetName="ToolBarThumb" Property="UIElement.Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="ToolBar.Orientation" Value="Vertical">
+                            <Setter TargetName="Grid" Property="FrameworkElement.Margin" Value="1,3,1,1" />
+                            <Setter TargetName="ToolBarThumb" Property="FrameworkElement.Height" Value="10" />
+                            <Setter TargetName="ToolBarThumb" Property="FrameworkElement.Width" Value="Auto" />
+                            <Setter TargetName="ToolBarThumb" Property="FrameworkElement.Margin" Value="-1,-3,0,0" />
+                            <Setter TargetName="ToolBarThumb" Property="Control.Padding" Value="5,6,6,1" />
+                            <Setter TargetName="ToolBarHeader" Property="FrameworkElement.Margin" Value="0,0,0,4" />
+                            <Setter TargetName="PART_ToolBarPanel" Property="FrameworkElement.Margin" Value="1,0,2,2" />
+                            <Setter TargetName="ToolBarThumb" Property="DockPanel.Dock" Value="Top" />
+                            <Setter TargetName="ToolBarHeader" Property="DockPanel.Dock" Value="Top" />
+
+                            <Setter TargetName="MainPanelBorder" Property="FrameworkElement.Margin" Value="0,0,0,11" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsEnabled" Value="False">
+                            <Setter Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" Property="Control.Foreground" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

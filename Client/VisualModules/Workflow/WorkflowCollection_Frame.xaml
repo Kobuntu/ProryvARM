@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="Proryv.AskueARM2.Client.Visual.Workflow.WorkflowCollection_Frame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d" 
+        xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+        xmlns:arm="ARMVisual"
+        xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+             xmlns:tabs="clr-namespace:Proryv.ElectroARM.Controls.Controls.Tabs;assembly=Proryv.ElectroARM.Controls"
+             MinHeight="300" MinWidth="600">
+    <tabs:UIManagerContainer x:Name="MainLayout">
+        <docking:DockSite>
+            <docking:SplitContainer Orientation="Vertical">
+                <docking:SplitContainer.Resources>
+                    <DataTemplate x:Key="Delete_Template">
+                        <Button Style="{StaticResource DeleteItemButtonStyle}" Height="20" ToolTip="Удалить"  Width="20" Click="butDel_Click"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="Edit_Template">
+                        <Button Style="{StaticResource EditItemButtonStyle}" Height="20" ToolTip="Редактировать"  Width="20" Click="butEdit_Click"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="Links_Template">
+                        <Button Style="{StaticResource LinkAlarmsButtonStyle}" Height="20" ToolTip="Просмотреть связи с тревогой"  Width="20" Click="butLinks_Click"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="Log_Template">
+                        <Button Style="{StaticResource LogProcesButtonStyle}" Height="20" ToolTip="Журнал выполнения процесса"  Width="20" Click="butLog_Click"/>
+                    </DataTemplate>
+                </docking:SplitContainer.Resources>
+                <docking:ToolWindowContainer arm:VisualEx.ToolWindowSettings="WWF_TYPES">
+                    <docking:ToolWindow Title="Описатели процессов">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Button  HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5.5,4,0,0"  Style="{StaticResource BaseButtonStyle}" Tag="{StaticResource AddButton_Brush}" Width="90" Height="24" VerticalAlignment="Top" Click="butActivityType_Add_Click">Создать</Button>
+                            <!--Button x:Name="butRefreshWorkflow" Click="butRefreshWorkflow_Click" Margin="261,4,0,0" Style="{StaticResource BalanceButton}" Content="Обновить"   HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="118" d:LayoutOverrides="HorizontalAlignment" />-->
+                            <xcdg:DataGridControl AutoCreateColumns="False" x:Name="wwfTypes" Template="{StaticResource DataGridControlControlTemplate1}" AutoCreateDetailConfigurations="False"
+                                 arm:VisualEx.GridSettings="WWF_TYPES" Grid.Row="1" Margin="0,0,0,0" arm:FindBar.IsFindEnabled="True">
+                                <xcdg:DataGridControl.Columns>
+                                    <xcdg:UnboundColumn x:Name="butDelType" FieldName="but1"       ReadOnly="True" CellContentTemplate="{StaticResource Delete_Template}" MinWidth="28" MaxWidth="28"/>
+                                    <xcdg:UnboundColumn x:Name="butEditType" FieldName="but2"       ReadOnly="True" CellContentTemplate="{StaticResource Edit_Template}" MinWidth="28" MaxWidth="28"/>
+                                    <xcdg:UnboundColumn x:Name="butLinks" FieldName="but3" Visible="False"   ReadOnly="True" CellContentTemplate="{StaticResource Links_Template}" MinWidth="28" MaxWidth="28"/>
+                                    <xcdg:Column Width="480" FieldName="StringName" Title="Название" ReadOnly="True" CellContentTemplate="{StaticResource CaptionCell}"/>
+                                    <xcdg:Column Width="190" FieldName="RootActivityTypeName" Title="Тип" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                    <xcdg:Column Width="95" FieldName="Enabled" Title="Разрешен" ReadOnly="True" CellContentTemplate="{StaticResource Bool}"/>
+                                    <xcdg:Column Width="135" FieldName="DispatchDateTime" Title="Дата изменения" ReadOnly="True" CellContentTemplate="{StaticResource DateTime_Template}"/>
+                                    <xcdg:Column Width="130" FieldName="UserName" Title="Пользователь" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                </xcdg:DataGridControl.Columns>
+                            </xcdg:DataGridControl>
+                            <Button Name="alarmSettings" Content="Настройки тревог" Height="24" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="105,4,0,0" Padding="10,3,10,3"
+                                    Style="{StaticResource BalanceButton}"  VerticalAlignment="Top"  Click="alarmSettings_Click"/>
+                        </Grid>
+                    </docking:ToolWindow>
+                </docking:ToolWindowContainer>
+                <docking:ToolWindowContainer arm:VisualEx.ToolWindowSettings="WWF_INSTANCES">
+                    <docking:ToolWindow Title="Экземпляры процессов">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <xcdg:DataGridControl AutoCreateColumns="False" x:Name="wwfInstances" Template="{StaticResource DataGridControlControlTemplate1}" AutoCreateDetailConfigurations="False"
+                                arm:VisualEx.GridSettings="WWF_INSTANCES" Grid.Row="1" Margin="0,0,0,0" arm:FindBar.IsFindEnabled="True">
+                                <xcdg:DataGridControl.Columns>
+                                    <xcdg:UnboundColumn x:Name="butDelInst" FieldName="but1" ReadOnly="True" CellContentTemplate="{StaticResource Delete_Template}" MinWidth="28" MaxWidth="28"/>
+                                    <xcdg:UnboundColumn x:Name="butEditInst" FieldName="but2" ReadOnly="True" CellContentTemplate="{StaticResource Edit_Template}" MinWidth="28" MaxWidth="28"/>
+                                    <xcdg:UnboundColumn x:Name="butLog" FieldName="but3" ReadOnly="True" CellContentTemplate="{StaticResource Log_Template}" MinWidth="28" MaxWidth="28"/>
+                                    <xcdg:Column Width="480" FieldName="StringName" Title="Название" ReadOnly="True" CellContentTemplate="{StaticResource CaptionCell}"/>
+                                    <xcdg:Column Width="240" FieldName="ActivityTypeStringName" Title="Описатель" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                    <xcdg:Column Width="175" FieldName="RootActivityTypeName" Title="Тип процесса" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                    <xcdg:Column Width="215" FieldName="InstanceExecuteTypeName" Title="Тип запуска" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                    <xcdg:Column FieldName="StateString" Width="225" Title="Текущее состояние" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}" AllowAutoFilter="True"/>
+                                    <xcdg:Column Width="140" FieldName="DispatchDateTime" Title="Дата изменения" ReadOnly="True" CellContentTemplate="{StaticResource DateTime_Template}"/>
+                                    <xcdg:Column Width="142" FieldName="UserName" Title="Пользователь" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                </xcdg:DataGridControl.Columns>
+                            </xcdg:DataGridControl>
+                            <Button Content="Создать"  Height="24" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="5.5,4,0,0"  Style="{StaticResource BaseButtonStyle}" Tag="{StaticResource AddButton_Brush}" VerticalAlignment="Top" Width="90" Click="butActivityInstance_Click"/>
+                            <Button x:Name="butRefreshWorkflowInstance" Click="butRefreshWorkflowInstance_Click" Margin="105,4,0,0" Style="{StaticResource BalanceButton}" Content="Обновить"  HorizontalAlignment="Left" Height="24" VerticalAlignment="Top" Width="118" d:LayoutOverrides="HorizontalAlignment" />
+                        </Grid>
+                    </docking:ToolWindow>
+                </docking:ToolWindowContainer>
+            </docking:SplitContainer>
+        </docking:DockSite>
+        <ContentControl Name="topPanel"/>
+    </tabs:UIManagerContainer>
+</UserControl>

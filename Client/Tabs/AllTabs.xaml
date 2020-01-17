@@ -1,0 +1,64 @@
+<UserControl x:Class="Proryv.AskueARM2.Client.Visual.AllTabs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual"
+             xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+             
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+             
+             d:DataContext="{d:DesignInstance Type=arm:AllTabs}"
+             >
+    
+    <Border  Background="{StaticResource BaseLightBackground}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto"  CornerRadius="0" >
+
+        <ItemsControl ItemsSource="{Binding List}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <arm:HistoryShortcut ShowHistoryContextMenu="True" TabHeader="{Binding Key}" CloseButtonVisibility="Visible" 
+                                         PreviewMouseDown="HistoryShortcut_PreviewMouseDown"  ModuleType="{Binding Path=Key.ArmModule.ModuleType, Mode=OneTime}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Border>
+
+
+    <!--<ListView x:FieldModifier="internal" ItemsSource="{Binding List}"  Style="{StaticResource ListViewTabsStyle}" x:Name="tabs" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="1,1,1,0" Margin="5,15,5,10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="24" />
+                        </Grid.ColumnDefinitions>
+                        <Grid  Grid.Column="0"  Background="Transparent" PreviewMouseDown="Grid_PreviewMouseDown">
+                            <TextBlock Text="{Binding Value}" Margin="2,2,5,2"/>
+                        </Grid>
+                        <Button Grid.Column="1"  Style="{StaticResource DeleteItemButtonStyle}" ToolTip="Закрыть вкладку" Click="tabClose_Click" Width="13" Height="20" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+
+    <!--<TabControl x:Name="products" >
+            <TabItem x:Name="current"  >
+                <TabItem.Header>
+                    Текущие
+                </TabItem.Header>
+                <TabItem.Content>
+                       </TabItem.Content>
+            </TabItem>-->
+
+    <!--<TabItem x:Name="history"  >
+                <TabItem.Header>
+                    История
+                </TabItem.Header>
+                <TabItem.Content>
+                  
+                </TabItem.Content>
+            </TabItem>-->
+    <!--</TabControl>-->
+
+    <!---->
+
+</UserControl>

@@ -1,0 +1,194 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    mc:Ignorable="d">
+
+    <!-- Коллекция праздничные дни -->
+
+	<SolidColorBrush x:Key="defaultHolydayDayBackground" Color="Transparent"/>
+    <SolidColorBrush x:Key="HolydayDayBrush" Color="#FFDC3D42"/>
+	<!-- Коллекция часы -->
+    <SolidColorBrush x:Key="SystemOperatorHourbrush" Color="#FFA02479"/>
+	<SolidColorBrush x:Key="defaultHourBackground" Color="#FF8398AB"/>
+    <SolidColorBrush x:Key="maxPowerInSystemOperatorHourByGroupTpBrush" Color="#0080a7"/>
+    <SolidColorBrush x:Key="maxPowerInDayInSystemOperatorHourBrush" Color="#0080a7"/>
+    <SolidColorBrush x:Key="maxPowerInDayInSystemOperatorHourBrushMaxPowerExcess" Color="#a70080"/>
+    <SolidColorBrush x:Key="tpNotInSectionRange" Color="#FFD6D6D6"/>
+    <SolidColorBrush x:Key="CommercialHourbrush" Color="#FF00A77B"/>
+
+    <SolidColorBrush x:Key="MaxPowerExcessBrush" Color="#FFDC3D42"/>
+	
+	<!-- Коллекция тарифы -->
+
+
+    
+
+
+
+    <SolidColorBrush x:Key="brush_collection_1" Color="#FFDC3D42"/>
+    <SolidColorBrush x:Key="brush_collection_2"  Color="#FFE1B77D"/>
+    <SolidColorBrush x:Key="brush_collection_3" Color="#FF34699D"/>
+    <SolidColorBrush x:Key="brush_collection_4"  Color="#FF02AFE9"/>
+    <SolidColorBrush  x:Key="brush_collection_5"  Color="#FF00A77B"/>
+    <SolidColorBrush x:Key="brush_collection_6" Color="#FFF0D803"/>
+    <SolidColorBrush  x:Key="brush_collection_7" Color="#FF5F6362"/>
+    <SolidColorBrush x:Key="brush_collection_8" Color="#FF9262CC"/>
+    <SolidColorBrush x:Key="brush_collection_9" Color="#E5FF835F"/>
+    <SolidColorBrush x:Key="brush_collection_10" Color="#FF01939D"/>
+    <SolidColorBrush x:Key="brush_collection_11" Color="#FF75B417"/>
+    <SolidColorBrush x:Key="brush_collection_12" Color="#FF9C9A9A"/>
+    <SolidColorBrush x:Key="brush_collection_13" Color="#FFD6D6D6"/>
+    <SolidColorBrush x:Key="brush_collection_14" Color="#FF83603F"/>
+    <SolidColorBrush x:Key="brush_collection_15" Color="#FFE8CAA7"/>
+    <SolidColorBrush x:Key="brush_collection_16" Color="#FFA02479"/>
+    <SolidColorBrush x:Key="brush_collection_17" Color="#FF88DFC6"/>
+    <SolidColorBrush x:Key="brush_collection_18" Color="#FFFAF5E5"/>
+
+
+
+
+
+    <!--Для векторной диаграммы цвета из ПУЭ-->
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_01" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FDF202"/>
+        <GradientStop Color="#FDF202" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_11"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25AF4F"/>
+        <GradientStop Color="#25AF4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_21" StartPoint="0,0.5">
+        <GradientStop Color="#EE1A26" Offset="0.009"/>
+        <GradientStop Color="#EE1A26" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_02" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FDFC02"/>
+        <GradientStop Color="#FDFC02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_12"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25AB4F"/>
+        <GradientStop Color="#25AB4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_22" StartPoint="0,0.5">
+        <GradientStop Color="#EE1C26" Offset="0.009"/>
+        <GradientStop Color="#EE1C26" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_03" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FDFD02"/>
+        <GradientStop Color="#FDFD02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_13"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25AC4F"/>
+        <GradientStop Color="#25AC4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_23" StartPoint="0,0.5">
+        <GradientStop Color="#EE1F26" Offset="0.009"/>
+        <GradientStop Color="#EE1F26" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_04" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FDFE02"/>
+        <GradientStop Color="#FDFE02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_14"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25AD4F"/>
+        <GradientStop Color="#25AD4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_24" StartPoint="0,0.5">
+        <GradientStop Color="#EE1E26" Offset="0.009"/>
+        <GradientStop Color="#EE1E26" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_05" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FDDE02"/>
+        <GradientStop Color="#FDDE02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_15"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25BD4F"/>
+        <GradientStop Color="#25BD4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_25" StartPoint="0,0.5">
+        <GradientStop Color="#EE2E26" Offset="0.009"/>
+        <GradientStop Color="#EE2E26" Offset="1"/>
+    </LinearGradientBrush>
+
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_06" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FDEE02"/>
+        <GradientStop Color="#FDEE02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_16"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25CD4F"/>
+        <GradientStop Color="#25CD4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_26" StartPoint="0,0.5">
+        <GradientStop Color="#EE3E26" Offset="0.009"/>
+        <GradientStop Color="#EE3E26" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_07" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FDFE02"/>
+        <GradientStop Color="#FDFE02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_17"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25DD4F"/>
+        <GradientStop Color="#25DD4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_27" StartPoint="0,0.5">
+        <GradientStop Color="#EE4E26" Offset="0.009"/>
+        <GradientStop Color="#EE4E26" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_08" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FEFE02"/>
+        <GradientStop Color="#FEFE02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_18"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25ED4F"/>
+        <GradientStop Color="#25ED4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_28" StartPoint="0,0.5">
+        <GradientStop Color="#EE5E26" Offset="0.009"/>
+        <GradientStop Color="#EE5E26" Offset="1"/>
+    </LinearGradientBrush>
+
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_09" EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#FFFE02"/>
+        <GradientStop Color="#FFFE02" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_19"  EndPoint="1,0.5" StartPoint="0,0.5">
+        <GradientStop Color="#25FD4F"/>
+        <GradientStop Color="#25FD4F" Offset="1"/>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush PresentationOptions:Freeze="True" x:Key="vector_brush_collection_29" StartPoint="0,0.5">
+        <GradientStop Color="#EE6E26" Offset="0.009"/>
+        <GradientStop Color="#EE6E26" Offset="1"/>
+    </LinearGradientBrush>
+
+
+
+</ResourceDictionary>

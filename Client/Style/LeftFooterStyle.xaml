@@ -1,0 +1,204 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:Custom="http://infragistics.com/DataPresenter"
+    mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="LeftFooterUserControlStyle" TargetType="{x:Type UserControl}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.60"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="resetSettings" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox x:Name="viewbox" HorizontalAlignment="Center" Height="18.5" Stretch="Fill" VerticalAlignment="Center" Width="18.5" >
+                        <Grid SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5" Background="Transparent">
+                            <Path Width="25.1894" Height="25.2837" Stretch="Fill" Fill="{StaticResource IconBlue}" Data="M 7.66504,11.0514C 5.35254,8.58264 2.72355,7.74679 -0.344645,8.35087C -1.64616,5.64246 -3.35457,4.50191 -5.5459,4.85999C -7.6735,5.20634 -9.24642,6.78699 -9.51986,8.85608C -9.80697,11.0358 -8.66439,12.8118 -6.20215,13.9381C -6.46973,15.3613 -6.56616,16.808 -6.1495,18.2493C -5.73804,19.6712 -4.97038,20.8692 -3.92285,21.9069C -3.93791,21.9785 -3.9528,22.0501 -3.96639,22.123C -4.83431,22.0618 -5.71777,22.0774 -6.5603,21.8965C -6.8291,21.8392 -7.11426,21.287 -7.17098,20.9252C -7.27124,20.2922 -7.19564,19.6334 -7.20345,18.985C -7.21256,18.2675 -7.76986,17.5149 -8.51335,17.2454C -9.15202,17.0149 -9.60775,17.3431 -10.0276,17.7818C -10.4749,18.2519 -10.9327,18.7102 -11.4041,19.1556C -11.9124,19.6334 -12.4058,19.6334 -12.9085,19.1504C -13.501,18.5787 -14.0785,17.9941 -14.6533,17.4056C -15.1143,16.9315 -15.1104,16.4315 -14.6592,15.955C -14.266,15.5384 -13.8864,15.097 -13.4404,14.7427C -12.8473,14.2753 -12.7594,13.6867 -12.8415,13.0071C -12.9476,12.1295 -13.3103,11.7649 -14.195,11.735C -14.8936,11.7115 -15.5921,11.7389 -16.2893,11.7233C -17.1117,11.705 -17.4438,11.4252 -17.4867,10.6192C -17.5303,9.80139 -17.5146,8.97847 -17.4801,8.16077C -17.4528,7.50582 -17.0628,7.17249 -16.4099,7.16459C -15.8114,7.15824 -15.2126,7.16345 -14.6149,7.16207C -13.7646,7.16077 -12.8708,6.58264 -12.7275,5.78064C -12.6599,5.40556 -12.8304,4.89132 -13.0714,4.57353C -13.5036,4.00191 -14.0777,3.53967 -14.5777,3.01754C -15.1299,2.44332 -15.1305,1.96545 -14.5811,1.39905C -14.0434,0.84436 -13.4971,0.297567 -12.9411,-0.240274C -12.391,-0.767618 -11.9261,-0.771524 -11.3778,-0.252075C -10.9248,0.175171 -10.4958,0.626913 -10.0511,1.06571C -9.54451,1.56319 -8.62988,1.69983 -7.90658,1.38473C -7.26725,1.10608 -7.20011,0.541056 -7.19946,-0.0526943C -7.19759,-0.701212 -7.19564,-1.34965 -7.19759,-1.99687C -7.19946,-2.68567 -6.8571,-3.09965 -6.17684,-3.13082C -5.33171,-3.16988 -4.48218,-3.17257 -3.63704,-3.12699C -3.00228,-3.09444 -2.64551,-2.71163 -2.64095,-2.05017C -2.63704,-1.47725 -2.58691,-0.896606 -2.6495,-0.3302C -2.75814,0.647665 -2.2159,1.19731 -1.31616,1.59818C -0.993896,1.74019 -0.383708,1.53837 -0.0537109,1.29618C 0.54069,0.854776 1.01465,0.253134 1.55501,-0.263632C 2.07454,-0.757284 2.54655,-0.765015 3.06095,-0.275351C 3.65601,0.291056 4.23934,0.873007 4.80575,1.46944C 5.28882,1.97848 5.27506,2.45365 4.78223,2.97717C 4.40601,3.37553 4.04199,3.79618 3.61361,4.13342C 2.81413,4.76103 2.91121,5.56181 3.11882,6.37553C 3.27254,6.97579 3.78296,7.14652 4.34147,7.15686C 5.06478,7.17249 5.78809,7.15035 6.51082,7.16598C 7.25423,7.18038 7.6228,7.50452 7.65649,8.24792C 7.69491,9.10738 7.66504,9.97058 7.66504,11.0514 Z "/>
+                            <Path Width="12" Height="12"  Stretch="Fill" Fill="{StaticResource IconRed}" Data="M 7.81999,16.1504C 7.81999,19.4758 5.13387,22.1725 1.81999,22.1725C -1.4939,22.1725 -4.18001,19.4758 -4.18001,16.1504C -4.18001,12.8249 -1.4939,10.1282 1.81999,10.1282C 5.13387,10.1282 7.81999,12.8249 7.81999,16.1504 Z " VerticalAlignment="Bottom" HorizontalAlignment="Right"  Margin="0,0,0,-1"/>
+                            <Path Width="6.66667" Height="8"  Stretch="Fill" Fill="#FFFFFFFF" Data="M 2.48665,15.5058L 3.81999,15.5058L 3.81999,14.1725L 4.47241,14.1725L 5.15332,14.1725L 5.15332,12.8392L 3.81999,12.8392L 3.81999,11.5058L 2.48665,11.5058L 2.48665,12.8392L 2.48665,12.9198C 2.27051,12.8744 2.04989,12.8392 1.81999,12.8392C -0.0205078,12.8392 -1.51335,14.3313 -1.51335,16.1725C -1.51335,18.0137 -0.0205078,19.5058 1.81999,19.5058C 3.43197,19.5058 4.77702,18.3613 5.08626,16.8392L 4.09481,16.8392C 3.80501,17.8274 2.90202,18.5539 1.81999,18.5539C 0.504883,18.5539 -0.560791,17.4876 -0.560791,16.1725C -0.560791,14.8574 0.504883,13.7911 1.81999,13.7911C 2.05501,13.7911 2.27702,13.8313 2.48665,13.9017L 2.48665,14.1725L 2.48665,15.5058 Z " VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,2,2"/>
+                        </Grid>
+                    </Viewbox>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Width" TargetName="viewbox" Value="20.5"/>
+                            <Setter Property="Height" TargetName="viewbox" Value="20.5"/>
+                            <Setter Property="Margin" TargetName="viewbox" Value="0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="filterUp" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox x:Name="viewbox" HorizontalAlignment="Center" Height="18.5" Stretch="Fill" VerticalAlignment="Center" Width="18.5" >
+                        <Grid SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5" Background="Transparent">
+                            <Path x:Name="path" Visibility="Collapsed" Fill="#FF326e9b" Stretch="Fill" Stroke="#FFFFFFFF" StrokeThickness="0" Data="M10.563081,14.523243 L10.563081,17.977476 C11.286734,17.45889 12.38556,16.416837 13.126492,14.523243 z M6.7074504,14.523243 C7.4637193,16.454707 8.5934795,17.501744 9.3151665,18.005798 L9.3151665,14.523243 z M2.6910418,14.523243 C3.8097883,16.27311 5.5446069,17.592117 7.5880175,18.170845 6.8076153,17.389094 5.9588702,16.220604 5.3767024,14.523243 z M10.563081,10.372296 L10.563081,13.899009 13.346914,13.899009 C13.654741,12.928026 13.866255,11.763675 13.908896,10.372296 z M5.92235,10.372296 C5.965766,11.763675 6.1777988,12.928026 6.486518,13.899009 L9.3151665,13.899009 9.3151665,10.372296 z M1.3595722,10.372296 C1.4252217,11.652511 1.7759679,12.85961 2.3463524,13.932104 2.3865228,13.911419 2.4342354,13.899009 2.4816931,13.899009 L5.1827021,13.899009 C4.9009362,12.896947 4.7130886,11.727185 4.6743713,10.372296 z M17.888361,7.0288386 C18.270643,7.0288386 18.580999,7.347509 18.580999,7.737772 18.580999,8.1301167 18.270644,8.448 17.888361,8.448 17.506734,8.448 17.195721,8.1301167 17.195721,7.737772 17.195721,7.3475105 17.506734,7.0288386 17.888361,7.0288386 z M10.563081,6.2487907 L10.563081,9.7478609 13.916534,9.7478609 C13.90773,8.3819513 13.737056,7.2259045 13.4724,6.2487907 z M6.3588467,6.2487907 C6.0936604,7.2259045 5.9243227,8.3819513 5.9161335,9.7478609 L9.3151665,9.7478609 9.3151665,6.2487907 z M2.1812895,6.2322221 C1.6703392,7.3005795 1.376141,8.4925299 1.350577,9.7478609 L4.6681238,9.7478609 C4.6764718,8.4130945 4.825708,7.2536426 5.0708256,6.2487907 z M17.195707,5.2362518 C17.522535,5.2362518 17.788961,5.5079585 17.788961,5.8433814 17.788961,6.1788035 17.522536,6.4505205 17.195707,6.4505205 16.869631,6.4505205 16.603109,6.1788035 16.603109,5.8433814 16.603109,5.5079585 16.869631,5.2362518 17.195707,5.2362518 z M16.066565,3.714 C16.307415,3.714 16.502474,3.9139242 16.502474,4.1611862 16.502474,4.4073353 16.307415,4.6085358 16.066565,4.6085358 15.825714,4.6085358 15.63,4.4073353 15.63,4.1611862 15.63,3.9139242 15.825714,3.714 16.066565,3.714 z M10.563081,1.7512225 L10.563081,5.6252041 13.281996,5.6252041 C12.547111,3.4609458 11.337967,2.3043138 10.563081,1.7512225 z M7.4229556,1.7208011 C5.3352692,2.3580386 3.5838717,3.771798 2.5073312,5.6252041 L5.2386671,5.6252041 C5.7793717,3.8187354 6.6245526,2.5659613 7.4229556,1.7208011 z M9.3151665,1.7165579 C8.5409692,2.2559773 7.2986571,3.4161096 6.5500675,5.6252041 L9.3151665,5.6252041 z M9.9221888,0.1 L10.00707,0.10695967 10.15148,0.12689994 C10.201304,0.13379496 10.251603,0.14696973 10.299253,0.16493548 10.496724,0.24637914 15.165138,2.2109388 15.165138,9.8597355 15.165138,14.289883 13.600329,16.816621 12.24395,18.17371 15.845503,17.158496 18.49588,13.844379 18.49588,9.9219885 18.49588,9.5772974 18.775599,9.2984343 19.11875,9.2984343 19.462644,9.2984343 19.743,9.5772974 19.743,9.9219885 19.743,11.276014 19.467542,12.566901 18.969774,13.741594 17.974234,16.090981 16.089438,17.975588&#xA;13.740519,18.970949 12.566059,19.46863 11.275568,19.743999 9.9221888,19.743999 8.567948,19.743999 7.2769401,19.46863 6.1021901,18.970949 3.7526902,17.975588 1.8682167,16.090981 0.87295633,13.741594 0.37532717,12.566901 0.1000001,11.276014 0.1,9.9219885 0.1000001,8.5682897 0.37532682,7.2775669 0.87295633,6.1029367 1.8682163,3.7536774 3.7526894,1.8687918 6.1021901,0.87323028 7.2769404,0.37544983 8.5679484,0.1 9.9221888,0.1 z" Margin="0" Width="21.5" Height="21.5" />
+                            <Path Width="18.6667"  Height="18.6667" Canvas.Left="224.444" Canvas.Top="168" Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 233.778,168C 234.086,168 234.424,168.156 234.809,168.573C 235.194,168.99 235.586,169.654 235.918,170.505C 236.229,171.301 236.482,172.266 236.671,173.333L 230.885,173.333C 231.073,172.266 231.326,171.301 231.637,170.505C 231.97,169.654 232.361,168.99 232.747,168.573C 233.132,168.156 233.469,168 233.778,168 Z M 231.244,168.354C 230.925,168.834 230.642,169.389 230.395,170.021C 230.021,170.979 229.723,172.099 229.52,173.333L 225.351,173.333C 226.494,170.924 228.633,169.088 231.244,168.354 Z M 236.312,168.354C 238.923,169.088 241.062,170.924 242.205,173.333L 238.036,173.333C 237.832,172.099 237.535,170.979 237.161,170.021C 236.914,169.389 236.63,168.834 236.312,168.354 Z M 224.835,174.667L 229.361,174.667C 229.271,175.523 229.207,176.406 229.207,177.333C 229.207,178.261 229.271,179.143 229.361,180L 224.835,180C 224.584,179.154 224.444,178.262 224.444,177.333C 224.444,176.406 224.584,175.512 224.835,174.667 Z M 230.705,174.667L 236.851,174.667C 236.946,175.518 237.015,176.401 237.015,177.333C 237.015,178.267 236.946,179.148 236.851,180L 230.705,180C 230.609,179.148 230.541,178.267 230.541,177.333C 230.541,176.401 230.61,175.518 230.705,174.667 Z M 238.194,174.667L 242.72,174.667C 242.971,175.512 243.111,176.406 243.111,177.333C 243.111,178.262 242.972,179.154 242.72,180L 238.194,180C 238.284,179.143 238.348,178.261 238.348,177.333C 238.348,176.406 238.284,175.523 238.194,174.667 Z M 225.353,181.333L 229.52,181.333C 229.723,182.569 230.021,183.69 230.395,184.648C 230.641,185.279 230.923,185.83 231.241,186.31C 228.632,185.576 226.497,183.741 225.353,181.333 Z M 230.887,181.333L 236.668,181.333C 236.48,182.4 236.229,183.369 235.918,184.164C 235.586,185.015 235.194,185.679 234.809,186.096C 234.424,186.513 234.086,186.667 233.778,186.667C 233.469,186.667 233.132,186.513 232.747,186.096C 232.361,185.679 231.97,185.015 231.637,184.164C 231.327,183.369 231.076,182.4 230.887,181.333 Z M 238.036,181.333L 242.202,181.333C 241.059,183.741 238.923,185.576 236.314,186.31C 236.632,185.83 236.914,185.279 237.161,184.648C 237.535,183.69 237.832,182.569 238.036,181.333 Z "/>
+                        </Grid>
+                    </Viewbox>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Width" TargetName="viewbox" Value="20.5"/>
+                            <Setter Property="Height" TargetName="viewbox" Value="20.5"/>
+                            <Setter Property="Margin" TargetName="viewbox" Value="0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="changeUserButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox x:Name="viewbox" HorizontalAlignment="Center" Height="26" Stretch="Fill" VerticalAlignment="Center" Margin="0,5,0,0" Width="26" RenderTransformOrigin="0.5,0.5" >
+                        <Grid x:Name="grid" SnapsToDevicePixels="True" Background="Transparent" >
+                            <Path Stretch="Fill"  Fill="{StaticResource IconOrange}" Data="M1.6499102,13.918 L2.75016,14.837295 2.16099,18.53388 1.1395401,18.53388 0.55100018,14.837295 z M0.59056753,2.6367189 L14.275727,2.6367189 C15.422206,2.6367189 16.357685,3.5703592 16.357685,4.7187895 L16.357685,14.518389 C16.357685,14.845895 16.09209,15.111 15.765996,15.111 15.437801,15.111 15.174809,14.845896 15.174809,14.518389 L15.174809,4.7187895 C15.174809,4.2226209 14.772518,3.8196925 14.275727,3.8196916 L0.59056753,3.8196916 C0.26177434,3.8196925 0,3.5547671 0,3.2284607 0,2.902344 0.26177431,2.6367189 0.59056753,2.6367189 z M3.4003856,5.6843419E-13 L17.086935,5.6843419E-13 C18.231515,-4.489271E-07 19.167,0.93349143 19.167,2.0820469 L19.167,11.884268 C19.167,12.209274 18.902603,12.475481 18.574509,12.475481 18.250415,12.475481 17.984818,12.209272 17.984818,11.884268 L17.984818,2.0820469 C17.984818,1.5865846 17.581125,1.1829766 17.086935,1.1829764 L3.4003856,1.1829764 C3.0722106,1.1829766 2.8073153,0.91988149 2.8073153,0.5917491 2.8073153,0.2642874 3.0722109,-4.4892712E-07 3.4003856,5.6843419E-13 z" Margin="4,0.953,1.196,4.766"  SnapsToDevicePixels="True"/>
+                            <Path Stretch="Fill"  Fill="{StaticResource IconBlue}" Data="F1 M 15.4381,5.4212L 1.75198,5.4212C 0.78772,5.4212 0,6.20508 0,7.16986L 0,15.7063C 0.711609,14.7512 1.63678,13.9766 2.72467,13.4876L 3.39722,14.9615L 4.48828,13.7675C 3.85815,13.5657 3.31189,13.1816 2.91278,12.6667C 2.49414,12.1217 2.23892,11.44 2.23892,10.6952C 2.23892,8.91669 3.68106,7.47253 5.46292,7.47253C 7.24612,7.47253 8.68692,8.91669 8.68692,10.6952C 8.68692,11.44 8.43362,12.1217 8.00919,12.6667C 7.61465,13.1816 7.06317,13.5657 6.43692,13.7675L 7.52615,14.9615L 8.20642,13.4784C 10.2064,14.3587 11.7109,16.1608 12.1874,18.3417C 12.2025,18.4061 12.2025,18.4694 12.2071,18.5338L 15.4381,18.5338C 16.4017,18.5338 17.187,17.75 17.187,16.7838L 17.187,7.16986C 17.187,6.20508 16.4017,5.4212 15.4381,5.4212 Z M 14.8685,11.6347L 11.1427,11.6347C 10.9982,11.6347 10.8789,11.5045 10.8789,11.3417C 10.8789,11.1809 10.9982,11.0482 11.1427,11.0482L 14.8685,11.0482C 15.0124,11.0482 15.1309,11.1809 15.1309,11.3417C 15.1309,11.5045 15.0124,11.6347 14.8685,11.6347 Z M 14.8685,10.0371L 11.1427,10.0371C 10.9982,10.0371 10.8789,9.90494 10.8789,9.74414C 10.8789,9.58267 10.9982,9.44989 11.1427,9.44989L 14.8685,9.44989C 15.0124,9.44989 15.1309,9.58267 15.1309,9.74414C 15.1309,9.90494 15.0124,10.0371 14.8685,10.0371 Z " Margin="0,6.565,7.192,4.766" SnapsToDevicePixels="True"/>
+                        </Grid>
+
+                    </Viewbox>
+
+                    <!-- <Viewbox x:Name="viewbox" HorizontalAlignment="Center" Height="16.5" Stretch="Fill" VerticalAlignment="Center" Width="18.5" RenderTransformOrigin="0.5,0.5" >
+                        <Grid SnapsToDevicePixels="True" Background="Transparent" >
+
+                            <Rectangle Width="20" Height="45"  HorizontalAlignment="Center" RadiusX="2"  RadiusY="2" Stretch="Fill" Fill="{StaticResource IconRed}" VerticalAlignment="Top" Margin="0,-10,0,0" StrokeThickness="2"/>
+                            <Path Stretch="Fill" Fill="#FF35699b" Data="F1 M 73.7334,12.9333L 67.8667,20.2666C 76.4,27.2 81.3334,37.3333 81.3334,48.2666C 81.3334,68.1333 65.2,84.2666 45.3334,84.2666C 25.4667,84.2666 9.33337,68.1333 9.33337,48.2666C 9.33337,37.8666 13.8667,27.8666 21.7334,21.0667L 15.6,14C 5.7334,22.5333 0,35.0667 0,48.1333C 0,73.0667 20.2667,93.4666 45.3334,93.4666C 70.4,93.4666 90.6667,73.2 90.6667,48.1333C 90.6667,34.4 84.5333,21.4666 73.7334,12.9333 Z " Margin="1,0" Stroke="#FF35699b"/>
+
+                        </Grid>
+
+                    </Viewbox>-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Width" TargetName="viewbox" Value="28"/>
+                            <Setter Property="Height" TargetName="viewbox" Value="28"/>
+                            <Setter Property="Margin" TargetName="viewbox" Value="0"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="homeButton" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="Animation">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="34"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="34"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Visible}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="EndAnimation">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="32"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="32"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Collapsed}"/>
+                            </ObjectAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="grid" Width="35" Height="35">
+                        <Rectangle x:Name="rectangle" Stroke="#FF022F5C" StrokeThickness="1" RadiusX="4" RadiusY="4" Margin="0" Opacity="1">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF033364" Offset="0.411"/>
+                                    <GradientStop Color="#99009CFF" Offset="0.893"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Border Margin="1,1,1,0" BorderThickness="0.7,0.7,0.7,0.7" CornerRadius="4,4,4,4" BorderBrush="#BDFFFFFF"/>
+                        <Path Stretch="Fill" Stroke="{x:Null}" StrokeThickness="1" Opacity="1" Data="M0.5,6.710419 C1.1466804,3.3468621 4.0619596,1.1668766 9.8774752,0.5 9.8774752,0.5 71.589109,0.5 71.589109,0.5 78.144149,0.95109056 81.859747,2.8835674 81.94431,6.710419 L81.94431,19.435246 C81.94431,21.644385 76.786242,12.592391 74.577103,12.592391 74.577103,12.592391 5.4228972,12.592391 5.4228972,12.592391 3.2137582,12.592391 0.5,21.644385 0.5,19.435246 z" Margin="1,1.139,1.01,0" VerticalAlignment="Top" Height="11.693">
+                            <Path.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#D8FFFFFF" Offset="0.085"/>
+                                    <GradientStop Color="#19FFFFFF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                        </Path>
+                        <Rectangle Stretch="Fill" RadiusX="20" RadiusY="20" Stroke="#B1FFFFFF" Margin="4,4,4,4">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush StartPoint="0.000232605,0.46284" EndPoint="0.999548,0.46284">
+                                    <GradientStop Color="#00FFFFFF" Offset="0.526"/>
+                                    <GradientStop Color="#FF022F5C" Offset="0.935"/>
+                                    <GradientStop Color="#FF022F5C" Offset="0.043"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Rectangle StrokeThickness="1" RadiusX="6" RadiusY="6" HorizontalAlignment="Stretch" Margin="0,0,0,0" Stroke="{x:Null}" Opacity="1" VerticalAlignment="Stretch" >
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" MappingMode="RelativeToBoundingBox">
+                                    <GradientStop Color="#FF9DEFFC" Offset="0.94"/>
+                                    <GradientStop Offset="0.513"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                            <Rectangle.OpacityMask>
+                                <LinearGradientBrush EndPoint="0.99,0.5" StartPoint="0.002,0.5">
+                                    <GradientStop Color="#00000000" Offset="0"/>
+                                    <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                    <GradientStop Color="#FF000000" Offset="0.506"/>
+                                </LinearGradientBrush>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Ellipse x:Name="ellipse" StrokeThickness="1" Fill="{x:Null}" Visibility="Collapsed" Margin="1,1,1,1" Stroke="#FF15304B"/>
+                        <Path RenderTransformOrigin="0.500000412172998,0.22749344640245" Margin="5.475,5.242,5.43,7.737" Stretch="Fill" Stroke="#99022F5C" StrokeEndLineCap="Round" StrokeLineJoin="Round" StrokeMiterLimit="2.75" StrokeThickness="1" Data="M10.9375,0 L16.406249,4.9679998 21.874999,9.9360002 17.944087,9.9360002 17.979009,10.025413 17.979009,20.704562 C17.979009,21.016285 17.859275,21.299645 17.66636,21.505074 17.473441,21.710505 17.207339,21.838002 16.914601,21.838002 L12.892569,21.838002 12.892569,15.10193 C12.892569,14.87686 12.845025,14.662022 12.759183,14.466367 12.673341,14.270713 12.5492,14.094241 12.396007,13.945904 12.242814,13.797567 12.060569,13.677363 11.858516,13.594243 11.656464,13.511124 11.434604,13.465089 11.202183,13.465089 L10.768111,13.465089 C10.53569,13.465089 10.313831,13.511124 10.11178,13.594243 9.9097289,13.677363 9.7274846,13.797567 9.574293,13.945904 9.4211015,14.094241 9.2969636,14.270713 9.2111224,14.466367 9.1252812,14.662022 9.0777387,14.87686 9.0777387,15.10193 L9.0777387,21.838002 4.9144296,21.838002 C4.6216888,21.838002 4.3555836,21.710505 4.1626634,21.505074 3.9697434,21.299645 3.8500084,21.016285 3.8500082,20.704562 L3.8500082,10.025413 3.8849303,9.9360002 0,9.9360002 5.4687499,4.9679998 10.9375,0 z">
+                            <Path.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFFFFFFF" Offset="0.423"/>
+                                    <GradientStop Color="#FFD8DCE7" Offset="0.63"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+
+                            <Path.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                    <SkewTransform AngleX="0" AngleY="0"/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform X="0" Y="0"/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                            <BeginStoryboard  Storyboard="{StaticResource Animation}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                            <BeginStoryboard  Storyboard="{StaticResource EndAnimation}"/>
+                        </EventTrigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Stroke" TargetName="rectangle" Value="Black"/>
+                            <Setter Property="StrokeThickness" TargetName="rectangle" Value="1.2"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="grid" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

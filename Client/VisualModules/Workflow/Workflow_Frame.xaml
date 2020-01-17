@@ -1,0 +1,235 @@
+﻿<UserControl x:Class="Proryv.AskueARM2.Client.Visual.Workflow.Workflow_Frame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:wfToolBox="clr-namespace:System.Activities.Presentation.Toolbox;assembly=System.Activities.Presentation"
+        xmlns:docking="http://schemas.actiprosoftware.com/winfx/xaml/docking"
+        xmlns:arm="ARMVisual" DataContextChanged="UserControl_DataContextChanged"
+        xmlns:swd="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+        xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid" Loaded="UserControl_Loaded"
+        mc:Ignorable="d" MinWidth="500" MinHeight="500" d:DesignHeight="512" d:DesignWidth="800">
+    <UserControl.Resources>
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.WorkflowViewElementBorderColorKey}" 
+	  Color="#ff9ebfde" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.WorkflowViewElementBackgroundColorKey}"
+	  Color="#ffc5d7e8" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.WorkflowViewElementSelectedBackgroundColorKey}" 
+	 Color="#FFFFE8A6" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.WorkflowViewElementSelectedBorderColorKey}" 
+	   Color="#ff9ebfde" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewStatusBarBackgroundColorKey}" 
+	  Color="#ffc5d7e8" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.WorkflowViewElementCaptionColorKey}" 
+	  Color="#ff000000" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewBackgroundColorKey}" 
+	  Color="White" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarColorGradientBeginKey}" 
+	  Color="#FFc5d7e8" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarColorGradientEndKey}" 
+	  Color="#FFc5d7e8" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarSelectedColorGradientBeginKey}" 
+	 Color="#FFFFFCF4" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarSelectedColorGradientEndKey}" 
+	   Color="#FFFFE8A6" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarHoverColorGradientBeginKey}" 
+	  Color="#50FFFCF4" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarHoverColorGradientEndKey}" 
+	  Color="#50FFE8A6" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarControlBackgroundColorKey}" 
+	   Color="Transparent" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarCaptionActiveColorKey}" 
+	   Color="#FF000000" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewShellBarCaptionColorKey}" 
+	   Color="#15428B" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuBackgroundGradientBeginColorKey}" 
+	  Color="#FFE9ECEE" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuBackgroundGradientEndColorKey}" 
+	   Color="#FFD0D7E2" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuBorderColorKey}" 
+	  Color="#FF9BA7B7" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuIconAreaColorKey}" 
+	  Color="#FFE9ECEE" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuMouseOverBeginColorKey}" 
+	  Color="#FFFFFCF4" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuMouseOverMiddle1ColorKey}" 
+	  Color="#FFFFF3CD" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuMouseOverMiddle2ColorKey}" 
+	   Color="#FFFFECB5" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuMouseOverEndColorKey}" 
+	   Color="#FFFFECB5" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuMouseOverBorderColorKey}" 
+	  Color="#FFE5C365" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuItemTextColorKey}" 
+	   Color="#FF1B293E" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuItemTextHoverColorKey}" 
+	   Color="#FF000000" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuItemTextSelectedColorKey}" 
+	   Color="#FF000000" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuItemTextDisabledColorKey}" 
+	   Color="#FF808080" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.ContextMenuSeparatorColorKey}" 
+	   Color="#FFBEC3CB" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.FlowchartExpressionButtonColorKey}" 
+	  Color="#FFA8B3C2" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.FlowchartExpressionButtonMouseOverColorKey}" 
+	   Color="#FFFFF3CD" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.FlowchartExpressionButtonPressedColorKey}" 
+	  Color="#FFFFE8A6" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewExpandAllCollapseAllButtonColorKey}" 
+	   Color="#FF000000" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewExpandAllCollapseAllButtonMouseOverColorKey}" 
+	   Color="#FF555555" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.DesignerViewExpandAllCollapseAllPressedColorKey}" 
+	   Color="#FF333333" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorBackgroundBrushKey}" 
+	   Color="#FFF6FAFB" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorBorderBrushKey}" 
+	   Color="#8699B2" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorCategoryCaptionTextBrushKey}" 
+	  Color="Black" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorPaneBrushKey}" 
+	   Color="#FFc5d7e8" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorPopupBrushKey}" 
+	   Color="Green" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorSelectedBackgroundBrushKey}" 
+	  Color="#FF40719e" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorSelectedForegroundBrushKey}" 
+	  Color="White" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorTextBrushKey}" 
+	  Color="Black" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorToolBarBackgroundBrushKey}" 
+	   Color="#FFc5d7e8" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorToolBarItemHoverBackgroundBrushKey}" 
+	  Color="#50FFE8A6" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorToolBarItemHoverBorderBrushKey}" 
+	  Color="#50FFFCF4" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorToolBarItemSelectedBackgroundBrushKey}" 
+	   Color="#FFFFE8A6" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorToolBarItemSelectedBorderBrushKey}" 
+	  Color="#FFFFFCF4" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorToolBarSeparatorBrushKey}" 
+	  Color="#ffdee4f5" />
+        <SolidColorBrush x:Key="{x:Static swd:WorkflowDesignerColors.PropertyInspectorToolBarTextBoxBorderBrushKey}" 
+	   Color="Black" />
+    </UserControl.Resources>
+    <Grid Background="{StaticResource BaseLightBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="1" Margin="0,0,0,1" BorderBrush="{StaticResource BaseLightBorder}" Background="{StaticResource BaseLightGray}" Grid.Row="0" Grid.RowSpan="1" />
+        <StackPanel Orientation="Horizontal" SnapsToDevicePixels="True">            
+            <TextBlock VerticalAlignment="Center" Margin="8,0,0,0"><Run Text="Имя"/></TextBlock>
+            <TextBox x:Name="activity_name" IsEnabled="{Binding IsEnabled, ElementName=useTracking}" Margin="8,0,0,0" VerticalAlignment="Center" Height="22" Width="300" Text="{Binding StringName}"/>
+            <CheckBox IsEnabled="{Binding IsEnabled, ElementName=useTracking}" Margin="8,0,10,0" IsChecked="{Binding Enabled}" Content="Разрешен"/>
+            <Button IsEnabled="{Binding IsEnabled, ElementName=useTracking}" Margin="20,0,0,0"  ToolTip="Загрузить из файла..." Tag="{StaticResource LoadWorkflow_Brush}"  Style="{StaticResource WorkflowButtonStyle}"  Click="MenuItem_Click_LoadWorkflow" Content="Загрузить" SnapsToDevicePixels="True"/>
+            <Button IsEnabled="{Binding IsEnabled, ElementName=useTracking}" ToolTip="Сохранить в файл..." Tag="{StaticResource Click_Save_Brush}"  Style="{StaticResource WorkflowButtonStyle}" Click="MenuItem_Click_Save" Content="Сохранить" SnapsToDevicePixels="True" />
+            <Button IsEnabled="{Binding IsEnabled, ElementName=useTracking}" ToolTip="Запуск" Tag="{StaticResource RunWorkflow_Brush}"  Style="{StaticResource WorkflowButtonStyle}"  Click="MenuItem_Click_RunWorkflow" Margin="20,0,0,0" Content="Запуск" SnapsToDevicePixels="True" VerticalAlignment="Center"/>
+            <Button IsEnabled="{Binding IsEnabled, ElementName=useTracking}" x:Name="butSave" ToolTip="Сохранить" Tag="{StaticResource SaveWorkflow_Brush}" Style="{StaticResource WorkflowButtonStyle}" Click="butSave_Click" />
+            <Button Content="Стоп"  x:Name="butStop"  Click="butStop_Click"  Tag="{StaticResource StopWorkflow_Brush}" Style="{StaticResource WorkflowButtonStyle}" IsEnabled="False" Margin="20,0,0,0" />
+            <CheckBox Content="Использовать трекинг" Margin="30,0,0,0" Height="16" x:Name="useTracking" IsChecked="True" />
+        </StackPanel>
+        <docking:DockSite Grid.Row="1" Background="{x:Null}">
+            <docking:SplitContainer Orientation="Horizontal">
+                <docking:SplitContainer Orientation="Vertical" docking:DockSite.ControlSize="270,850" arm:VisualEx.ToolWindowSettings="WWF_LEFT">
+                    <docking:ToolWindowContainer  docking:DockSite.ControlSize="423,270" arm:VisualEx.ToolWindowSettings="WWF_ACTIVITIES" MouseLeave="ToolWindowContainer_MouseEnter">
+                        <docking:ToolWindow Title="Активности">
+                            <Grid>
+                                <wfToolBox:ToolboxControl x:Name="activity_tool_box" IsEnabled="{Binding IsEnabled, ElementName=useTracking}" 
+                                                          Style="{StaticResource WWFToolboxControlStyle}" Background="{x:Null}" CategoryItemStyle="{StaticResource WFActivitiesTreeViewItemStyle}">
+                                    <wfToolBox:ToolboxCategory x:Name="networks" CategoryName="Сеть"/>
+                                    <wfToolBox:ToolboxCategory x:Name="arm_reports" CategoryName="АРМ Отчеты"/>
+                                    <wfToolBox:ToolboxCategory x:Name="arm_balans" CategoryName="АРМ Балансы"/>
+                                    <wfToolBox:ToolboxCategory x:Name="arm_common" CategoryName="АРМ Общие"/>
+                                    <wfToolBox:ToolboxCategory x:Name="arm_nsi" CategoryName="АРМ НСИ"/>
+                                    <wfToolBox:ToolboxCategory x:Name="arm_xml_80020" CategoryName="АРМ XML 80020"/>
+                                    <wfToolBox:ToolboxCategory x:Name="arm_alarms" CategoryName="АРМ Аварии"/>
+                                    <!--<wfToolBox:ToolboxCategory x:Name="migrations" CategoryName="Миграции"/>-->
+                                    <wfToolBox:ToolboxCategory x:Name="sql" CategoryName="SQL"/>
+                                    <wfToolBox:ToolboxCategory x:Name="wmi" CategoryName="WMI"/>
+                                    <wfToolBox:ToolboxCategory x:Name="controlFlow" CategoryName="Управление потоком"/>
+                                    <wfToolBox:ToolboxCategory x:Name="flowChart" CategoryName="Блок-схема"/>
+                                    <wfToolBox:ToolboxCategory x:Name="messaging" CategoryName="Сообщения"/>
+                                    <wfToolBox:ToolboxCategory x:Name="runTime" CategoryName="Во время выполнения"/>
+                                    <wfToolBox:ToolboxCategory x:Name="primitives" CategoryName="Примитивы"/>
+                                    <wfToolBox:ToolboxCategory x:Name="transactions" CategoryName="Транзакции"/>
+                                    <wfToolBox:ToolboxCategory x:Name="collections" CategoryName="Коллекции"/>
+                                    <wfToolBox:ToolboxCategory x:Name="errorHandlings" CategoryName="Обработка ошибок"/>
+
+                                </wfToolBox:ToolboxControl>
+                            </Grid>
+                        </docking:ToolWindow>
+                        <docking:ToolWindow Title="Броузер">
+                            <Grid>
+                                <Border Grid.Row="1" BorderThickness="2" BorderBrush="BlanchedAlmond" Name="TypeBrowserBorder"/>
+                            </Grid>
+                        </docking:ToolWindow>
+                    </docking:ToolWindowContainer>
+                    <docking:ToolWindowContainer  arm:VisualEx.ToolWindowSettings="WWF_PROPERTIES" docking:DockSite.ControlSize="423,270" MouseLeave="ToolWindowContainer_MouseEnter">
+                        <docking:ToolWindow Title="Свойства">
+                            <Grid>
+                                <ContentControl x:Name="WorkflowPropertyPanel"/>
+                            </Grid>
+                        </docking:ToolWindow>
+                    </docking:ToolWindowContainer>
+                </docking:SplitContainer>
+                <docking:SplitContainer Orientation="Vertical" arm:VisualEx.ToolWindowSettings="WWF_RIGHT">
+                    <docking:ToolWindowContainer  arm:VisualEx.ToolWindowSettings="WWF_DESIGNER" docking:DockSite.ControlSize="629,875" MouseLeave="ToolWindowContainer_MouseEnter">
+                        <docking:ToolWindow Title="Дизайнер">
+                            <Grid>
+                                <ContentControl x:Name="workflowDesignerPanel"/>
+                            </Grid>
+                        </docking:ToolWindow>
+                    </docking:ToolWindowContainer>
+                    <docking:ToolWindowContainer  x:Name="bottom" arm:VisualEx.ToolWindowSettings="WWF_ERRORS" docking:DockSite.ControlSize="217,876" MouseLeave="ToolWindowContainer_MouseEnter">
+                        <docking:ToolWindow CanAutoHide="True"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ErrorBrush.png" CanRaft="False" Title="Ошибки">
+                            <Grid>
+                                <xcdg:DataGridControl x:Name="errors" AutoCreateColumns="False" Template="{StaticResource DataGridControlControlTemplate1}" AutoCreateDetailConfigurations="False"
+                                    arm:VisualEx.GridSettings="WWF_ERRORS">
+                                    <xcdg:DataGridControl.Columns>
+                                        <xcdg:Column Width="350" FieldName="Message" Title="Сообщение" ReadOnly="True">
+                                            <xcdg:Column.CellContentTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                                </DataTemplate>
+                                            </xcdg:Column.CellContentTemplate>
+                                        </xcdg:Column>
+                                        <xcdg:Column Width="200" FieldName="PropertyName" Title="Свойство" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                        <xcdg:Column Width="200" FieldName="Source.DisplayName" Title="Имя активности" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                    </xcdg:DataGridControl.Columns>
+                                </xcdg:DataGridControl>
+                            </Grid>
+                        </docking:ToolWindow>
+                        <docking:ToolWindow CanAutoHide="True" ImageSource="/Proryv.ElectroARM.Resources;component/Image/WarningBrush.png" CanRaft="False" Title="Предупреждения">
+                            <Grid>
+                                <xcdg:DataGridControl x:Name="warnings" AutoCreateColumns="False" Template="{StaticResource DataGridControlControlTemplate1}" AutoCreateDetailConfigurations="False"
+                                     arm:VisualEx.GridSettings="WWF_ERRORS">
+                                    <xcdg:DataGridControl.Columns>
+                                        <xcdg:Column Width="350" FieldName="Message" Title="Сообщение" ReadOnly="True">
+                                            <xcdg:Column.CellContentTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+                                                </DataTemplate>
+                                            </xcdg:Column.CellContentTemplate>
+                                        </xcdg:Column>
+                                        <xcdg:Column Width="200" FieldName="PropertyName" Title="Свойство" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                        <xcdg:Column Width="200" FieldName="Source.DisplayName" Title="Имя активности" ReadOnly="True" CellContentTemplate="{StaticResource StatusCell}"/>
+                                    </xcdg:DataGridControl.Columns>
+                                </xcdg:DataGridControl>
+                            </Grid>
+                        </docking:ToolWindow>
+                        <docking:ToolWindow Visibility="Collapsed" x:Name="logTool" CanAutoHide="True"  CanRaft="False" Title="Лог исполнения">
+                            <Grid>
+                                <ScrollViewer x:Name="logScroll" CanContentScroll="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible">
+                                    <TextBox x:Name="log" IsReadOnly="True" TextWrapping="Wrap"/>
+                                </ScrollViewer>
+                            </Grid>
+                        </docking:ToolWindow>
+                    </docking:ToolWindowContainer>
+                </docking:SplitContainer>
+            </docking:SplitContainer>
+        </docking:DockSite>
+        <ContentControl x:Name="topPanel" Grid.RowSpan="2"/>
+    </Grid>
+</UserControl>

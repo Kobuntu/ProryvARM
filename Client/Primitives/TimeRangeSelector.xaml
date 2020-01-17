@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Proryv.AskueARM2.Client.Visual.TimeRangeSelector"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  Loaded="UserControl_Loaded" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <Grid SnapsToDevicePixels="True">
+        <Button x:Name="but" ToolTip="Выбор диапазона" Click="menuOpen_Click" Style="{DynamicResource BaseActionButton}" BorderBrush="{StaticResource BaseLightBlue}"  Tag="{StaticResource TimeRangeSelectorActionBrush}" Width="20" Height="20"/>
+        <Popup x:Name="menu" PlacementTarget="{Binding ElementName=but}" Placement="Bottom" StaysOpen="False" AllowsTransparency="True">
+            <Border  Background="{StaticResource BaseLightControlBackground}" BorderThickness="1,1,1,1" BorderBrush="{StaticResource BaseLightControlBorder}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="sp" Grid.Column="1" Grid.ColumnSpan="1" Margin="3,4,3,5">
+                        <Button Content="Текущий месяц" Click="currentMonth_Click" HorizontalAlignment="Stretch" Style="{StaticResource TimeRangeMenuButton}" Margin="5,0,5,2"/>
+                        <Button Content="Предыдущий месяц" Click="lastMonth_Click" Style="{StaticResource TimeRangeMenuButton}" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                        <Button Content="Предыдущий день" Click="lastDay_Click" Style="{StaticResource TimeRangeMenuButton}" HorizontalAlignment="Left" Margin="5,0,5,0"/>
+                        <Border Height="1" Background="{StaticResource BaseLightControlBorder}" Margin="8,6,8,6"/>
+                        <Button Name="jan" Content="Январь" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="1"/>
+                        <Button Content="Февраль" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="2"/>
+                        <Button Content="Март" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="3"/>
+                        <Button Content="Апрель" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="4"/>
+                        <Button Content="Май" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="5"/>
+                        <Button Content="Июнь" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="6"/>
+                        <Button Content="Июль" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="7"/>
+                        <Button Content="Август" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="8"/>
+                        <Button Content="Сентябрь" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="9"/>
+                        <Button Content="Октябрь" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="10"/>
+                        <Button Content="Ноябрь" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="11"/>
+                        <Button Content="Декабрь" Click="month_Click" Margin="5,0,5,0" Style="{StaticResource TimeRangeMenuButton}" Tag="12"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

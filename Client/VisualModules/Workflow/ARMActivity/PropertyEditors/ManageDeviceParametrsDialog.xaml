@@ -1,0 +1,10 @@
+﻿<sap:WorkflowElementDialog x:Class="Proryv.Workflow.Activity.ARM.ManageDeviceParametrsDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation" Width="457" Height="504" Loaded="WorkflowElementDialog_Loaded">
+
+    <Grid>
+    </Grid>
+</sap:WorkflowElementDialog >

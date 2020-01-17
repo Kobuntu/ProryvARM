@@ -1,0 +1,619 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Геометрия-->
+    <StreamGeometry x:Key="ReloadIconData">M7.3476563,0.64531231L10.494141,3.7917967 7.3535156,6.9382811 7.3535156,4.6648436C6.8417964,4.6648436 6.3437495,4.7585936 5.859375,4.9460936 5.375,5.133594 4.9375,5.4207034 4.546875,5.8074217 4.1484375,6.2019534 3.8496091,6.6472659 3.6503906,7.1433592 3.4511716,7.6394529 3.3515623,8.1472654 3.3515625,8.6667967 3.3515623,9.1785154 3.4462888,9.6775389 3.6357422,10.163867 3.8251951,10.650195 4.1132813,11.088672 4.5,11.479297 4.6953125,11.678515 4.9052734,11.85332 5.1298828,12.003711 5.3544922,12.154101 5.5888672,12.279101 5.8330078,12.378711 6.077148,12.47832 6.327148,12.552539 6.5830078,12.601367 6.8388667,12.650195 7.0957026,12.674609 7.3535156,12.674609 7.8652339,12.674609 8.3623047,12.579883 8.8447266,12.390429 9.3271484,12.200976 9.765625,11.91289 10.160156,11.526172 10.359375,11.330859 10.533203,11.119922 10.681641,10.893359 10.830078,10.666797 10.954102,10.432422 11.053711,10.190234 11.15332,9.9480467 11.228516,9.6980467 11.279297,9.4402342 11.330078,9.1824217 11.355469,8.9246092 11.355469,8.6667967 11.355469,8.4050779 11.328125,8.1374998 11.273438,7.8640623L13.013672,7.8640623C13.048827,8.1296873 13.066405,8.3953123 13.066406,8.6609373 13.066405,9.0320311 13.031249,9.4011717 12.960938,9.7683592 12.890624,10.135547 12.784179,10.493945 12.641602,10.843554 12.499022,11.193164 12.321288,11.528125 12.108398,11.848437 11.895508,12.16875 11.646484,12.469531 11.361328,12.750781 11.083984,13.024219 10.787109,13.263476 10.470703,13.468554 10.154297,13.673633 9.8251953,13.844531 9.4833984,13.98125 9.1416016,14.117969 8.7919922,14.220508 8.4345703,14.288867 8.0771484,14.357226 7.7167964,14.391406 7.3535156,14.391406 6.9824214,14.391406 6.6142573,14.35625 6.2490234,14.285937 5.8837891,14.215625 5.5283203,14.109179 5.1826172,13.966601 4.8369141,13.824023 4.5039063,13.646289 4.1835938,13.433398 3.863281,13.220508 3.5624998,12.971484 3.28125,12.686328 3.0078125,12.408984 2.7685547,12.111133 2.5634763,11.792773 2.3583984,11.474414 2.1865234,11.144336 2.0478518,10.802539 1.9091796,10.460742 1.8056639,10.109179 1.7373047,9.7478514 1.6689452,9.3865232 1.6347655,9.0242186 1.6347656,8.6609373 1.6347655,8.2898436 1.6699218,7.9216795 1.7402345,7.5564451 1.8105468,7.1912107 1.9169921,6.8347654 2.0595703,6.4871092 2.2021484,6.1394534 2.3798828,5.805469 2.5927734,5.4851561 2.8056641,5.164844 3.0546875,4.8640623 3.3398438,4.5828123 3.6171873,4.3093748 3.9150388,4.0710936 4.2333984,3.8679686 4.5517578,3.6648436 4.8808594,3.4958982 5.2207031,3.3611324 5.5605469,3.226367 5.9101563,3.1248045 6.2695313,3.0564451 6.6289058,2.9880857 6.9882808,2.9539061 7.3476563,2.9539061z</StreamGeometry>
+
+    <!--Иконки для маленьких кнопок XS-->
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ReloadDataXSBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReloadDataXS.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ApplyXSBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ApplyBrushXS.png"/>
+
+    <!--End Иконки для маленьких кнопок XS-->
+
+
+    <!-- Кисти для карты-->
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="MapsButtonBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/maps_button.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="SatelliteButtonBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/satellite_button.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="HybridButtonBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/hybrid_button.png"/>
+
+    <!-- Кисти для End-->
+
+
+
+    <!--Кисти для инфо окон-->
+
+    <DrawingBrush x:Key="GoodResultBrush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconGreen}" Geometry="F1 M 34.6667,10.6667L 33.3333,10.6667L 32,10.6667L 32,12L 30.6667,12L 30.6667,13.3333L 29.3333,13.3333L 29.3333,14.6667L 28,14.6667L 28,16L 26.6667,16L 26.6667,17.3333L 25.3333,17.3333L 25.3333,18.6667L 24,18.6667L 24,20L 22.6667,20L 22.6667,21.3333L 21.3333,21.3333L 21.3333,22.6667L 20,22.6667L 20,24L 18.6667,24L 18.6667,25.3333L 17.3333,25.3333L 17.3333,26.6667L 16,26.6667L 16,28L 14.6667,28L 14.6667,29.3333L 13.3333,29.3333L 13.3333,28L 12,28L 12,26.6667L 10.6667,26.6667L 10.6667,25.3333L 9.33333,25.3333L 9.33333,24L 8,24L 6.66667,24L 6.66667,25.3333L 6.66667,26.6667L 8,26.6667L 8,28L 9.33333,28L 9.33333,29.3333L 10.6667,29.3333L 10.6667,30.6667L 12,30.6667L 12,32L 13.3333,32L 13.3333,33.3333L 14.6667,33.3333L 14.6667,32L 16,32L 16,30.6667L 17.3333,30.6667L 17.3333,29.3333L 18.6667,29.3333L 18.6667,28L 20,28L 20,26.6667L 21.3333,26.6667L 21.3333,25.3333L 22.6667,25.3333L 22.6667,24L 24,24L 24,22.6667L 25.3333,22.6667L 25.3333,21.3333L 26.6667,21.3333L 26.6667,20L 28,20L 28,18.6667L 29.3333,18.6667L 29.3333,17.3333L 30.6667,17.3333L 30.6667,16L 32,16L 32,14.6667L 33.3333,14.6667L 33.3333,13.3333L 34.6667,13.3333L 34.6667,12L 34.6667,10.6667 Z "/>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 0,0L 0,41.3333L 41.3333,41.3333L 41.3333,0L 0,0 Z M 38.6667,38.6667L 2.66667,38.6667L 2.66667,2.66666L 38.6667,2.66666L 38.6667,38.6667 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="GoodResultBrushSm">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 32,32L 0,32L 0,1.90735e-006L 32,1.90735e-006L 32,32 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconGreen}" Geometry="F1 M 2.66667,17.1111L 5.33333,17.1111L 5.33333,18.4444L 6.66667,18.4444L 6.66667,19.7778L 8,19.7778L 8,21.1111L 9.33333,21.1111L 9.33333,22.4444L 10.6667,22.4444L 10.6667,21.1111L 12,21.1111L 12,19.7778L 13.3333,19.7778L 13.3333,18.4444L 14.6667,18.4444L 14.6667,17.1111L 16,17.1111L 16,15.7778L 17.3333,15.7778L 17.3333,14.4444L 18.6667,14.4444L 18.6667,13.1111L 20,13.1111L 20,11.7778L 21.3333,11.7778L 21.3333,10.4444L 22.6667,10.4444L 22.6667,9.11108L 24,9.11108L 24,7.77775L 25.3333,7.77775L 25.3333,6.44442L 26.6667,6.44442L 26.6667,5.11108L 29.3333,5.11108L 29.3333,7.77775L 28,7.77775L 28,9.11108L 26.6667,9.11108L 26.6667,10.4444L 25.3333,10.4444L 25.3333,11.7778L 24,11.7778L 24,13.1111L 22.6667,13.1111L 22.6667,14.4444L 21.3333,14.4444L 21.3333,15.7778L 20,15.7778L 20,17.1111L 18.6667,17.1111L 18.6667,18.4444L 17.3333,18.4444L 17.3333,19.7778L 16,19.7778L 16,21.1111L 14.6667,21.1111L 14.6667,22.4444L 13.3333,22.4444L 13.3333,23.7778L 12,23.7778L 12,25.1111L 10.6667,25.1111L 10.6667,26.4444L 9.33333,26.4444L 9.33333,25.1111L 8,25.1111L 8,23.7778L 6.66667,23.7778L 6.66667,22.4444L 5.33333,22.4444L 5.33333,21.1111L 4,21.1111L 4,19.7778L 2.66667,19.7778L 2.66667,17.1111 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="GoodResultBrushXs">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 24,24L 0,24L 0,0L 24,0L 24,24 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconGreen}" Geometry="F1 M 8,20L 9.33333,20L 9.33333,18.6667L 22.6667,4L 20,4L 9.33333,16L 8,16L 2.66667,10.6667L 2.66667,13.3333L 8,18.6667L 8,20 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="AttentionBrush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconOrange}" Geometry="F1 M 0,0L 0,41.3333L 41.3333,41.3333L 41.3333,0L 0,0 Z M 37.3333,37.3333L 4,37.3333L 4,4L 37.3333,4L 37.3333,37.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 18.6667,6.66666L 18.6667,26.6667L 22.6667,26.6667L 22.6667,6.66666L 18.6667,6.66666 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 18.6667,33.3333L 22.6667,33.3333L 22.6667,30.6667L 18.6667,30.6667L 18.6667,33.3333 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+    <DrawingBrush x:Key="AttentionBrushSm">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconOrange}" Geometry="F1 M 0,0L 0,32L 32,32L 32,0L 0,0 Z M 29.3333,29.3333L 2.66667,29.3333L 2.66667,2.66667L 29.3333,2.66667L 29.3333,29.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 14.6667,5.33333L 14.6667,20L 17.3333,20L 17.3333,5.33333L 14.6667,5.33333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 14.6667,25.3333L 17.3333,25.3333L 17.3333,22.6667L 14.6667,22.6667L 14.6667,25.3333 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="AttentionBrushXs">
+        <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 13.3333,14.8133L 10.6667,14.8133L 10.6667,4.14661L 13.3333,4.14661L 13.3333,14.8133 Z M 13.3333,17.4799L 10.6667,17.4799L 10.6667,20.1466L 13.3333,20.1466L 13.3333,17.4799 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconOrange}" Geometry="F1 M 0,0.146612L 0,24.1466L 24,24.1466L 24,0.146612L 0,0.146612 Z M 22.6667,22.8133L 1.33333,22.8133L 1.33333,1.47995L 22.6667,1.47995L 22.6667,22.8133 Z "/>
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+
+    </DrawingBrush>
+
+
+
+    <!--End Кисти для инфо окон-->
+
+
+    <!-- Иконки в доп.меню фактическая мощность-->
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="EnergyLoadPeakPlanBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/EnergyLoadPeakPlanBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="EditTimeIntervaBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/EditTimeIntervaBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="EditDataSourcePriorityBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/EditDataSourcePriorityBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="CloseCalculatedPeriodBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/CloseCalculatedPeriodBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OpenClosedPeriodBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OpenClosedPeriodBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="GroupTPReplacmentBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/GroupTPReplacmentBrush.png"/>
+   
+    <!-- End в доп.меню фактическая мощность-->
+
+
+    <!-- Иконки Для заголовков в Табах-->
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconHalfHoursList" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconHalfHoursList.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconChart" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconChart.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconDocument" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconDocument.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconProfile" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconProfile.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconTechProfile" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconTechProfile.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconReadingValue" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconReadingValue1.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconReadingValuePeriod" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconReadingValuePeriod.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabIconTable" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TabIcon/tabIconTable.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabWarning" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/WarningBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="tabError" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ErrorBrush.png"/>
+
+    <!-- End Иконки Для заголовков в Табах-->
+
+  
+
+    <!--Кисти для флагов-->
+
+    <DrawingBrush PresentationOptions:Freeze="True" x:Key="flagBad_Brush" Stretch="None" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#FFFF3D00">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.25,1.25,13.5,13.5"/>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Pen>
+                    <Pen Brush="#66FFFFFF" DashCap="Flat" EndLineCap="Flat" LineJoin="Miter" MiterLimit="10" StartLineCap="Flat" Thickness="2.5"/>
+                </GeometryDrawing.Pen>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush PresentationOptions:Freeze="True" x:Key="flagGood_Brush" Stretch="None" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#FF2DCE00">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.25,1.25,13.5,13.5"/>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Pen>
+                    <Pen Brush="#66FFFFFF" DashCap="Flat" EndLineCap="Flat" LineJoin="Miter" MiterLimit="10" StartLineCap="Flat" Thickness="2.5"/>
+                </GeometryDrawing.Pen>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+                            <DrawingBrush PresentationOptions:Freeze="True" x:Key="flagAlarm_Brush" Stretch="None" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#FFE6E814">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.25,1.25,13.5,13.5"/>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Pen>
+                    <Pen Brush="#66FFFFFF" DashCap="Flat" EndLineCap="Flat" LineJoin="Miter" MiterLimit="10" StartLineCap="Flat" Thickness="2.5"/>
+                </GeometryDrawing.Pen>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush PresentationOptions:Freeze="True" x:Key="flagGray_Brush" Stretch="None" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#FF0C1316">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.25,1.25,13.5,13.5"/>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Pen>
+                    <Pen Brush="#66FFFFFF" DashCap="Flat" EndLineCap="Flat" LineJoin="Miter" MiterLimit="10" StartLineCap="Flat" Thickness="2.5"/>
+                </GeometryDrawing.Pen>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush PresentationOptions:Freeze="True" x:Key="flagGoodReplace_Brush" Stretch="None" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.ClipGeometry>
+                    <RectangleGeometry Rect="0,0,16,16"/>
+                </DrawingGroup.ClipGeometry>
+                <GeometryDrawing>
+                    <GeometryDrawing.Brush>
+                        <LinearGradientBrush EndPoint="0.854,0.854" StartPoint="0.146,0.146">
+                            <GradientStop Color="#FF2DCD00" Offset="0.502"/>
+                            <GradientStop Color="#E5FFFFFF" Offset="0.507"/>
+                        </LinearGradientBrush>
+                    </GeometryDrawing.Brush>
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry RadiusX="0" RadiusY="0" Rect="1.5,1.5,13,13"/>
+                    </GeometryDrawing.Geometry>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#66FFFFFF" DashCap="Flat" EndLineCap="Flat" LineJoin="Miter" MiterLimit="10" StartLineCap="Flat" Thickness="3"/>
+                    </GeometryDrawing.Pen>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <!--End Кисти для флагов-->
+
+
+    <!-- Иконки в замещение -->
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="PreviousDayBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/PreviousDayBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillFixedBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillFixedBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillRegularBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillRegularBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillFromAnotherTIBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillFromAnotherTIBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillFromAnotherCABrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillFromAnotherCABrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillByConsumptionScheduleBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillByConsumptionScheduleBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Fill0Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/Fill0Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillUndoBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillUndoBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="MainValuesNotCorrectBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/MainValuesNotCorrectBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="MainValuesValidBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/MainValuesValidBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="EditIntegralBitBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/EditIntegralBitBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="IntegralTiNotWorkedPeriod_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/IntegralTiNotWorkedPeriod_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillFixedByPrevDayBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillFixedByPrevDayBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DeleteMain30ValuesBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/DeleteMain30ValuesBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ManualEditBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/ManualEditBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ChangeDataSource_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/ChangeDataSource_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="UnAccountTariff_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/UnAccountTariff_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="BalanceMethodBrush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/BalanceMethodBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FromXML80040Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FromXML80040Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FillFromArchCommValue" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReplacingIcon/FillFromArchCommValue.png"/>
+
+    <!-- EndИконки в замещение -->
+
+
+  
+
+    <!--WorkflowBrush-->
+    <DrawingBrush x:Key="LoadWorkflow_Brush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 32,32L 0,32L 0,0L 32,0L 32,32 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconOrange}" Geometry="F1 M 4,10.6667L 4,26.6667L 12.1249,18.5416L 26.6667,18.5416L 26.6667,13.3333L 24,13.3333L 24,17.3333L 17.3333,17.3333L 17.3333,13.3333L 13.8333,13.3333L 12,10.6667L 4,10.6667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconOrange}" Geometry="F1 M 5.33333,29.3333L 13.3333,21.3333L 30.6667,21.3333L 24,29.3333L 5.33333,29.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconGreen}" Geometry="F1 M 25.3333,10.6667L 22.6667,10.6667L 22.6667,16L 18.6667,16L 18.6667,10.6667L 16,10.6667L 20.6667,5.33333L 25.3333,10.6667 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="Click_Save_Brush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 32,32L 0,32L 0,0L 32,0L 32,32 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconOrange}" Geometry="F1 M 2.66667,6.66667L 14.6667,6.66667L 14.6667,8L 16,8L 16,9.33333L 17.3333,9.33333L 17.3333,10.6667L 26.6667,10.6667L 26.6667,14.6667L 16,14.6667L 16,16L 14.6667,16L 14.6667,25.3333L 2.66667,25.3333L 2.66667,6.66667 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 24,29.3333L 21.3333,29.3333L 21.3333,26.6667L 24,26.6667L 24,29.3333 Z M 29.3333,17.3333L 29.3333,29.3333L 26.6667,29.3333L 26.6667,25.3333L 20,25.3333L 20,29.3333L 17.3333,29.3333L 17.3333,17.3333L 29.3333,17.3333 Z M 28,18.6667L 20,18.6667L 20,22.6667L 28,22.6667L 28,18.6667 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="RunWorkflow_Brush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 32,32L 0,32L 0,0L 32,0L 32,32 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconGreen}" Geometry="F1 M 9.33333,6.66667L 9.33333,28L 25.3333,17.3333L 9.33333,6.66667 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="SaveWorkflow_Brush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 32,32L 0,32L 0,0L 32,0L 32,32 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 16,26.6667L 12,26.6667L 12,21.3333L 16,21.3333L 16,26.6667 Z M 25.3333,6.66667L 25.3333,26.6667L 21.3333,26.6667L 21.3333,20L 9.33333,20L 9.33333,26.6667L 5.33333,26.6667L 5.33333,6.66667L 25.3333,6.66667 Z M 22.6667,9.33333L 9.33333,9.33333L 9.33333,14.6667L 22.6667,14.6667L 22.6667,9.33333 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="StopWorkflow_Brush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 32,32L 0,32L 0,0L 32,0L 32,32 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconRed}" Geometry="F1 M 8,24L 8,21.3333L 9.33333,21.3333L 9.33333,20L 10.6667,20L 10.6667,18.6667L 12,18.6667L 12,17.3333L 13.3333,17.3333L 13.3333,16L 14.6667,16L 14.6667,14.6667L 16,14.6667L 16,13.3333L 17.3333,13.3333L 17.3333,12L 18.6667,12L 18.6667,10.6667L 20,10.6667L 20,9.33333L 21.3333,9.33333L 21.3333,8L 24,8L 24,10.6667L 22.6667,10.6667L 22.6667,12L 21.3333,12L 21.3333,13.3333L 20,13.3333L 20,14.6667L 18.6667,14.6667L 18.6667,16L 17.3333,16L 17.3333,17.3333L 16,17.3333L 16,18.6667L 14.6667,18.6667L 14.6667,20L 13.3333,20L 13.3333,21.3333L 12,21.3333L 12,22.6667L 10.6667,22.6667L 10.6667,24L 8,24 Z M 26.6667,16C 26.6667,21.8913 21.8907,26.6667 16,26.6667C 10.1093,26.6667 5.33333,21.8913 5.33333,16C 5.33333,10.1087 10.1093,5.33333 16,5.33333C 21.8907,5.33333 26.6667,10.1087 26.6667,16 Z M 24.6667,16C 24.6667,11.2136 20.7864,7.33333 16,7.33333C 11.2136,7.33333 7.33333,11.2136 7.33333,16C 7.33333,20.7864 11.2136,24.6667 16,24.6667C 20.7864,24.6667 24.6667,20.7864 24.6667,16 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <!--WorkflowBrush End-->
+
+
+<!--ActionBrush for SecondButtonStyle-->
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ConfirmAllActionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ConfirmAllActionBrush.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ConfirmSelectedActionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ConfirmSelectedActionBrush.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="SelectValidateActionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/SelectValidateActionBrush.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="SelectExpectedActionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/SelectExpectedActionBrush.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="UnselectActionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/UnselectAllActionBrush.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ApplyRoundActionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ApplyRoundActionBrush.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ToodayActionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ToodayActionBrush.png"/>
+
+    <!--ActionBrush for SecondButtonXsStyle-->
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ConfirmAllActionXsBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ConfirmAllActionXsBrush.png"/>
+   
+
+
+
+
+
+
+    <!-- End ActionBrush for SecondButtonStyle-->
+
+
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="AddRights_Allow_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/AddRights_Allow.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="AddRights_Deny_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/AddRights_Deny.png"/>
+
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ConfirmBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Confirm_Brush.png"/>
+
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ApplyBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Confirmicon.png"/>
+    <ImageBrush  PresentationOptions:Freeze="True" x:Key="ApplyBrush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ApplyBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="HistorylChanges_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/HistorylChanges_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="LinkBrush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/LinkBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ConsiderationBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ConsiderationBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="Object_Brush" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Object_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="EventTIBrush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/EventTIBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="CompareCABrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/CompareCABrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ImportAPBrush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ImportAPBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ImportAOBrush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ImportAOBrush_Invert.png"/>
+   
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Export_XML_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Export_XML_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Export_XML_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Export_XML_Brush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DeleteBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/DeleteBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="220Kv" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/220Kv.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="330Kv"  Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/330Kv.png"/>
+     <ImageBrush PresentationOptions:Freeze="True" x:Key="Edit_Balances_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/BalancesEdit_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="AddNewFormul_Brush" ImageSource="/Proryv.ElectroARM.Resources;component/Image/AddNewFormulBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FormulConst_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/FormulConst_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="BalancesOPE_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Balances_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Users_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Users_Brush.png"/>
+	<ImageBrush PresentationOptions:Freeze="True" x:Key="Balances_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Balances_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Balances_ObjectBrush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Balances_ObjectBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Copy_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/CopyBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Paste_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/PasteBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Edit_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Edit_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="PreviewItem_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/PreviewItemBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FormBalanceButtonBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/FormBalanceButtonStyle.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="SaveButton_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Save_Change_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="AddButton_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/AddButton_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ContrA_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ContrA_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Result_BalanceGood" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/Result_BalanceGood.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Result_BalanceFalse" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/Result_BalanceFalse.png"/>
+     <ImageBrush PresentationOptions:Freeze="True" x:Key="TechIntegral_Akt_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TechIntegral_Akt_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Integral_Akt_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Integral_Akt_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Statement_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Statement_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="AddSignButtonBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/AddSignBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ConsumptionPowerl_Akt_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ConsumptionPowerl_Akt_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ActsPeretokov_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ActsPeretokov_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="TarifRate_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TarifRate_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="RangeTp_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/RangeTp_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Reactor_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Reactor_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="NCI_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/NCI_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DataTechAO_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/butDataTechAP.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DataTechAP_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/butDataTechAO.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ReportObjClass_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReportObjClass_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="NormativeLosses_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/NormativeLosses_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DiagramObjClass_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Workflow_Brush_Invert.png"/>
+	<ImageBrush PresentationOptions:Freeze="True" x:Key="JournalSbor_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/JournalSbor_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="JournalGlobalServer_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/JournalGlobalServer_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ClearFilterBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ClearFilterBrush.png"/>
+
+
+
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Calculation_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Calculation_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Formula_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Formula_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="QuestionBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/QuestionBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="AnswerBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/AnswerBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Balances_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Balances_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OV_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OV_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OV_Brush"  Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OV_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OV_Position_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OV_Position_Brush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="XDaysBrush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/XDaysBrush_Invert.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DataValidator_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/DataValidator_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Data_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Data_Brush_Invert.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OnHourDemandReport_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OnHourDemandReportBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OnPlanDemandReport_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OnPlanDemandReportBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OnPlanDemandReport_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OnPlanDemandReportBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="BalanceGeneratorBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/BalanceGeneratorBrush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DataReplacing_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/DataReplacing_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ManualChangePlan_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ManualChangePlantBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ManualChangePlan_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ManualChangePlantBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ArimaPlan_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ArimaPlantBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ManualCharacteristicDay_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ManualCharacteristicDay_Brush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="PS_icon_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/PS_icon_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="PMS_icon_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/PMS_icon_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Transform_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Transform_icon_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="House_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/House_icon_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="MES_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/MES_icon_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Slave_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Slave_icon_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="JuridicalPersonsContract_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/JuridicalPersonsContract_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="ReadMeter_Brush_Invert" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ReadMeterBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="ManualReadMeter_Brush_Invert" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ManualReadMeter_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="ManualReadMeter_Brush" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ManualReadMeter_Brush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="SendCommand_Brush_Invert" ImageSource="/Proryv.ElectroARM.Resources;component/Image/SendCommand_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="SendCommand_Brush" ImageSource="/Proryv.ElectroARM.Resources;component/Image/SendCommand_Brush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Documents_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Documents_Brush_Invert.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="LinkAlarm_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/LinkAlarm_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="LinkAlarm_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/LinkAlarm_Brush.png"/>
+
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="PowerLine_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/PowerLine.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ControlTI_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ControlTI_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ButIntegralTINotWorkedPeriod" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ButIntegralTINotWorkedPeriod_Brush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Juridical_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TITypes/Juridical_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="USPD_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/USPD_Brush_ic.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="E422_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/E422_Brush_ic.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="E422Card_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/E422Card_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="JuridicalPerson_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/JuridicalPerson_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Link_Formuls_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Link_Formuls_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="MSK_icon_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/MSK_icon_Brush.png"/>
+                            
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Result_ReplaceGood"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/Result_ReplaceGood.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Result_ReplaceFalse" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Result_ReplaceFalse.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="UpLoad_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/UpLoadBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Load_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/LoadBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Load_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/LoadBrushInvert.png"/>
+
+<ImageBrush PresentationOptions:Freeze="True" x:Key="Archive_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ArchiveBrush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ClosedDataRecalculated" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ClosedDataRecalculated_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ClosedData"  Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ClosedData_Brush.png"/>
+    
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="CloseDataActionBrush"  Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/CloseDataActionBrush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="CloseDataCAActionBrush"  Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/CloseDataCAActionBrush.png"/>
+
+
+
+
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="OpenPeriodBrush"  Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/OpenPeriod_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ChangeNoSave_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ChangeNoSave.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="PriceCategory_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/PriceCategory_Brush_Invert.png"/>
+    
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="flagMeterWasChanged" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/flagMeterWasChanged.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="flagCoeffWasChanged" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/flagCoeffWasChanged.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="flagIntegralThroughZero" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/flagIntegralThroughZero.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DataTechQuality" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/DataTechQuality_Invert.png"/>
+     <ImageBrush PresentationOptions:Freeze="True" x:Key="Proces_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Proces_Brush.png"/>
+
+
+    <ImageBrush PresentationOptions:Freeze="True"  x:Key="Schedule_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Schedule_Brush.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="SectionPowerExcessJournal_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/SectionPowerExcessJournal_Brush_Invert.png"/>
+     <ImageBrush PresentationOptions:Freeze="True" x:Key="Section_Brush"  Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Section_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="TP_tech_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/TP_tech_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="TP_com_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/TP_com_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="XmlTI_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TITypes/XmlTI_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="MonthExTI_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TITypes/MonthExTI_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="EPPTI_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/TITypes/EPPTI_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="AutoTI_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TITypes/AutoTI_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ComAccount_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ComAccount_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="TechAccount_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/TechAccount_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ContrTITech_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ContrTITech_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ContrTICom_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ContrTICom_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Shema_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Shema_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Transformator_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Transformator_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Transformator_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Transformator_Brush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Reactor_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Reactor_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="DirectConsumer_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/DirectConsumer_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Abonent_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Abonent_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="AbonentDetail_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/AbonentDetail_Brush_Invert.png"/>
+	<ImageBrush PresentationOptions:Freeze="True" x:Key="BitDetail_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/BitDetail_Brush_Invert.png"/>
+
+
+    <!--<ImageBrush PresentationOptions:Freeze="True" x:Key="SetCursorToNextInvalidate_Brush"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/SetCursorToNextInvalidate_Brush.png"/>-->
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ObjectFolder_Brush"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/ObjectFolder.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="MeterSbor_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/MeterSbor_Brush_Invert.png"/>
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="UspdCard_Brush_Invert" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/UspdCard_Brush_Invert.png"/>
+
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FavouriteRestoreBrush"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/FavouritRestore.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FavouriteAddFolderBrush"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/FavouritAddFolder.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FavouritItemDelBrush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/FavouritItemDel.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Edit_Brush" Stretch="None"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/Edit_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="FavouritItemCopyBrush"  ImageSource="/Proryv.ElectroARM.Resources;component/Image/FavouritItemCopy.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Tp_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Tp_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Tarif_Brush" ImageSource="/Proryv.ElectroARM.Resources;component/Image/Tarif_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="Apartment_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/TITypes/Apartment_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ForecastConsumption" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ForecastConsumption_Brush_Invert.png"/>
+
+
+
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="PriceZone_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/PriceZone_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="NonPriceZone_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/NonPriceZone_Brush.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" x:Key="ObjectTerritory_Brush" Stretch="None" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ObjectTerritory_Brush.png"/>
+
+
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="ForecastButton_Brush" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ForecastObjectBrush18_18.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="ForecastButton_Brush_Invert" ImageSource="/Proryv.ElectroARM.Resources;component/Image/ForecastObjectBrush_Invert.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="Comment_Brush" ImageSource="/Proryv.ElectroARM.Resources;component/Image/CommentBrush.png"/>
+
+
+   <!-- <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="MeteringWarm" ImageSource="/Proryv.ElectroARM.Resources;component/Image/MeteringWarm.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="MeteringGaz" ImageSource="/Proryv.ElectroARM.Resources;component/Image/MeteringGaz.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="MeteringElectr" ImageSource="/Proryv.ElectroARM.Resources;component/Image/MeteringElectr.png"/>
+    <ImageBrush PresentationOptions:Freeze="True" Stretch="None" x:Key="MeteringWater" ImageSource="/Proryv.ElectroARM.Resources;component/Image/MeteringWater.png"/>
+-->
+
+
+
+
+
+
+
+
+
+
+    <DrawingBrush x:Key="ValueBrush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="Transparent" Geometry="F1 M 21.3333,21.3333L 0,21.3333L 0,0L 21.3333,0L 21.3333,21.3333 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 16,4L 14.6667,4L 14.6667,5.33333L 13.3333,5.33333L 13.3333,6.66667L 12,6.66667L 12,8L 10.6667,8L 10.6667,9.33333L 9.33333,9.33333L 9.33333,10.6667L 8,10.6667L 8,12L 6.66667,12L 6.66667,13.3333L 5.33333,13.3333L 5.33333,14.6667L 4,14.6667L 4,16L 2.66667,16L 2.66667,18.6647L 5.33333,18.6647L 5.33333,17.3333L 6.66667,17.3333L 6.66667,16L 8,16L 8,14.6667L 9.33333,14.6667L 9.33333,13.3333L 10.6667,13.3333L 10.6667,12L 12,12L 12,10.6667L 13.3333,10.6667L 13.3333,9.33333L 14.6667,9.33333L 14.6667,8L 16,8L 16,6.66667L 17.3333,6.66667L 17.3333,5.33333L 16,5.33333L 16,4 Z "/>
+                    <GeometryDrawing Brush="{StaticResource IconRed}" Geometry="F1 M 16,2.66667L 17.3333,2.66667L 17.3333,4L 18.6667,4L 18.6667,5.33333L 16,5.33333L 16,2.66667 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush  x:Key="HierLev0_Brush" Stretch="None" Viewbox="0,0,18,19" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.ClipGeometry>
+                    <RectangleGeometry Rect="0,0,18.604,18.604"/>
+                </DrawingGroup.ClipGeometry>
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <MatrixTransform Matrix="1,0,0,1,-0.707000000000001,-0.263999999999985"/>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{StaticResource IconOrange}" Geometry="M17.918638,15.189362 C15.664001,16.019999 12.934638,15.426636 10.917275,14.239999 10.798638,16.019999 11.748001,17.681362 13.053275,18.867998 10.798638,17.918635 8.9000013,16.138636 7.8320013,13.883999 6.7640013,15.189362 6.5266383,17.087999 6.8826383,18.749361 5.5772753,16.731999 5.1026383,14.121362 5.5772753,11.747999 3.9160013,12.222636 2.6106383,13.646636 1.8986383,15.189362 2.1360013,12.815999 3.2040013,10.324 5.1026383,8.7813628 3.4412753,7.9506369 1.5426383,8.5439998&#xd;&#xa;1.2602539E-06,9.3746367 1.6612753,7.476 3.9160013,6.1706372 6.4080013,5.9333632 5.3400013,4.5093634 3.6786383,3.7973635 2.0172753,3.5600006 4.3906383,2.9666376 6.8826383,3.2040006 9.0186383,4.5093634 9.1372753,2.7293637 8.3066383,1.0680009 6.8826383,1.0646971E-06 9.2560013,0.83063795 11.036001,2.7293637 12.104001,4.8653634 13.172001,3.5600006 13.409275,1.6613638 13.053275,1.0646971E-06 14.240001,2.1360008 14.833275,4.6280004 14.358638,7.0013631 16.020001,6.4080001&#xd;&#xa;17.325275,5.2213633 18.037275,3.5600006 17.918638,5.3400003 17.325275,7.0013631 16.257275,8.5439998 15.901275,8.8999998 15.664001,9.1373627 15.426638,9.6119997 15.308001,9.8493626 15.070638,9.9679996 14.833275,10.086637 16.494638,10.561363 18.512001,10.324 19.936001,9.3746367 18.274638,11.273362 16.020001,12.578636 13.528001,12.815999 13.884001,13.053362 14.002638,13.646636 14.477275,13.883999 14.833275,14.002636 15.070638,14.239999 15.308001,14.477362&#xd;&#xa;16.138638,14.951999 16.969275,15.189362 17.918638,15.189362 z">
+                    </GeometryDrawing>
+                </DrawingGroup>
+                <DrawingGroup>
+                    <DrawingGroup.Transform>
+                        <MatrixTransform Matrix="1,0,0,1,6.018,5.879"/>
+                    </DrawingGroup.Transform>
+                    <GeometryDrawing Brush="{StaticResource IconRed}">
+                        <GeometryDrawing.Geometry>
+                            <EllipseGeometry Center="3.284,3.28400000000001" RadiusX="3.5" RadiusY="3.5"/>
+                        </GeometryDrawing.Geometry>
+                        <GeometryDrawing.Pen>
+                            <Pen Brush="White" DashCap="Flat" EndLineCap="Flat" LineJoin="Miter" MiterLimit="10" StartLineCap="Flat" Thickness="1.5"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                </DrawingGroup>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+    <DrawingBrush x:Key="NonPUBrush">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconRed}" Geometry="F1 M 12,0C 5.37254,0 9.53674e-007,5.37254 9.53674e-007,12C 9.53674e-007,18.6275 5.37254,24 12,24C 18.6275,24 24,18.6275 24,12C 24,5.37254 18.6275,0 12,0 Z M 12,21.3333C 6.84534,21.3333 2.66667,17.1547 2.66667,12C 2.66667,6.84534 6.84534,2.66667 12,2.66667C 17.1547,2.66667 21.3333,6.84534 21.3333,12C 21.3333,17.1547 17.1547,21.3333 12,21.3333 Z ">
+                        <GeometryDrawing.Pen>
+                            <Pen Thickness="0.666667" MiterLimit="2.75" Brush="#FFFFFFFF"/>
+                        </GeometryDrawing.Pen>
+                    </GeometryDrawing>
+                    <GeometryDrawing Brush="{StaticResource IconGray}" Geometry="F1 M 10.6667,5.33333L 13.3333,5.33333L 13.3333,13.3333L 10.6667,13.3333L 10.6667,5.33333 Z M 13.3333,14.6667L 10.6667,14.6667L 10.6667,17.3333L 13.3333,17.3333L 13.3333,14.6667 Z "/>
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

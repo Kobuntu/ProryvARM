@@ -1,0 +1,176 @@
+<UserControl x:Class="Proryv.ElectroARM.Controls.Controls.FreeHierarchyTree.FreeHierarchyTree_ObjectSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Proryv.ElectroARM.Controls.Controls.FreeHierarchyTree"
+             xmlns:visual="clr-namespace:Proryv.AskueARM2.Client.Visual"
+             xmlns:orgstructure="clr-namespace:Proryv.ElectroARM.Controls.Controls.Orgstructure"
+             xmlns:arm20Service="clr-namespace:Proryv.AskueARM2.Client.ServiceReference.ARM_20_Service;assembly=Proryv.Servers.Calculation.Client_ServiceReference"
+             xmlns:converters="clr-namespace:Proryv.ElectroARM.Controls.Converters"
+             mc:Ignorable="d" MinHeight="600" Width="550" x:Name="FHTOS"
+             d:DesignHeight="600" d:DesignWidth="300">
+    <UserControl.Resources>
+        <visual:Trees_ItemSelectorSelectionTypesFilterConvertor x:Key="Trees_ItemSelectorSelectionTypesFilterConvertor"/>
+        <BooleanToVisibilityConverter x:Key="BTV"></BooleanToVisibilityConverter>
+    </UserControl.Resources>
+
+
+
+    <Grid x:Name="grid" Background="{StaticResource BaseLightBackground}">
+        <Grid.Resources>
+            <visual:Trees_ItemSelector x:Key="trees_itemSelector">
+                <visual:Trees_ItemSelector.Resources>
+                    <ResourceDictionary>
+
+                        <HierarchicalDataTemplate x:Key="HierLev1_Section_Template"
+                                                      ItemsSource="{Binding Children}"> 
+                            <visual:HierLev1 DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="HierLev2_Section_Template"
+                                                      ItemsSource="{Binding Children}">
+                            <visual:HierLev2 DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="HierLev3_Section_Template"
+                                                      ItemsSource="{Binding Children}">
+                            <visual:HierLev3 DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="ContrObject_Template" ItemsSource="{Binding Children}">
+                            <visual:ContrObject DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="ContrPS_Template" ItemsSource="{Binding Children}">
+                            <visual:ContrPS DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="PS_Section_Template" ItemsSource="{Binding Children}">
+                            <visual:PS DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="PS_Template" ItemsSource="{Binding Children}">
+                            <visual:PS DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="Section_Template" ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Vertical">
+                                <visual:Section DataContext="{Binding Item}" />
+                                <StackPanel Margin="23,0,0,0" Orientation="Horizontal" Visibility="{Binding Source={x:Reference TI_tree},Path=OuterSelector.SelectionTypesFilter,ConverterParameter={x:Static arm20Service:enumTypeHierarchy.Section},Converter={StaticResource Trees_ItemSelectorSelectionTypesFilterConvertor}}">
+                                    <Button Style="{StaticResource APButtonStyle}" Height="20" Width="30" Tag="1"
+                                                Click="butSection_Add_Click" Margin="0,0,3,0" Content="АП" />
+                                    <Button Style="{StaticResource AOButtonStyle}" Height="20" Width="30" Tag="2"
+                                                Click="butSection_Add_Click" Margin="0,0,3,0" Content="АО" />
+                                    <Button Style="{StaticResource SaldoAButtonStyle}" Height="20" Width="30"
+                                            Tag="AS" Click="butSection_Add_Click" Margin="0,0,10,0" Content="АC"
+                                            ToolTip="Активная энергия, сальдо" />
+                                    <Button Style="{StaticResource RPButtonStyle}" Height="20" Width="30" Tag="3"
+                                                Click="butSection_Add_Click" Margin="0,0,3,0" Content="РП" />
+                                    <Button Style="{StaticResource ROButtonStyle}" Height="20" Width="30" Tag="4"
+                                                Click="butSection_Add_Click" Margin="0,0,7,0" Content="РО" />
+                                    <Button Height="20" Style="{StaticResource SaldoRButtonStyle}" Width="30"
+                                                Tag="RS" Click="butSection_Add_Click" Margin="0,0,3,0" Content="РС"
+                                                ToolTip="Реактивная энергия, сальдо" />
+                                </StackPanel>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="Formula_Template">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource ObjectSelectorButtonStyleRight}"
+                                            Click="butFormula_Add_Click" Margin="0,0,5,0"  Visibility="{Binding  Source={x:Reference TI_tree},Path=OuterSelector.SelectionTypesFilter, ConverterParameter={x:Static arm20Service:enumTypeHierarchy.Formula},Converter={StaticResource Trees_ItemSelectorSelectionTypesFilterConvertor}}" />
+                                <visual:Formula DataContext="{Binding Item}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="TI_Template" ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Vertical">
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Style="{StaticResource ObjectSelectorButtonStyleRight}"  Visibility="{Binding Source={x:Reference FHTOS},Path=ChannelsIsSelectable,Converter={StaticResource boolToVisibilityConverter}, ConverterParameter=Invert}" Click="butTI_Add_Click" Margin="0,0,5,0"/>
+                                    <visual:TI DataContext="{Binding Item}" />
+                                </StackPanel>
+                                <Grid Visibility="{Binding Source={x:Reference FHTOS},Path=ChannelsIsSelectable,Converter={StaticResource BTV}}">
+                                <StackPanel Margin="40,0,0,0" Orientation="Horizontal" Visibility="{Binding Source={x:Reference TI_tree},Path=OuterSelector.SelectionTypesFilter,ConverterParameter={x:Static arm20Service:enumTypeHierarchy.Info_TI},Converter={StaticResource Trees_ItemSelectorSelectionTypesFilterConvertor}}">
+                                    <Button Style="{StaticResource APButtonStyle}" Height="20" Width="30" Tag="1"
+                                                Click="butTI_Add_Click" Margin="0,0,3,0" Content="АП"
+                                                Loaded="TIButton_Loaded"
+                                                DataContextChanged="TIButton_DataContextChanged" />
+                                    <Button Style="{StaticResource AOButtonStyle}" Height="20" Width="30" Tag="2"
+                                                Click="butTI_Add_Click" Margin="0,0,3,0" Content="АО"
+                                                Loaded="TIButton_Loaded"
+                                                DataContextChanged="TIButton_DataContextChanged" />
+                                    <Button Style="{StaticResource RPButtonStyle}" Height="20" Width="30" Tag="3"
+                                                Click="butTI_Add_Click" Margin="0,0,3,0" Content="РП"
+                                                Loaded="TIButton_Loaded"
+                                                DataContextChanged="TIButton_DataContextChanged" />
+                                    <Button Style="{StaticResource ROButtonStyle}" Height="20" Width="30" Tag="4"
+                                                Click="butTI_Add_Click" Margin="0,0,7,0" Content="РО"
+                                                Loaded="TIButton_Loaded"
+                                                DataContextChanged="TIButton_DataContextChanged" />
+                                    <Button Style="{StaticResource SelectLastQualityClick}" Click="btn_SelectTechParamsClick"  Margin="0,0,7,0" Content="Выбрать мгновеное" Tag="5"/>
+
+                                </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="ContrTI_Template" ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Vertical">
+                                <visual:ContrTI DataContext="{Binding Item}" />
+                                <StackPanel Margin="35,0,0,0" Orientation="Horizontal"  Visibility="{Binding Source={x:Reference TI_tree},Path=OuterSelector.SelectionTypesFilter,ConverterParameter={x:Static arm20Service:enumTypeHierarchy.Info_ContrTI},Converter={StaticResource Trees_ItemSelectorSelectionTypesFilterConvertor}}">
+                                    <Button Style="{StaticResource APButtonStyle}" Height="20" Width="30" Tag="1"
+                                                Click="butContr_Add_Click" Margin="0,0,3,0" Content="АП" />
+                                    <Button Style="{StaticResource AOButtonStyle}" Height="20" Width="30" Tag="2"
+                                                Click="butContr_Add_Click" Margin="0,0,3,0" Content="АО" />
+                                    <Button Style="{StaticResource RPButtonStyle}" Height="20" Width="30" Tag="3"
+                                                Click="butContr_Add_Click" Margin="0,0,3,0" Content="РП" />
+                                    <Button Style="{StaticResource ROButtonStyle}" Height="20" Width="30" Tag="4"
+                                                Click="butContr_Add_Click" Margin="0,0,7,0" Content="РО" />
+                                    <Button Style="{StaticResource SelectLastQualityClick}" Click="btn_SelectTechParamsClick"  Margin="0,0,7,0" Content="Выбрать мгновеное" Tag="5"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="TP_Template">
+                            <StackPanel Orientation="Vertical" DataContext="{Binding Item}">
+                                <visual:TP DataContext="{Binding Item}"/>
+                                <StackPanel Margin="35,0,0,0" Orientation="Horizontal"  Visibility="{Binding  Source={x:Reference TI_tree},Path=OuterSelector.SelectionTypesFilter,ConverterParameter={x:Static arm20Service:enumTypeHierarchy.Info_TP},Converter={StaticResource Trees_ItemSelectorSelectionTypesFilterConvertor}}">
+                                    <Button Style="{StaticResource APButtonStyle}" Height="20" Width="30" Tag="1"
+                                                Click="butSection_Add_Click" Margin="0,0,3,0" Content="АП"
+                                                Visibility="{Binding Path=IsChannelEnabled[0], Converter={StaticResource boolToVisibilityConverter}}" />
+                                    <Button Style="{StaticResource AOButtonStyle}" Height="20" Width="30" Tag="2"
+                                                Click="butSection_Add_Click" Margin="0,0,3,0" Content="АО"
+                                                Visibility="{Binding Path=IsChannelEnabled[1], Converter={StaticResource boolToVisibilityConverter}}" />
+                                    <Button Style="{StaticResource RPButtonStyle}" Height="20" Width="30" Tag="3"
+                                                Click="butSection_Add_Click" Margin="0,0,3,0" Content="РП"
+                                                Visibility="{Binding Path=IsChannelEnabled[2], Converter={StaticResource boolToVisibilityConverter}}" />
+                                    <Button Style="{StaticResource ROButtonStyle}" Height="20" Width="30" Tag="4"
+                                                Click="butSection_Add_Click" Margin="0,0,7,0" Content="РО"
+                                                Visibility="{Binding Path=IsChannelEnabled[3], Converter={StaticResource boolToVisibilityConverter}}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate x:Key="FormulaConstantTemplate"
+                                                      ItemsSource="{Binding Path=Children}">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource ObjectSelectorButtonStyleRight}"
+                                        Click="butFormula_Add_Click" Margin="0,0,5,0"  Visibility="{Binding Source={x:Reference TI_tree},Path=OuterSelector.SelectionTypesFilter,Converter={StaticResource Trees_ItemSelectorSelectionTypesFilterConvertor},ConverterParameter={x:Static arm20Service:enumTypeHierarchy.FormulaConstant}}" />
+
+                                <orgstructure:FormulaConstantControl DataContext="{Binding Path=Item}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+
+
+                        <!--<HierarchicalDataTemplate x:Key="OldTelescopeTreeNodeTemplate"
+                                                  ItemsSource="{Binding Children}">
+                            <visual:OldTelescopeTreeNode DataContext="{Binding Item}" />
+                        </HierarchicalDataTemplate>-->
+                    </ResourceDictionary>
+                </visual:Trees_ItemSelector.Resources>
+            </visual:Trees_ItemSelector>
+        </Grid.Resources>
+
+        <local:FreeHierarchyTree x:Name="TI_tree" Grid.Row="1"
+                                         OuterSelector="{StaticResource trees_itemSelector}"
+                                         visual:FindBar.IsFindEnabled="True" visual:FindBar.TypeHierarchy="Info_TI"
+                                         IsSelectSingle="True"
+                                         IsHideSelectMany="True" ExtendetTemplates="UseExtendedTemplate" />
+
+
+
+    </Grid>
+
+
+
+</UserControl>

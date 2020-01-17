@@ -1,0 +1,295 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:orgstructure="clr-namespace:Proryv.ElectroARM.Controls.Controls.Orgstructure"
+                    xmlns:fValue="clr-namespace:Proryv.ElectroARM.Controls.Controls.F_Value"
+                    xmlns:visual="clr-namespace:Proryv.AskueARM2.Client.Visual"
+                    x:Class="Proryv.ElectroARM.Controls.Styles.GridTemplates">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/ElectroARM_Styles;component/Style/BaseButtonStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/ElectroARM_Styles;component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="../Converters.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <DataTemplate x:Key="FreeHierarchyObjectTemlate">
+        <ListView ItemsSource="{Binding Path=Source, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled" BorderThickness="0" Background="{x:Null}" BorderBrush="{x:Null}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding Converter = {StaticResource objectConverter}}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+    </DataTemplate>
+
+    <DataTemplate x:Key="HierLev1_Template">
+        <arm:HierLev1/>
+    </DataTemplate>
+    <DataTemplate x:Key="HierLev3_Template">
+        <arm:HierLev3/>
+    </DataTemplate>
+    <DataTemplate x:Key="HierLev2_Template">
+        <arm:HierLev2/>
+    </DataTemplate>
+    <DataTemplate x:Key="Section_Template">
+        <arm:Section/>
+    </DataTemplate>
+    <DataTemplate x:Key="Formula_Template">
+        <arm:Formula/>
+    </DataTemplate>
+    <DataTemplate x:Key="TI_Template">
+        <arm:TI/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="BalanceTemplate">
+        <orgstructure:BalanceFreeHierarchyControl/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ContrTI_Template">
+        <arm:ContrTI/>
+    </DataTemplate>
+    <DataTemplate x:Key="TP_Template">
+        <arm:TP/>
+    </DataTemplate>
+    <DataTemplate x:Key="PS_Template">
+        <arm:PS/>
+    </DataTemplate>
+    <DataTemplate x:Key="ContrObject_Template">
+        <arm:ContrObject/>
+    </DataTemplate>
+    <DataTemplate x:Key="ContrPS_Template">
+        <arm:ContrPS/>
+    </DataTemplate>
+    <DataTemplate x:Key="BalancePS_Template">
+        <arm:Balance_PS/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="BalanceHierLev3_Template">
+        <arm:Balance_MSK/>
+    </DataTemplate>
+    <DataTemplate x:Key="BalanceHierLev0_Template">
+        <arm:Balance_HierLev0/>
+    </DataTemplate>
+    <DataTemplate x:Key="Transformator_Template">
+        <arm:Transformator/>
+    </DataTemplate>
+    <DataTemplate x:Key="Reactor_Template">
+        <arm:Reactor/>
+    </DataTemplate>
+    <DataTemplate x:Key="FormulaConstant_Template">
+        <orgstructure:FormulaConstantControl/>
+    </DataTemplate>
+    <DataTemplate x:Key="ForecastObject_Template">
+        <orgstructure:ForecastObjectControl/>
+    </DataTemplate>
+    <DataTemplate x:Key="DirectConsumer_Template">
+        <arm:DirectConsumer/>
+    </DataTemplate>
+    <DataTemplate x:Key="Tarif_Template">
+        <arm:Tarif/>
+    </DataTemplate>
+    <DataTemplate x:Key="Abonent_Template">
+        <arm:Abonent/>
+    </DataTemplate>
+    <DataTemplate x:Key="Zone_Template">
+        <arm:TariffZone/>
+    </DataTemplate>
+    <DataTemplate x:Key="Rate_Template">
+        <arm:TariffRate/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="Slave_Template">
+        <arm:Slave/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="RES_Template">
+        <arm:RES/>
+    </DataTemplate>
+    <DataTemplate x:Key="JuridicalPerson_Template">
+        <arm:JuridicalPerson/>
+    </DataTemplate>
+    <DataTemplate x:Key="JuridicalPersonsContractTemplate">
+        <arm:JuridicalPersonsContract/>
+    </DataTemplate>
+    <DataTemplate x:Key="PowerLine_Template">
+        <arm:PowerLine/>
+    </DataTemplate>
+    <DataTemplate x:Key="USPD_Template">
+        <arm:USPD/>
+    </DataTemplate>
+    <DataTemplate x:Key="E422_Template">
+        <arm:E422Control/>
+    </DataTemplate>
+    <DataTemplate x:Key="XML_System_Template">
+        <arm:XML_System_Control/>
+    </DataTemplate>
+    <DataTemplate x:Key="DistributingArrangement_Template">
+        <arm:DistributingArrangement/>
+    </DataTemplate>
+    <DataTemplate x:Key="BusSystem_Template">
+        <arm:BusSystem/>
+    </DataTemplate>
+    <DataTemplate x:Key="TransformatorTTemplate">
+        <arm:TransformatorTControl/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="OldTelescopeTreeNodeTemplate">
+        <arm:OldTelescopeTreeNode/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="UANodeTemplate">
+        <arm:UANode/>
+    </DataTemplate>
+    <DataTemplate x:Key="UaServerControlTemplate">
+        <arm:UaServerControl/>
+    </DataTemplate>
+    <DataTemplate x:Key="NodeTemplate">
+        <arm:FreeHier />
+    </DataTemplate>
+
+    <arm:F_FLAGSelector x:Key="flagselector"/>
+
+    <DataTemplate x:Key="FValueTemplate">
+        <fValue:FValueControl DataContext="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FValueTemplateNoBindMeasureFormTemplate">
+        <fValue:FValueBindedToMeasureForm UseMeasureModule="False"/>
+    </DataTemplate>
+
+    <arm:HierarchyDbTreeObjectConverter x:Key="HierarchyDbTreeObjectConverter"/>
+    <arm:IDTypeToStringConverter x:Key="HierarchyObjectToNameConverter"  />
+
+    <DataTemplate x:Key="F_FLAGtoImage">
+        <!--<Image Width="14.5" SnapsToDevicePixels="True" Source="{Binding Converter={StaticResource f_FLAGtoImageConverter}}" Stretch="Fill" ToolTip="{Binding Converter={StaticResource f_FLAGtoTextConverter}}"/>-->
+        <arm:F_FlagImage Width="16" Height="16" SnapsToDevicePixels="True" Stretch="Fill"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="HierObjectTemplate">
+        <arm:HierObject Height="18" DataContext="{Binding}" VerticalContentAlignment="Center"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TI_ID_Template">
+        <arm:TI Height="18" DataContext="{Binding}" VerticalContentAlignment="Center"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="PS_ID_Template">
+        <arm:PS Height="18" DataContext="{Binding}" VerticalContentAlignment="Center"/>
+    </DataTemplate>
+
+    <!--<Основной темплейт с для обычной ТИ (TVALUESDB) в DataGrid>-->
+    <DataTemplate x:Key="ValuesTemplate">
+        <fValue:FValueBindedToMeasureForm/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ValuesNoBindMeasureFormTemplate">
+        <fValue:FValueBindedToMeasureForm UseMeasureModule="False"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FlowBalanceTITemplate">
+        <StackPanel Background="#7FFFFFFF" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
+                <TextBlock Text="(A+)-(A-)" VerticalAlignment="Center" FontSize="{StaticResource BaseFontSizeXXS}"  Width="45" />
+                <Border Background="{StaticResource BaseLightGray}" BorderBrush="{StaticResource BaseMoreLightBlue}" Height="18" BorderThickness="1" >
+                    <arm:F_ValueText  DataContext="{Binding Path = Val_a}" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="(R+)-(R-)"  VerticalAlignment="Center" FontSize="{StaticResource BaseFontSizeXXS}"  Width="45" />
+                <Border Background="{StaticResource BaseLightGray}" BorderBrush="{StaticResource BaseMoreLightBlue}" Height="18" BorderThickness="1">
+                    <arm:F_ValueText DataContext="{Binding Path = Val_r}" VerticalAlignment="Center" Margin="5,0,5,0"/>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TitleTemplate">
+        <StackPanel Orientation="Horizontal" Height="30">
+            <ToggleButton Click="Button_Click" Width="20" Height="20" IsChecked="False" Style="{StaticResource ObjectSelectorButtonStyle}"/>
+            <TextBlock Text="{Binding Path=Value, Converter={StaticResource dateTimeConverter}, ConverterParameter = OnlyDate}" Margin="15,0,0,0"  VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="FirstColumnTemplate">
+        <StackPanel Margin="0,0,0,0" Orientation="Horizontal">
+            <ToggleButton Click="Button_Click" Width="20" Height="20"  IsChecked="True" Style="{StaticResource ObjectSelectorButtonStyle}"/>
+            <StackPanel Margin="5,0,5,0" Orientation="Horizontal">
+                <Ellipse Margin="0,0,3,0" Stroke="{StaticResource IconBlue}" VerticalAlignment="Center" Width="12.174" Height="12.174">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.489,0.537" StartPoint="0.469,0.537">
+                            <GradientStop Color="{StaticResource IconBlueColor}" Offset="0.624"/>
+                            <GradientStop Color="#99FFFFFF" Offset="0.003"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock Text="{Binding Path=Value, Converter={StaticResource dateTimeConverter}, ConverterParameter = True}" VerticalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+
+    <!--<Основной темплейт с для формул с кнопкой с выпадающими ТИ в формуле> ValuesConverterContentTemplate2-->
+    <DataTemplate x:Key="ValuesFormulaTemplate">
+        <Border Margin="2,2,2,2" CornerRadius="2,2,2,2" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="{Binding Converter={StaticResource isCADifferencetoBrushConverter}}" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="{Binding Converter={StaticResource valuesConverter}}" Margin="5,0,1,0" 
+                           TextAlignment="Right"  VerticalAlignment="Center"        
+                           ToolTip="{Binding Converter={StaticResource f_FLAGtoTextConverter}}"
+                           Foreground="{Binding Converter={StaticResource f_FLAGtoBrushConverter}}"/>
+                <arm:TI_InFormula x:Name="tiinformula" DataContext="{Binding}" Margin="7,0,0,0"  Padding="0,2" HorizontalAlignment="Right" Visibility="{Binding Path=IsVisible, Converter={StaticResource booltovisibilityconverter}}"/>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TIWithSN_Template">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock MinWidth="70" Foreground="LightSlateGray" DataContextChanged="SN_DataContextChanged" Loaded="SN_Loaded" Padding="0" 
+                       VerticalAlignment="Center"/>
+            <arm:TI VerticalAlignment="Center" Margin="5,0"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="TIWithPik_Template">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock MinWidth="90" Foreground="LightSlateGray" DataContextChanged="Pik_DataContextChanged" Loaded="Pik_Loaded" Padding="0"
+                       VerticalAlignment="Center" FontSize="11"/>
+            <arm:TI VerticalAlignment="Center" Margin="5,0"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="USPDWithSN_Template">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock MinWidth="70" Foreground="Gray" DataContextChanged="USPD_SN_DataContextChanged" Loaded="USPD_SN_Loaded" Padding="0" VerticalAlignment="Center"/>
+            <arm:USPD VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ValuesConverterContentTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource valuesConverter}}"  VerticalAlignment="Center"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DateTimeNullableTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource dateTimeConverter}, ConverterParameter=Nullable}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    </DataTemplate>
+    <DataTemplate x:Key="DateTime_Template">
+        <TextBlock Text="{Binding Converter={StaticResource dateTimeConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    </DataTemplate>
+    <DataTemplate x:Key="DateTimeSecond_Template">
+        <TextBlock Text="{Binding Converter={StaticResource dateTimeConverter}, ConverterParameter=Second}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="Date_Template">
+        <TextBlock Text="{Binding Converter={StaticResource dateTimeConverterWithOutTime}}" MinWidth="100" VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="ReasonsOfAbsentDataTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource reasonsOfAbsentDataConverter}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </DataTemplate>
+    
+
+</ResourceDictionary>

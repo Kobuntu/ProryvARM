@@ -1,0 +1,301 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual"
+                    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+                    x:Class="Proryv.ElectroARM.Controls.Styles.DataGridControlStyle"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                   
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/ElectroARM_Styles;component/Style/DataGridControlStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="ExportFormatButton" BasedOn="{x:Null}" TargetType="{x:Type arm:ExportToExcel}">
+        <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}"/>
+        <Setter Property="FontSize" Value="8"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type arm:ExportToExcel}">
+                    <StackPanel Margin="0,0,3,0"  Orientation="Vertical" Width="27">
+                        <Border x:Name="border" Background="{StaticResource BaseLightGray}" BorderBrush="Transparent" Width="21" Height="21" BorderThickness="1">
+                            <Rectangle Fill="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="21" Height="21"/>
+                        </Border>
+                        <Grid>
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Visibility="Hidden" RecognizesAccessKey="True" x:Name="contentPresenter"  VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+                            <TextBlock x:Name="textBlock"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="{Binding DataContext, ElementName=contentPresenter}" FontSize="9.333"/>
+                        </Grid>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="ExportPanel">
+        <Grid Margin="0.042,1,0,0" VerticalAlignment="Top" x:Name="panel" HorizontalAlignment="Left">
+            <arm:ExportGrid HorizontalAlignment="Left" Margin="0,3.056,0,0" VerticalAlignment="Top" x:Name="ExportPanel" Width="0" Height="0">
+                <arm:ExportGrid.Resources>
+                    <Storyboard x:Key="HideExportPanel" Timeline.DesiredFrameRate="20">
+                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ExportPanel" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="156"/>
+                            <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ExportPanel" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="50"/>
+                            <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </arm:ExportGrid.Resources>
+                <Border Margin="21,0,0,0" CornerRadius="0" BorderThickness="1" BorderBrush="{StaticResource BaseLightBlue}" Background="{StaticResource BaseLightControlBackground}">
+                    <StackPanel Margin="7.5,6,7.5,0" Orientation="Horizontal">
+                        <arm:ExportToExcel Tag="{StaticResource ExportXpsBrush}"  Style="{StaticResource ExportFormatButton}" Content="XPS" x:Name="XPS"  VerticalAlignment="Top" />
+                        <arm:ExportToExcel Tag="{StaticResource ExportPdfBrush}"  Style="{StaticResource ExportFormatButton}" Content="PDF" x:Name="PDF"  VerticalAlignment="Top" />
+                        <arm:ExportToExcel Tag="{StaticResource ExportExelBrush}"  Style="{StaticResource ExportFormatButton}" Content="EXCEL"  x:Name="Excel"  VerticalAlignment="Top"/>
+                        <arm:ExportToExcel Tag="{StaticResource ExportHtmlBrush}" Style="{StaticResource ExportFormatButton}"  x:Name="HTML" Content="HTML" VerticalAlignment="Top" />
+                    </StackPanel>
+                </Border>
+            </arm:ExportGrid>
+            <arm:ExportToExcel x:Name="Export"  HorizontalAlignment="Left" Margin="0.5,0,0,0" VerticalAlignment="Top" Style="{StaticResource ExportExcelGridButton}" ToolTip="Экспорт" d:LayoutOverrides="Width">
+                <arm:ExportToExcel.Resources>
+                    <Storyboard x:Key="ShowExportPanel" Timeline.DesiredFrameRate="20">
+                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ExportPanel" Storyboard.TargetProperty="(FrameworkElement.Width)">
+                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                            <SplineDoubleKeyFrame KeyTime="00:00:00.2000000" Value="156"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ExportPanel" Storyboard.TargetProperty="(FrameworkElement.Height)">
+                            <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                            <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="50"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </arm:ExportToExcel.Resources>
+            </arm:ExportToExcel>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="DataGridControlLeftControlTemplate" TargetType="{x:Type xcdg:DataGridControl}">
+        <Grid>
+            <Border   BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,3,0,0">
+                <AdornerDecorator x:Name="PART_DragDropAdornerDecorator">
+                    <xcdg:TableViewScrollViewer Padding="{TemplateBinding Padding}" x:Name="PART_ScrollViewer" RowSelectorPaneWidth="{Binding Path=(xcdg:DataGridControl.DataGridContext).RowSelectorPaneWidth, RelativeSource={RelativeSource Self}}" ShowRowSelectorPane="{Binding Path=(xcdg:DataGridControl.DataGridContext).ShowRowSelectorPane, RelativeSource={RelativeSource Self}}" Style="{StaticResource TableViewScrollViewerLeftStyle}" VerticalScrollBarVisibility="Auto">
+                        <xcdg:TableViewItemsHost />
+                    </xcdg:TableViewScrollViewer>
+                </AdornerDecorator>
+            </Border>
+            <ContentControl Template="{StaticResource ExportPanel}" Margin="16.42,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+            <arm:FindButton x:Name="searchButton" Style="{StaticResource SearchButtonLarge}"  Content="" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top"   ToolTip="Поиск"  Grid.Column="0" Visibility="Visible" />
+
+        </Grid>
+    </ControlTemplate>
+
+    <Style x:Key="TableViewScrollViewerStyle" TargetType="{x:Type xcdg:TableViewScrollViewer}">
+        <Style.Resources>
+            <SolidColorBrush PresentationOptions:Freeze="True" x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#FFebeff3"/>
+            <SolidColorBrush PresentationOptions:Freeze="True" x:Key="{x:Static SystemColors.ControlDarkBrushKey}" Color="#FFebeff3"/>
+        </Style.Resources>
+
+        <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="CanContentScroll" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type xcdg:TableViewScrollViewer}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <xcdg:RowSelectorPane x:Name="PART_RowSelectorPane" Width="{TemplateBinding RowSelectorPaneWidth}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" />
+                            <xcdg:SynchronizedScrollViewer  Style="{StaticResource SimpleScrollViewer}" Focusable="False" x:Name="fixedHeaderScrollViewer" Grid.Column="1" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" xcdg:DataGridScrollViewer.SynchronizedScrollViewerPosition="Top">
+                                <xcdg:TableViewHeaderFooterPanel HorizontalAlignment="Left" Orientation="Vertical" xcdg:DataGridControl.IsFixedHeadersHost="True"/>
+                            </xcdg:SynchronizedScrollViewer>
+                            <xcdg:SynchronizedScrollViewer Style="{StaticResource SimpleScrollViewer}"  Focusable="False" x:Name="fixedFooterScrollViewer" Grid.Column="1" Grid.Row="2" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" xcdg:DataGridScrollViewer.SynchronizedScrollViewerPosition="Bottom">
+                                <xcdg:TableViewHeaderFooterPanel HorizontalAlignment="Left" Orientation="Vertical" xcdg:DataGridControl.IsFixedFootersHost="True"/>
+                            </xcdg:SynchronizedScrollViewer>
+                            <ScrollContentPresenter  Grid.Column="1" Grid.Row="1" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False"/>
+                        </Grid>
+                        <ScrollBar Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Style="{StaticResource SimpleScrollBarHorizontals}" x:Name="PART_HorizontalScrollBar"  Grid.Column="0" Grid.Row="1"  Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Maximum="{TemplateBinding ScrollableWidth}" Value="{TemplateBinding HorizontalOffset}"/>
+                        <Grid   Margin="0,-2,0,0" Grid.Column="1" Grid.RowSpan="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ScrollBar  Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Style="{StaticResource SimpleScrollBarVerticals}" x:Name="PART_VerticalScrollBar"  Grid.Column="0" Grid.Row="1" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Value="{TemplateBinding VerticalOffset}" Margin="0" HorizontalAlignment="Right"/>
+                            <arm:FindButton x:Name="searchButton" Style="{StaticResource SearchButtonLarge}"  Content="" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Top"   ToolTip="Поиск"  Grid.Column="0" Visibility="Visible" />
+
+                        </Grid>
+                        <xcdg:ScrollTip Visibility="Hidden" Content="{x:Null}" ContentTemplate="{Binding Path=(xcdg:DataGridControl.DataGridContext).ScrollTipContentTemplate, RelativeSource={RelativeSource Self}}"/>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowRowSelectorPane" Value="False"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="DataGridControlControlTemplate1" TargetType="{x:Type xcdg:DataGridControl}">
+        <Grid>
+            <Border   BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,3,0,0">
+                <AdornerDecorator x:Name="PART_DragDropAdornerDecorator">
+                    <xcdg:TableViewScrollViewer Padding="{TemplateBinding Padding}" x:Name="PART_ScrollViewer" RowSelectorPaneWidth="{Binding Path=(xcdg:DataGridControl.DataGridContext).RowSelectorPaneWidth, RelativeSource={RelativeSource Self}}" ShowRowSelectorPane="{Binding Path=(xcdg:DataGridControl.DataGridContext).ShowRowSelectorPane, RelativeSource={RelativeSource Self}}" Style="{StaticResource TableViewScrollViewerStyle}" VerticalScrollBarVisibility="Auto">
+                        <xcdg:TableViewItemsHost/>
+                    </xcdg:TableViewScrollViewer>
+                </AdornerDecorator>
+            </Border>
+            <ContentControl Template="{StaticResource ExportPanel}" Margin="0.42,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        </Grid>
+    </ControlTemplate>
+
+
+    <Style x:Key="TableViewScrollViewerStyleFlow" TargetType="{x:Type xcdg:TableViewScrollViewer}">
+        <Style.Resources>
+            <SolidColorBrush PresentationOptions:Freeze="True" x:Key="{x:Static SystemColors.ControlBrushKey}" Color="#FFE6EAF1"/>
+            <SolidColorBrush PresentationOptions:Freeze="True" x:Key="{x:Static SystemColors.ControlDarkBrushKey}" Color="#FF5D7D9C"/>
+        </Style.Resources>
+        <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="CanContentScroll" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type xcdg:TableViewScrollViewer}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Margin="{TemplateBinding Padding}" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <xcdg:RowSelectorPane x:Name="PART_RowSelectorPane" Width="{TemplateBinding RowSelectorPaneWidth}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                            <xcdg:SynchronizedScrollViewer Style="{StaticResource SimpleScrollViewer}" x:Name="fixedHeaderScrollViewer" Focusable="False" Grid.Column="1" Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" xcdg:DataGridScrollViewer.SynchronizedScrollViewerPosition="Top">
+                                <xcdg:TableViewHeaderFooterPanel HorizontalAlignment="Left" Orientation="Vertical" xcdg:DataGridControl.IsFixedHeadersHost="True"/>
+                            </xcdg:SynchronizedScrollViewer>
+                            <xcdg:SynchronizedScrollViewer Style="{StaticResource SimpleScrollViewer}" x:Name="fixedFooterScrollViewer" Focusable="False" Grid.Column="1" Grid.Row="2" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" xcdg:DataGridScrollViewer.SynchronizedScrollViewerPosition="Bottom">
+                                <xcdg:TableViewHeaderFooterPanel HorizontalAlignment="Left" Orientation="Vertical" xcdg:DataGridControl.IsFixedFootersHost="True"/>
+                            </xcdg:SynchronizedScrollViewer>
+                            <ScrollContentPresenter Grid.Column="1" Grid.Row="1" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" ContentTemplate="{TemplateBinding ContentTemplate}" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" CanVerticallyScroll="False" Margin="0,0,14,0"/>
+                        </Grid>
+                        <ScrollBar x:Name="PART_HorizontalScrollBar" Style="{StaticResource SimpleScrollBarHorizontals}" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Grid.Column="0" Grid.Row="1" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" Maximum="{TemplateBinding ScrollableWidth}" Value="{TemplateBinding HorizontalOffset}" Grid.ColumnSpan="2" Margin="0,0,14,0"/>
+                        <Grid Grid.Column="1" Grid.RowSpan="1" Margin="0,-1,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ScrollBar Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Style="{StaticResource SimpleScrollBarVerticals}" x:Name="PART_VerticalScrollBar"  Grid.Column="0" Grid.Row="1" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}" Value="{TemplateBinding VerticalOffset}" Margin="0" HorizontalAlignment="Right"/>
+
+                            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right" Margin="0,1,0,0" VerticalAlignment="Top">
+                                <arm:CollapseButton x:Name="collapseButton"  Content="" Style="{StaticResource CollapsedAllGridButtonLarge}" IsChecked="True"
+                                        HorizontalAlignment="Right" VerticalAlignment="Top" ToolTip="Свернуть все" />
+
+                                <arm:FindButton x:Name="searchButton" Style="{StaticResource SearchButtonLarge}"  Content="" HorizontalAlignment="Right" Margin="2,0,0,0"  VerticalAlignment="Top"   ToolTip="Поиск"  Grid.Column="0" Visibility="Visible" />
+
+                            </StackPanel>
+
+
+                        </Grid>
+
+                        <xcdg:ScrollTip Content="{x:Null}" ContentTemplate="{Binding Path=(xcdg:DataGridControl.DataGridContext).ScrollTipContentTemplate, RelativeSource={RelativeSource Self}}" Visibility="Hidden"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ShowRowSelectorPane" Value="False">
+                            <!--<Setter Property="Visibility" TargetName="PART_RowSelectorPane" Value="Collapsed"/>-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        </Style>
+
+    <ControlTemplate x:Key="DataGridControlControlTemplateFlow" TargetType="{x:Type xcdg:DataGridControl}">
+        <Grid>
+            <Border  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,3,0,0">
+                <AdornerDecorator x:Name="PART_DragDropAdornerDecorator">
+                    <xcdg:TableViewScrollViewer 
+                        Style="{StaticResource TableViewScrollViewerStyleFlow}"  
+                        x:Name="PART_ScrollViewer" Padding="{TemplateBinding Padding}" 
+                        RowSelectorPaneWidth="{Binding Path=(xcdg:DataGridControl.DataGridContext).RowSelectorPaneWidth, RelativeSource={RelativeSource Self}}" 
+                        ShowRowSelectorPane="{Binding Path=(xcdg:DataGridControl.DataGridContext).ShowRowSelectorPane, RelativeSource={RelativeSource Self}}" 
+                        VerticalScrollBarVisibility="Auto">
+                        <xcdg:TableflowViewItemsHost/>
+                    </xcdg:TableViewScrollViewer>
+                </AdornerDecorator>
+            </Border>
+
+            <Grid HorizontalAlignment="Right" Margin="0,0,25,25" x:Name="connectionStateGrid" VerticalAlignment="Bottom" Width="30" Height="30">
+                <ContentPresenter x:Name="connectionStateLoadingContentPresenter" Visibility="Collapsed" Content="{TemplateBinding ConnectionState}" ContentTemplate="{Binding Path=(xcdg:DataGridControl.DataGridContext).ConnectionStateLoadingGlyph, RelativeSource={RelativeSource Self}}"/>
+                <ContentPresenter x:Name="connectionStateCommittingContentPresenter" Visibility="Collapsed" Content="{TemplateBinding ConnectionState}" ContentTemplate="{Binding Path=(xcdg:DataGridControl.DataGridContext).ConnectionStateCommittingGlyph, RelativeSource={RelativeSource Self}}"/>
+                <ContentPresenter x:Name="connectionStateErrorContentPresenter" Visibility="Collapsed" Content="{TemplateBinding ConnectionState}" ContentTemplate="{Binding Path=(xcdg:DataGridControl.DataGridContext).ConnectionStateErrorGlyph, RelativeSource={RelativeSource Self}}"/>
+            </Grid>
+            <ContentControl Template="{StaticResource ExportPanel}" Margin="0.42,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=(xcdg:DataGridControl.DataGridContext).IsConnectionStateGlyphEnabled, RelativeSource={RelativeSource Self}}" Value="False">
+                <Setter Property="Visibility" TargetName="connectionStateGrid" Value="Collapsed"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(xcdg:DataGridControl.DataGridContext).DataGridControl.ConnectionState, RelativeSource={RelativeSource Self}}" Value="Loading">
+                <Setter Property="Visibility" TargetName="connectionStateLoadingContentPresenter" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="connectionStateErrorContentPresenter" Value="Collapsed"/>
+                <Setter Property="Visibility" TargetName="connectionStateCommittingContentPresenter" Value="Collapsed"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(xcdg:DataGridControl.DataGridContext).DataGridControl.ConnectionState, RelativeSource={RelativeSource Self}}" Value="Committing">
+                <Setter Property="Visibility" TargetName="connectionStateLoadingContentPresenter" Value="Collapsed"/>
+                <Setter Property="Visibility" TargetName="connectionStateErrorContentPresenter" Value="Collapsed"/>
+                <Setter Property="Visibility" TargetName="connectionStateCommittingContentPresenter" Value="Visible"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(xcdg:DataGridControl.DataGridContext).DataGridControl.ConnectionState, RelativeSource={RelativeSource Self}}" Value="Error">
+                <Setter Property="Visibility" TargetName="connectionStateLoadingContentPresenter" Value="Collapsed"/>
+                <Setter Property="Visibility" TargetName="connectionStateErrorContentPresenter" Value="Visible"/>
+                <Setter Property="Visibility" TargetName="connectionStateCommittingContentPresenter" Value="Collapsed"/>
+            </DataTrigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="DataGridControlControlTemplate" TargetType="{x:Type xcdg:DataGridControl}">
+        <Grid>
+            <Border   BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,3,0,0">
+                <AdornerDecorator x:Name="PART_DragDropAdornerDecorator">
+                    <xcdg:TableViewScrollViewer Padding="{TemplateBinding Padding}" x:Name="PART_ScrollViewer" RowSelectorPaneWidth="{Binding Path=(xcdg:DataGridControl.DataGridContext).RowSelectorPaneWidth, RelativeSource={RelativeSource Self}}" ShowRowSelectorPane="{Binding Path=(xcdg:DataGridControl.DataGridContext).ShowRowSelectorPane, RelativeSource={RelativeSource Self}}" Style="{StaticResource TableViewScrollViewerStyle}" VerticalScrollBarVisibility="Auto">
+                        <xcdg:TableViewItemsHost/>
+                    </xcdg:TableViewScrollViewer>
+                </AdornerDecorator>
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+
+</ResourceDictionary>

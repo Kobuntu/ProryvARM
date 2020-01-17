@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    mc:Ignorable="d">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Converters.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="FlagTextBlockTemlate">
+        <TextBlock  VerticalAlignment="Center"  Margin="0,0,0,2"  HorizontalAlignment="Center" Foreground="DarkBlue"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="F_FLAGtoDrawingBrush">
+        <Rectangle Stroke="{x:Null}" Fill="{Binding Converter={StaticResource DrawingBrushConverter}}" HorizontalAlignment="Center" ToolTip="{Binding Converter={StaticResource f_FLAGtoTextConverter}}"
+            VerticalAlignment="Center" Width="13.5" Height="13.5" Margin="2,2,2,2"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ChannelTypeTemplate">
+        <Label Foreground="{Binding Converter = {StaticResource channelTypetoBrushConverter}}" HorizontalContentAlignment="Center" Padding="0"  Content="{Binding Converter = {StaticResource channelTypeConverter}, ConverterParameter='_'}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="EnumTypeHierarchyTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource enumTypeHierarchyConverter}}"
+                                TextAlignment="Left"  VerticalAlignment="Center" Margin="5,0,5,0"/>
+    </DataTemplate>
+    <DataTemplate x:Key="PSTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource pS_ID_to_PSNameConverter}}"
+                                    TextAlignment="Center"  VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="IsOurSideTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource isMoneyOurSidetoShortStringConverter}}"
+                                    TextAlignment="Center"  VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="ContrObjectTemplate">
+        <ListView ItemsSource="{Binding}" DisplayMemberPath="Name" Style="{DynamicResource ListViewExpanderStyle}" />
+    </DataTemplate>
+
+    <!--<Основной темплейт с для double в DataGrid>-->
+    <DataTemplate x:Key="ValuesDoubleTemplate">
+        <TextBlock Text="{Binding Converter={StaticResource valuesConverter}}"
+                   TextAlignment="Right"  VerticalAlignment="Center" />
+    </DataTemplate>
+
+    <!--<Основной темплейт с для обычной ТИ (TVALUESDB) в DataGrid>-->
+    <DataTemplate x:Key="ValuesCADifferenceTemplate">
+        <Border Margin="0" CornerRadius="2,2,2,2" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="{Binding Path = F_FLAG, Converter={StaticResource isCADifferencetoBrushConverter}}">
+            <TextBlock Text="{Binding Path = F_VALUE,Converter={StaticResource valuesConverter}}" Margin="1,0,0,1" 
+                    TextAlignment="Right"  VerticalAlignment="Center"        
+                   ToolTip="{Binding Path = F_FLAG, Converter={StaticResource f_FLAGtoTextConverter}}"
+                   Foreground="{Binding Path = F_FLAG, Converter={StaticResource f_FLAGtoBrushConverter}}"
+                   />
+        </Border>
+    </DataTemplate>
+
+    <!--Темплейты для технического акта-->
+
+    <DataTemplate x:Key="TitleTotalTemplate">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock Margin="0" FontSize="16.667"  Foreground="{StaticResource IconRed}" Text="*" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+            <TextBlock Margin="5,0,5,0" VerticalAlignment="Center"><Run Text="Итого за:"/></TextBlock>
+            <TextBlock Text="{Binding Path= Value, Converter={StaticResource dateTimeConverter}, ConverterParameter = OnlyDate}" VerticalAlignment="Center"  Foreground="#E51B2642"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ColumnTemplate">
+        <StackPanel Margin="5,0,5,0" Orientation="Horizontal">
+            <Ellipse Margin="0,0,3,0" Stroke="{StaticResource IconBlue}" VerticalAlignment="Center" Width="12.174" Height="12.174">
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="0.489,0.537" StartPoint="0.469,0.537">
+                        <GradientStop Color="{StaticResource IconBlueColor}" Offset="0.624"/>
+                        <GradientStop Color="#99FFFFFF" Offset="0.003"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Text="{Binding Path=Value, Converter={StaticResource dateTimeConverter}, ConverterParameter = True}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

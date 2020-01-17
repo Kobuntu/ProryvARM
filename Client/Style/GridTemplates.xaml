@@ -1,0 +1,312 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:arm="ARMVisual"
+    xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"                    
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	mc:Ignorable="d PresentationOptions">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/DrawingBrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/NewDrawingBrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate x:Key="SelCell">
+        <CheckBox IsChecked="{Binding Path=DataContext.IsSelected, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type xcdg:DataRow}}}" HorizontalAlignment="Center"/>
+    </DataTemplate>
+    <DataTemplate x:Key="Bool">
+        <CheckBox HorizontalAlignment="Center" IsEnabled="False" IsChecked="{xcdg:CellEditorBinding}" VerticalAlignment="Center"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="NullablBool">
+        <CheckBox HorizontalAlignment="Center" IsEnabled="False" VerticalAlignment="Center" IsThreeState="True"
+                  IsChecked="{Binding Mode=OneWay}" />
+    </DataTemplate>
+
+    <DataTemplate x:Key="OVPositionName">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="{StaticResource OV_Position_Brush}"  VerticalAlignment="Center" Margin="1,1,1,1"  Height="17" Width="17"/>
+            <TextBlock  Grid.Column="1" Text="{Binding}" TextAlignment="Left"   TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="OVName">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="{StaticResource OV_Brush}"  VerticalAlignment="Bottom" Margin="1,1,1,1"  Height="16" Width="16"/>
+            <TextBlock  Grid.Column="1" Text="{Binding}" TextAlignment="Left" TextTrimming="CharacterEllipsis" VerticalAlignment="Center"/>
+        </Grid>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="flagGood2">
+        <Border BorderBrush="#FF48D268" BorderThickness="1" Height="13.5" Width="13.5" ToolTip="Норма" HorizontalAlignment="Left" Margin="154.829,0,0,107.04" VerticalAlignment="Bottom">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF00DA63" Offset="0.5"/>
+                    <GradientStop Color="#FF00CB5D" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+
+    <DataTemplate x:Key="flagGood3">
+        <Border BorderBrush="#FF65ED85" BorderThickness="1" Height="13.5" Width="13.5" ToolTip="Норма" HorizontalAlignment="Left" Margin="138.453,0,0,107.554" VerticalAlignment="Bottom">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF94FFAA" Offset="0.5"/>
+                    <GradientStop Color="#FF6FFD8C" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="flagGood1">
+        <Border BorderBrush="#FF05974A" BorderThickness="1" Height="13.5" Width="13.5" ToolTip="Норма" HorizontalAlignment="Left" Margin="119.772,0,0,107.428" VerticalAlignment="Bottom">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF015E2D" Offset="0.5"/>
+                    <GradientStop Color="#FF016C32" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+
+
+    <DataTemplate x:Key="flagAlarm">
+        <Border BorderThickness="1"  Height="13.5" Width="13.5" ToolTip="Данные помечены как отсутствующие">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#ffebed43" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="#FFEDE804" PresentationOptions:Freeze ="True"/>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+    <DataTemplate x:Key="flagGray">
+        <Border BorderThickness="1" Height="13.5"  Width="13.5" ToolTip="Недостаточно данных">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF2D2D2D" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="Black" PresentationOptions:Freeze ="True"/>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+    <DataTemplate x:Key="flagBad">
+        <Border BorderThickness="1" Height="13.5"  Width="13.5" ToolTip="Недостоверное значение">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#ffff6433" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="#FFFF2300" PresentationOptions:Freeze ="True"/>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="flagForecast">
+        <Border BorderThickness="1" Height="13.5" Width="13.5" ToolTip="Прогнозируемое значение">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF6A0DD6" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="DarkBlue" PresentationOptions:Freeze ="True"/>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="flagGood">
+        <Border BorderThickness="1" Height="13.5" Width="13.5" ToolTip="Норма">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF0DD67B" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="#FF00C46B" PresentationOptions:Freeze ="True"/>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+    <DataTemplate x:Key="flagGoodRep">
+        <Border BorderThickness="2" Height="13.5" Width="13.5" ToolTip="Замещены">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF0DD67B" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" PresentationOptions:Freeze ="True">
+                    <GradientStop Color="#FFFFFFFF" Offset="0.5"/>
+                    <GradientStop Color="#FF00C46B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+    <DataTemplate x:Key="flagVoid">
+        <Border BorderThickness="1" Height="13.5" Width="13.5" ToolTip="Состояние не определено">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF2D2D2D" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="#878787" PresentationOptions:Freeze ="True"/>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="flagFormulaNotCorrectEvaluated">
+        <Border BorderThickness="1" Height="13.5" Width="13.5" ToolTip="Расчет по формуле произведен некорректно (возможно деление на ноль)">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="#FF2D2D2D" PresentationOptions:Freeze ="True"/>
+            </Border.BorderBrush>
+            <Border.Background>
+                <SolidColorBrush Color="Black" PresentationOptions:Freeze ="True"/>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <!---ДОБАВЛЕНО-->
+    <DataTemplate x:Key="flagCalcGood_MainBad" >
+        <Border BorderBrush="#FF0DD67B" BorderThickness="2" Height="13.5" Width="13.5" ToolTip="Недостоверные данные в основном профиле">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" PresentationOptions:Freeze ="True">
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FF00C46B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="flagCalcBad_MainBad" >
+        <Border BorderBrush="#FFFF6433" BorderThickness="2" Height="13.5" Width="13.5" ToolTip="Недостоверные данные">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" PresentationOptions:Freeze ="True">
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FFFF2300" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="flagCalcAlarm_MainBad">
+        <Border BorderBrush="#FFDFE08B" BorderThickness="2" Height="13.5" Width="13.5" ToolTip="Данные помечены как отсутствующие, недостоверные данные в основном профиле">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" PresentationOptions:Freeze ="True">
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                    <GradientStop Color="#FFEDE804" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="flagGoodReplace_MainBad">
+        <Border BorderBrush="#FF272727" BorderThickness="2" Height="13.5" Width="13.5" ToolTip="Замещены, недостоверные данные в основном профиле">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,0" StartPoint="1,1" PresentationOptions:Freeze ="True">
+                    <GradientStop Color="#FFFFFFFF" Offset="0.5"/>
+                    <GradientStop Color="#FF000000" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+    </DataTemplate>
+    <!-- -->
+
+    <!--<DataTemplate x:Key="SelectedStatusCell">
+        <Grid Height="19">
+            <Path Fill="{StaticResource IconRed}" Stretch="Fill"  Width="18.302" Height="18.302" RenderTransformOrigin="0.5,0.5" Data="M0.5,3.5 C0.5,1.8431458 1.8431458,0.5 3.5,0.5 L62.161441,14.286441 C63.818295,14.286441 65.161441,15.629587 65.161441,17.286441 65.161441,17.286441 17.286441,65.161441 17.286441,65.161441 15.629587,65.161441 14.286441,63.818295 14.286441,62.161441 z" StrokeThickness="0.2" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center">
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="0" AngleY="0"/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform X="-6.90300000000013" Y="2.8593162210614853"/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <TextBlock Text="{Binding}" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,14,0" Foreground="#FFFFFFFF"/>
+        </Grid>
+    </DataTemplate>-->
+    <DataTemplate x:Key="StatusCell">
+        <TextBlock Text="{Binding}" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" FontWeight="Medium"/>
+    </DataTemplate>
+    <DataTemplate x:Key="StatusCellBlack">
+        <TextBlock Text="{Binding}" TextAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="Black"/>
+    </DataTemplate>
+    <DataTemplate x:Key="NumericCell">
+        <TextBlock Text="{Binding}" TextAlignment="Right"  VerticalAlignment="Center" Foreground="Black" Margin="5,0"/>
+    </DataTemplate>
+    <DataTemplate x:Key="CaptionCell">
+        <TextBlock Text="{Binding}" TextAlignment="Left"  VerticalAlignment="Center" Foreground="Black"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="appliedStatusCell">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="{StaticResource ApplyBrush}"  VerticalAlignment="Center" Margin="0,0,5,0"  Height="16" Width="16"/>
+            <TextBlock Text="Утвержден" TextAlignment="Left"  Foreground="{StaticResource IconGreen}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="abortedStatusCell">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="{StaticResource DeclinedBrush}"  VerticalAlignment="Center" Margin="0,0,5,0"  Height="16" Width="16"/>
+            <TextBlock Text="Отклонен" TextAlignment="Left"  Foreground="{StaticResource IconRed}"  VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="createdStatusCell">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="{StaticResource ConsiderationBrush}"  VerticalAlignment="Center" Margin="0,0,5,0"  Height="16" Width="16"/>
+            <TextBlock Text="На рассмотрении" TextAlignment="Left"  Foreground="{StaticResource SelectionFontColor}"  VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="doneStatus">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="{StaticResource ApplyBrush}"  VerticalAlignment="Center" Margin="0,0,5,0"  Height="16" Width="16"/>
+            <TextBlock Text="{Binding}" TextAlignment="Left"  Foreground="{StaticResource IconGreen}" VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="failStatus">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="{StaticResource DeclinedBrush}"  VerticalAlignment="Center" Margin="0,0,5,0"  Height="16" Width="16"/>
+            <TextBlock Text="{Binding}" TextAlignment="Left"  Foreground="{StaticResource IconRed}"  VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="waitStatus">
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="{StaticResource ConsiderationBrush}"  VerticalAlignment="Center" Margin="0,0,5,0"  Height="16" Width="16"/>
+            <TextBlock Text="{Binding}" TextAlignment="Left"  Foreground="{StaticResource SelectionFontColor}"  VerticalAlignment="Center"/>
+        </StackPanel>
+    </DataTemplate>
+    
+    
+    <DataTemplate x:Key="WrapCell">
+        <TextBlock TextWrapping="Wrap" Text="{Binding}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="WWFCategory_Template">
+        <TextBlock Text="{Binding CategoryName}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="WWFItem_Template">
+        <TextBlock Text="{Binding DisplayName}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="TextNameTemplate">
+        <TextBlock Text="{Binding Path=Name}"/>
+    </DataTemplate>
+    
+	 <DataTemplate x:Key="AnimatedFlag">
+	 	<DataTemplate.Resources>
+	 		<Storyboard x:Key="Animated">
+	 			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+	 				<SplineColorKeyFrame KeyTime="0" Value="#FFB20000"/>
+	 				<SplineColorKeyFrame KeyTime="0:0:0.2" Value="#FFFF4949"/>
+	 				<EasingColorKeyFrame KeyTime="0:0:0.4" Value="#FFB20000"/>
+	 			</ColorAnimationUsingKeyFrames>
+	 		</Storyboard>
+	 	</DataTemplate.Resources>
+		<Rectangle x:Name="rectangle"  VerticalAlignment="Center" Margin="0"  Height="15" Width="15" Fill="#FFA50000" HorizontalAlignment="Center"/>
+	 </DataTemplate>
+    
+ </ResourceDictionary>

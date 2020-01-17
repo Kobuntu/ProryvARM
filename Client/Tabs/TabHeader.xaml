@@ -1,0 +1,216 @@
+﻿<UserControl x:Class="Proryv.AskueARM2.Client.Visual.TabHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" MouseLeave="uc_MouseLeave"
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:ig="http://schemas.infragistics.com/xaml"
+    xmlns:commands="clr-namespace:Proryv.ElectroARM.Controls.Commands"
+    xmlns:tabs="clr-namespace:Proryv.ElectroARM.Controls.Controls.Tabs"
+    mc:Ignorable="d"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="uc" SnapsToDevicePixels="True" >
+
+    <UserControl.Resources>
+        <RoutedCommand x:Key="LocalSettingsCommand" />
+    </UserControl.Resources>
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource ResourceKey=LocalSettingsCommand}"  
+                        Executed="CommandBindingOnExecuted"  
+                        CanExecute="CommandBindingOnCanExecute"/>
+    </UserControl.CommandBindings>
+
+
+<UserControl.Style>
+        <Style TargetType="{x:Type UserControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type UserControl}">
+                        <ControlTemplate.Resources>
+                            <DrawingBrush PresentationOptions:Freeze="True" x:Key="PathBrush" Viewbox="0,0,628.072,11.498" ViewboxUnits="Absolute">
+                                <DrawingBrush.Drawing>
+                                    <GeometryDrawing>
+                                        <GeometryDrawing.Brush>
+                                            <LinearGradientBrush EndPoint="0.46,1.022" StartPoint="0.46,-0.678">
+                                                <GradientStop Color="#7FFFFFFF" Offset="0.078"/>
+                                                <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                                <GradientStop Color="#B2FFFFFF" Offset="0.015"/>
+                                            </LinearGradientBrush>
+                                        </GeometryDrawing.Brush>
+                                        <GeometryDrawing.Geometry>
+                                            <PathGeometry Figures="M20.448189,0.00014716409 L607.57977,0.00014716409 C625.89489,0.00013894946 628.80688,6.3879362 627.93572,8.1285534 418.65462,12.654261 209.37348,12.587959 0.092246523,8.1285534 -0.61273578,5.5680504 2.4002239,-0.033077671 20.448189,0.00014716409 z"/>
+                                        </GeometryDrawing.Geometry>
+                                    </GeometryDrawing>
+                                </DrawingBrush.Drawing>
+                            </DrawingBrush>
+                           
+                            <Storyboard x:Key="ExpandStart">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="tabHeader">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="30" KeySpline="0.05,0.63,1,0.45"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="ExpandEnd">
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="tabHeader">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="30"/>
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+
+                        <Grid RenderTransformOrigin="0.5,0.5" x:Name="tabHeader"  MouseEnter="tabHeader_MouseEnter" MouseLeave="tabHeader_MouseLeave" MouseDown="tabHeader_MouseDown" HorizontalAlignment="Stretch" Height="34" Margin="-0.5,0,0,0" VerticalAlignment="Bottom" SnapsToDevicePixels="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" MinWidth="80"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.ToolTip>
+                                <ToolTip Placement="Bottom">
+                                    <StackPanel>
+                                        <TextBlock Loaded="caption_Loaded"/>
+                                        <TextBlock Foreground="Gray" FontSize="{StaticResource BaseFontSizeXXS}" Loaded="moduleName_Loaded"/>
+                                    </StackPanel>
+                                </ToolTip>
+                            </Grid.ToolTip>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="ValidationStates">
+                                    <VisualState x:Name="Valid"/>
+
+                                    <VisualState x:Name="InvalidUnfocused"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="border" BorderBrush="{StaticResource BaseLightBlue}" Background="{StaticResource BaseLightBackground}" BorderThickness="1,1,1,0" CornerRadius="0" Margin="0,0,-1,1">
+                              
+                            </Border>
+                            <Border x:Name="bordercheck" BorderBrush="{StaticResource IconBlue}" BorderThickness="0,2,0,0" CornerRadius="0" Margin="1,0,0,-1" Background="{x:Null}" Opacity="1"/>
+
+                            <Border x:Name="borderwarning" BorderBrush="{StaticResource IconRed}" BorderThickness="0,2,0,0" CornerRadius="0" Margin="1,1,1,-1" Background="{x:Null}" Opacity="0"/>
+                            <Grid Margin="10,2,30,0" x:Name="grid" Grid.ColumnSpan="1" SnapsToDevicePixels="True" VerticalAlignment="Center">
+                                <Rectangle Height="24px" Width="24px"   HorizontalAlignment="Left">
+                                    <!--Fill="{Binding ElementName=uc, Path=ArmModule, Converter={StaticResource IModuleToDrawingBrushIcon}}"/>-->
+                                    <Rectangle.Fill>
+                                        <MultiBinding Converter="{StaticResource IModuleToDrawingBrushIcon}">
+                                            <Binding ElementName="uc" Path="ModuleDrawingBrushName"/>
+                                            <Binding ElementName="uc" Path="ArmModule"/>
+                                        </MultiBinding>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+
+                                <StackPanel Margin="30,2,0,0" Orientation="Horizontal"  x:Name="stackPanel" d:LayoutOverrides="Height" HorizontalAlignment="Stretch">
+                                    <TextBlock  Foreground="{StaticResource BaseDarkFontColor}" Text="{Binding Caption, ElementName=uc}" Background="{x:Null}" x:Name="caption" TextTrimming="CharacterEllipsis" MaxWidth="225"/>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding NumberString, ElementName=uc}" x:Name="number"  Margin="2,-2,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <!--<TextBlock  Foreground="#FFFFFFFF" Text="{Binding Path=ModuleName, ElementName=uc}" Background="{x:Null}"/>-->
+                            </Grid>
+
+                            <Button Style="{StaticResource CloseTabHeader}" Click="butClose_Click" HorizontalAlignment="Right" Margin="0,0,8,0" Width="18" Height="14" VerticalAlignment="Center"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Content" Value="{x:Null}"/>
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource BaseDarkGray}"  TargetName="border"/>
+                            </Trigger>-->
+                            <Trigger Property="arm:TabHeader.IsWarning" Value="True">
+                                <Setter Property="Opacity" TargetName="borderwarning" Value="1"/>
+                                <!--<Setter Property="BorderThickness" TargetName="border2" Value="0"/>
+                                <Setter Property="Margin" TargetName="border2" Value="1.5,1.5,1.5,-4"/>
+                               <Setter Property="Background" TargetName="border2">
+                                    <Setter.Value>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#7F0091DC" Offset="0"/>
+                                            <GradientStop Color="#66A2D9F5" Offset="0.647"/>
+                                            <GradientStop Color="#00BEE9FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="border2" Value="#FF00658F"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF6CB0CC"/>
+                                <Setter Property="Margin" TargetName="border" Value="0"/>-->
+                            </Trigger>
+                            <Trigger Property="arm:TabHeader.IsChecked" Value="False">
+                                <!--<Setter Property="Margin" TargetName="tabHeader" Value="-0.5,0"/>-->
+                                <Setter Property="BorderThickness" TargetName="border" Value="1,1,1,0"/>
+                                <Setter Property="Background" Value="{StaticResource BaseLightGray}"  TargetName="border"/>
+                                <Setter Property="BorderBrush" Value="{StaticResource BaseLightBlue}"  TargetName="border"/>
+                                <!--<Setter Property="Height" TargetName="tabHeader" Value="32"/>-->
+                                <Setter Property="Opacity" TargetName="bordercheck" Value="0"/>
+                            </Trigger>
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="arm:TabHeader.IsChecked" Value="False"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" Value="{StaticResource BaseDarkGray}"  TargetName="border"/>
+                            </MultiTrigger>
+
+
+
+
+
+                            <!--<Trigger Property="arm:TabHeader.IsChecked" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="1"/>
+                                <Setter Property="OpacityMask" TargetName="tabHeader" Value="{x:Null}"/>
+                                <Setter Property="Background" TargetName="border1" Value="#FF074E91"/>
+                                <Setter Property="Foreground" TargetName="caption" Value="#FFFFFFFF"/>
+                                <Setter Property="Foreground" TargetName="number" Value="#FFFFFFFF"/>
+                                <Setter Property="Stroke" TargetName="rectangle" Value="#E5FFFFFF"/>
+                                <Setter Property="Stroke" TargetName="path" Value="#E5FFFFFF"/>
+                                <Setter Property="Stroke" TargetName="path2" Value="#E5FFFFFF"/>
+                                <Setter Property="Visibility" TargetName="rectangle1" Value="Hidden"/>
+                                <Setter Property="Opacity" TargetName="tabHeader" Value="0.7"/>
+                                <Setter Property="Visibility" TargetName="border5" Value="Hidden"/>
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Style>
+
+    <ig:ContextMenuService.Manager>
+        <ig:ContextMenuManager>
+            <ig:ContextMenuManager.ContextMenu>
+                <ig:XamContextMenu x:Name="contextMenu">
+                    <ig:XamMenuItem Header="Вкладки" IsHitTestVisible="False" FontWeight="Bold"
+                                    CommandTarget="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ig:XamContextMenu}}, Path=PlacementTargetResolved}" 
+                                    Command="{StaticResource LocalSettingsCommand}" 
+                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource boolToVisibilityConverter}}"/>
+                    <ig:XamMenuItem  Header="Закрыть все"   Name="closeAll" Click="closeAll_Click">
+                    </ig:XamMenuItem>
+
+                    <ig:XamMenuItem Header="Закрыть все, кроме этого окна" Name="closeExcept" Click="closeExcept_Click">
+                    </ig:XamMenuItem>
+
+                    <ig:XamMenuSeparator/>
+
+                    <ig:XamMenuItem Header="Добавить в избранное" Name="addToFavourites" Click="addToFavourites_Click">
+                        <ig:XamMenuItem.Icon>
+                            <Rectangle Height="16" Width="16" Fill="{StaticResource ContextMenuAddToFavouritesBrush}"></Rectangle>
+                        </ig:XamMenuItem.Icon>
+                    </ig:XamMenuItem>
+
+                    <ig:XamMenuItem Header="Скопировать в буфер обмена" Name="copyToClipboard" Click="copyToClipboard_Click">
+                        <ig:XamMenuItem.Icon>
+                            <Rectangle Height="16" Width="16" Fill="{StaticResource ContextMenuCopyToClipboardBrush}"></Rectangle>
+                        </ig:XamMenuItem.Icon>
+                    </ig:XamMenuItem>
+
+                    <ig:XamMenuItem Header="Настройки" IsHitTestVisible="False" FontWeight="Bold" Margin="0,10,0,0"
+                                    CommandTarget="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ig:XamContextMenu}}, Path=PlacementTargetResolved}" 
+                                    Command="{StaticResource LocalSettingsCommand}" 
+                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource boolToVisibilityConverter}}"/>
+                    <ig:XamMenuItem Header="Сохранить настройки формы" CommandParameter="SaveLocalSettings" 
+                                    CommandTarget="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ig:XamContextMenu}}, Path=PlacementTargetResolved}" 
+                                    Command="{StaticResource LocalSettingsCommand}" 
+                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource boolToVisibilityConverter}}"/>
+                    <ig:XamMenuItem Header="Сбросить настройки формы"  CommandParameter="ClearLocalSettings" 
+                                    CommandTarget="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ig:XamContextMenu}}, Path=PlacementTargetResolved}" 
+                                    Command="{StaticResource LocalSettingsCommand}"
+                                    Visibility="{Binding Path=IsEnabled, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource boolToVisibilityConverter}}"/>
+
+                </ig:XamContextMenu>
+            </ig:ContextMenuManager.ContextMenu>
+        </ig:ContextMenuManager>
+    </ig:ContextMenuService.Manager>
+
+</UserControl>

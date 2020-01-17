@@ -1,0 +1,101 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+                    x:Class="Proryv.AskueARM2.Client.Visual.XceedDataGridStyles">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/SelectButtonStyle.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BaseButtonStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="baseFilterControlStyle" TargetType="{x:Type xcdg:AutoFilterControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type xcdg:AutoFilterControl}">
+                    <Border Background="{StaticResource BaseLightBackground}" BorderBrush="{StaticResource BaseLightBorder}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <StackPanel HorizontalAlignment="Stretch" MinWidth="300">
+
+                            <StackPanel Orientation="Horizontal" Margin="25,3,20,2" HorizontalAlignment="Right">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Image Source="/Proryv.ElectroARM.Resources;component/Image/ConfirmAllActionBrush.png"/>
+                                    <Button  Style="{StaticResource SecondButtonStyle}" Click="OnAutoFilterSelectClearAllClick" FontSize="{StaticResource BaseFontSizeM}" Tag="1" Content="Выделить все"   Margin="-20,0,10,0"  />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Proryv.ElectroARM.Resources;component/Image/UnselectAllActionBrush.png"/>
+                                    <Button  Style="{StaticResource SecondButtonStyle}" Click="OnAutoFilterSelectClearAllClick"  FontSize="{StaticResource BaseFontSizeM}" Tag="0" Content="Снять выделение" Margin="-20,0,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <ListBox Name="PART_DistinctValuesHost"
+                           Background="{TemplateBinding Background}"
+                           BorderThickness="0"
+                           Foreground="{TemplateBinding Foreground}"
+                           ItemTemplate="{TemplateBinding DistinctValueItemTemplate}"
+                           ItemTemplateSelector="{TemplateBinding DistinctValueItemTemplateSelector}"
+                           ItemContainerStyle="{TemplateBinding DistinctValueItemContainerStyle}"
+                           ItemContainerStyleSelector="{TemplateBinding DistinctValueItemContainerStyleSelector}"
+                           MaxHeight="350"
+                           Margin="5,3,5,3"
+                           SelectionMode="Multiple"
+                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                        </StackPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="tableViewDayStatCellStyle" TargetType="xcdg:StatCell">
+
+    <!-- The line(s) will be of the same color as the HorizontalGridLine. -->
+    <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Self}, Path=(xcdg:DataGridControl.DataGridContext).HorizontalGridLineBrush}"/>
+
+    <Setter Property="Template">
+        <Setter.Value>
+            <ControlTemplate TargetType="xcdg:StatCell">
+                <Border Background="{TemplateBinding Background}"
+                       BorderBrush="{TemplateBinding BorderBrush}"
+                       BorderThickness="{TemplateBinding BorderThickness}"
+                       Padding="{TemplateBinding Padding}">
+                    <StackPanel>
+                        <Border x:Name="totalBorder"
+                             BorderBrush="{TemplateBinding BorderBrush}"
+                             BorderThickness="0,2,0,0"/>
+
+                        <xcdg:CellContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </StackPanel>
+                </Border>
+
+                <ControlTemplate.Triggers>
+
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=ParentColumn.Visible}"
+                               Value="False">
+                        <Setter Property="Visibility"
+                             Value="Collapsed"/>
+                    </DataTrigger>
+
+                    <!-- When the StatCell is not inside a Group, display a double line. -->
+                    <Trigger Property="xcdg:GroupLevelIndicatorPane.GroupLevel"
+                           Value="-1">
+                        <Setter TargetName="totalBorder"
+                             Property="BorderThickness"
+                             Value="0,2,0,2"/>
+
+                        <Setter TargetName="totalBorder"
+                             Property="Padding"
+                             Value="0,3,0,0"/>
+                    </Trigger>
+
+                    <!-- When the StatCell has no content, don't display any line above. -->
+                    <Trigger Property="HasContent"
+                           Value="False">
+                        <Setter TargetName="totalBorder"
+                             Property="BorderThickness"
+                             Value="0"/>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+        </Setter.Value>
+    </Setter>
+    </Style>
+
+</ResourceDictionary>

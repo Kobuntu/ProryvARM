@@ -1,0 +1,120 @@
+﻿<ig:XamContextMenu
+    xmlns:ig="http://schemas.infragistics.com/xaml" 
+    x:Class="Proryv.ElectroARM.Controls.Controls.FreeHierarchyTree.FreeHierContextMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:visual="clr-namespace:Proryv.AskueARM2.Client.Visual"
+    xmlns:commands="clr-namespace:Proryv.ElectroARM.Controls.Commands"
+             mc:Ignorable="d" Loaded="ContextMenuOnLoaded" BorderBrush="{StaticResource BaseLightBlue}">
+    <ig:XamMenuItem Header="Выбрать все" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="all" x:Name="miSelectAll">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectAll.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Выбрать ТИ" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="ti" x:Name="miSelectTi">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectTI.png" />
+        </ig:XamMenuItem.Icon>
+
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Выбрать ПС" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="ps" x:Name="miSelectPs">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectPS.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Выбрать УСПД" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="uspd" x:Name="miSelectUSPDs">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectPS.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="{visual:HierReplacer Выбрать %3%}" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="msk" x:Name="miSelectLev3">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectObject.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Выбрать дочерние" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="onlyChild" x:Name="miSelectChildren">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectChild.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Отменить выбор всех" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="unselectAll">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuUnSelectAll.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuSeparator/>
+
+    <ig:XamMenuItem Header="Выбрать договора" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="contract" x:Name="miSelectContracts">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectContract.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Выбрать сечения" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="section" x:Name="miSelectSections">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectSection.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Выбрать объекты потребителей (ЭПУ)" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="epu" x:Name="miSelectEpu">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectEPU.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Выбрать ТП" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="tp" x:Name="miSelectTps">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuSelectTp.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuSeparator x:Name="SeparatorSection"/>
+
+    <ig:XamMenuItem Header="Развернуть 2 уровня" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="expand2"  x:Name="miExpand2">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuExpand2Level.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Развернуть 3 уровня" Command="commands:UserControlCommands.SelectNodes" 
+                                            CommandParameter="expand3" x:Name="miExpand3">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuExpand3Level.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Развернуть все" Command="commands:UserControlCommands.SelectNodes" Visibility="Collapsed"
+                                            CommandParameter="expandAll"  x:Name="miExpandAll">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuExpandAll.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+
+    <ig:XamMenuItem Header="Свернуть все" Command="commands:UserControlCommands.SelectNodes"
+                                            CommandParameter="unexpandAll">
+        <ig:XamMenuItem.Icon>
+            <Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuCollapseAll.png" />
+        </ig:XamMenuItem.Icon>
+    </ig:XamMenuItem>
+</ig:XamContextMenu>

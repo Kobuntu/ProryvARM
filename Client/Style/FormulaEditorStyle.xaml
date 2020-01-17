@@ -1,0 +1,435 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+     xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    mc:Ignorable="d" >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/DrawingBrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/DataGridControlStyle.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/NewDrawingBrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BaseButtonStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+  
+ 
+    <!--FillEditorStyle-->
+    <Storyboard x:Key="fillAnimation">
+        <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(UIElement.Opacity)">
+            <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
+            <SplineDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="grid" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+            <SplineColorKeyFrame KeyTime="00:00:00.1000000" Value="#661B1953"/>
+            <SplineColorKeyFrame KeyTime="00:00:00.3000000" Value="#00000000"/>
+        </ColorAnimationUsingKeyFrames>
+    </Storyboard>
+    <!--EndFillEditorStyle-->
+    <!--FormulaMathView-->
+    <DrawingBrush PresentationOptions:Freeze="True" x:Key="MathFill" Stretch="Fill" TileMode="Tile" Viewport="0,0,13.25,13.25" ViewportUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <GeometryDrawing Brush="#19FFFFFF">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="1" RadiusY="1" Rect="0.25,0.25,4.5,4.5"/>
+                </GeometryDrawing.Geometry>
+                <GeometryDrawing.Pen>
+                    <Pen Brush="#FF3E4867" DashCap="Flat" EndLineCap="Flat" LineJoin="Miter" MiterLimit="10" StartLineCap="Flat" Thickness="0.04"/>
+                </GeometryDrawing.Pen>
+            </GeometryDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+   
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="MathBorder"  Color="#FF203857"/>
+    <SolidColorBrush Color="Yellow" x:Key="ChannelSelectedBrush"/>
+    <!--EndFormulaMathView-->
+
+    <!--Кнопка вызова замещения-->
+    <Style x:Key="OVReplaceButton" TargetType="{x:Type Button}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="SelectButtonAnimationEnter">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-15"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="16"/>
+                            </DoubleAnimationUsingKeyFrames>
+
+                        </Storyboard>
+                        <Storyboard x:Key="SelectButtonAnimationLeave">
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image1">
+                                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <Grid Height="21">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="37"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="border"  BorderBrush="{StaticResource BaseLightBlue}" Background="{StaticResource BaseLightBackground}" BorderThickness="2" Grid.ColumnSpan="2"/>
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" TextElement.Foreground="{StaticResource SelectionFontColor}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Margin="5,0,0,0" d:LayoutOverrides="Width, Height" Visibility="Visible"/>
+                        <Image x:Name="image" HorizontalAlignment="Right" Margin="0,3.5,3.5,0" Source="/Proryv.ElectroARM.Resources;component/Image/LeftArrow.png" Stretch="Fill" VerticalAlignment="Top" Width="16" Height="16" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image x:Name="image1" HorizontalAlignment="Left" Margin="3.5,3.5,0,0" Source="/Proryv.ElectroARM.Resources;component/Image/RightArrow.png" Stretch="Fill" Width="16" Height="16" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                            <BeginStoryboard Storyboard="{StaticResource SelectButtonAnimationEnter}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                            <BeginStoryboard Storyboard="{StaticResource SelectButtonAnimationLeave}"/>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Кнопка перетаскивания строк-->
+
+    <Style x:Key="MoveRowButton" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Width="17" Height="17">
+                        <Rectangle Width="17" x:Name="border" Height="17"  Stretch="Fill" Fill="{StaticResource BaseLightBlue}"/>
+                        <Rectangle x:Name="back" Width="13" Height="13" Stretch="Fill" Fill="{StaticResource BaseLightBackground}"/>
+                        <Path Width="7" Height="4" Stretch="Fill" Fill="{StaticResource BaseLightBlue}" Data="F1 M 11.4583,11.4583L 8.79167,11.4583L 8.79167,10.125L 10.125,10.125L 10.125,8.79167L 11.4583,8.79167L 11.4583,7.45833L 12.7917,7.45833L 12.7917,6.125L 14.125,6.125L 14.125,7.45833L 15.4583,7.45833L 15.4583,8.79167L 16.7917,8.79167L 16.7917,10.125L 18.125,10.125L 18.125,11.4583L 15.4583,11.4583L 15.4583,10.125L 14.125,10.125L 14.125,8.79167L 12.7917,8.79167L 12.7917,10.125L 11.4583,10.125L 11.4583,11.4583 Z " VerticalAlignment="Top" Margin="0,3,0,0"/>
+                        <Path Width="7" Height="4"  Stretch="Fill" Fill="{StaticResource BaseLightBlue}" Data="F1 M 8.79167,15.4583L 11.4583,15.4583L 11.4583,16.7917L 12.7917,16.7917L 12.7917,18.125L 14.125,18.125L 14.125,16.7917L 15.4583,16.7917L 15.4583,15.4583L 18.125,15.4583L 18.125,16.7917L 16.7917,16.7917L 16.7917,18.1257L 15.4583,18.1257L 15.4583,19.459L 14.125,19.459L 14.125,20.7917L 12.7917,20.7917L 12.7917,19.4583L 11.4583,19.4583L 11.4583,18.125L 10.125,18.125L 10.125,16.7917L 8.79167,16.7917L 8.79167,15.4583 Z " VerticalAlignment="Bottom" Margin="0,0,0,3"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Fill" TargetName="back" Value="{StaticResource BaseLightGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Fill" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity"  Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Кнопка копирования содержимого строк-->
+    <Style x:Key="FillEditorButtonStyle" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <DrawingBrush x:Key="FillEditorBrush">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <DrawingGroup.Children>
+                            <GeometryDrawing Brush="Transparent" Geometry="F1 M 28,28L 0,28L 0,0L 28,0L 28,28 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconRed}" Geometry="F1 M 20,22.6667L 20,24L 24,24L 24,22.6667L 25.3333,22.6667L 25.3333,18.6667L 24,18.6667L 24,16L 22.6667,16L 22.6667,14.6667L 21.3333,14.6667L 21.3333,16L 20,16L 20,18.6667L 18.6667,18.6667L 18.6667,22.6667L 20,22.6667 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconBlue}" Geometry="F1 M 18.6667,12L 18.6667,10.6667L 17.3333,10.6667L 17.3333,9.33333L 16,9.33333L 16,8L 14.6667,8L 14.6667,6.66667L 13.3333,6.66667L 13.3333,5.33333L 12,5.33333L 12,4L 10.6667,4L 10.6667,2.66667L 8,2.66667L 8,4L 9.33333,4L 9.33333,5.33333L 10.6667,5.33333L 10.6667,6.66667L 9.33333,6.66667L 9.33333,8L 8,8L 8,9.33333L 6.66667,9.33333L 6.66667,10.6667L 5.33333,10.6667L 5.33333,12L 4,12L 4,14.6667L 5.33333,14.6667L 5.33333,16L 6.66667,16L 6.66667,17.3333L 8,17.3333L 8,18.6667L 9.33333,18.6667L 9.33333,20L 10.6667,20L 10.6667,21.3333L 13.3333,21.3333L 13.3333,20L 14.6667,20L 14.6667,18.6667L 16,18.6667L 16,17.3333L 17.3333,17.3333L 17.3333,16L 18.6667,16L 18.6667,14.6667L 20,14.6667L 20,12L 18.6667,12 Z M 17.3333,14.6667L 6.66667,14.6667L 6.66667,12L 8,12L 8,10.6667L 9.33333,10.6667L 9.33333,9.33333L 10.6667,9.33333L 10.6667,8L 13.3333,8L 13.3333,9.33333L 14.6667,9.33333L 14.6667,10.6667L 16,10.6667L 16,12L 17.3333,12L 17.3333,14.6667 Z "/>
+                        </DrawingGroup.Children>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+        </Style.Resources>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Rectangle Fill="{StaticResource FillEditorBrush}" Width="21" Height="21" Opacity="0.5" x:Name="rectangle"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" TargetName="rectangle" Value="1"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Каналы-->
+
+    <Style x:Key="AOButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Width="30" Height="20">
+                        <Border Background="Transparent" x:Name="border" Margin="0,1.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1"/>
+                        <Path Width="8" Height="9" Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 26.7917,10.125L 26.7917,8.79167L 25.4583,8.79167L 25.4583,7.45833L 20.125,7.45833L 20.125,8.79167L 18.7917,8.79167L 18.7917,10.125L 17.4583,10.125L 17.4583,16.7917L 18.7917,16.7917L 18.7917,18.125L 20.125,18.125L 20.125,19.4583L 25.4583,19.4583L 25.4583,18.125L 26.7917,18.125L 26.7917,16.7917L 28.125,16.7917L 28.125,10.125L 26.7917,10.125 Z M 25.4583,16.7917L 24.125,16.7917L 24.125,18.125L 21.4583,18.125L 21.4583,16.7917L 20.125,16.7917L 20.125,10.125L 21.4583,10.125L 21.4583,8.79167L 24.125,8.79167L 24.125,10.125L 25.4583,10.125L 25.4583,16.7917 Z " HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                        <Path Width="8" Height="9" x:Name="path1"  Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 13.3333,17.3333L 13.3333,13.3333L 12,13.3333L 12,9.33333L 10.6667,9.33333L 10.6667,8L 8,8L 8,9.33333L 6.66667,9.33333L 6.66667,13.3333L 5.33333,13.3333L 5.33333,17.3333L 4,17.3333L 4,20L 6.66667,20L 6.66667,17.3333L 8,17.3333L 8,16L 10.6667,16L 10.6667,17.3333L 12,17.3333L 12,20L 14.6667,20L 14.6667,17.3333L 13.3333,17.3333 Z M 10.6667,14.6667L 8,14.6667L 8,12L 10.6667,12L 10.6667,14.6667 Z " HorizontalAlignment="Left" Margin="3,5.5,0,5.5"/>
+                        <Path Width="5" Height="9" x:Name="path2"  Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 29.3333,8L 30.6667,8L 30.6667,9.33333L 32,9.33333L 32,10.6667L 33.3333,10.6667L 33.3333,12L 34.6667,12L 34.6667,13.3333L 36,13.3333L 36,14.6667L 34.6667,14.6667L 34.6667,16L 33.3333,16L 33.3333,17.3333L 32,17.3333L 32,18.6667L 30.6667,18.6667L 30.6667,20L 29.3333,20L 29.3333,17.3333L 30.6667,17.3333L 30.6667,16L 32,16L 32,14.6667L 33.3333,14.6667L 33.3333,13.3333L 32,13.3333L 32,12L 30.6667,12L 30.6667,10.6667L 29.3333,10.6667L 29.3333,8 Z " HorizontalAlignment="Left" Margin="23,5.5,0,5.5"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseLightBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style x:Key="APButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Width="30" Height="20">
+                        <Border Background="Transparent" x:Name="border" Margin="0,1.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1"/>
+                        <Path Width="7" Height="9" x:Name="path"  Stretch="Fill" Fill="{StaticResource IconRed}" Data="F1 M 16,8L 25.3333,8L 25.3333,20L 22.6667,20L 22.6667,9.33333L 18.6667,9.33333L 18.6667,20L 16,20L 16,8 Z " HorizontalAlignment="Left" Margin="13,5.5,0,5.5"/>
+                        <Path Width="8" Height="9" x:Name="path1"  Stretch="Fill" Fill="{StaticResource IconRed}" Data="F1 M 13.3333,17.3333L 13.3333,13.3333L 12,13.3333L 12,9.33333L 10.6667,9.33333L 10.6667,8L 8,8L 8,9.33333L 6.66667,9.33333L 6.66667,13.3333L 5.33333,13.3333L 5.33333,17.3333L 4,17.3333L 4,20L 6.66667,20L 6.66667,17.3333L 8,17.3333L 8,16L 10.6667,16L 10.6667,17.3333L 12,17.3333L 12,20L 14.6667,20L 14.6667,17.3333L 13.3333,17.3333 Z M 10.6667,14.6667L 8,14.6667L 8,12L 10.6667,12L 10.6667,14.6667 Z " HorizontalAlignment="Left" Margin="3,5.5,0,5.5"/>
+                        <Path Width="5" Height="9" x:Name="path2"  Stretch="Fill" Fill="{StaticResource IconRed}" Data="F1 M 29.3333,8L 30.6667,8L 30.6667,9.33333L 32,9.33333L 32,10.6667L 33.3333,10.6667L 33.3333,12L 34.6667,12L 34.6667,13.3333L 36,13.3333L 36,14.6667L 34.6667,14.6667L 34.6667,16L 33.3333,16L 33.3333,17.3333L 32,17.3333L 32,18.6667L 30.6667,18.6667L 30.6667,20L 29.3333,20L 29.3333,17.3333L 30.6667,17.3333L 30.6667,16L 32,16L 32,14.6667L 33.3333,14.6667L 33.3333,13.3333L 32,13.3333L 32,12L 30.6667,12L 30.6667,10.6667L 29.3333,10.6667L 29.3333,8 Z " HorizontalAlignment="Left" Margin="23,5.5,0,5.5"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseLightBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RPButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Width="30" Height="20">
+                        <Border Background="Transparent" x:Name="border" Margin="0,1.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1"/>
+                        <Path Width="7" Height="9" x:Name="path"  Stretch="Fill" Fill="{StaticResource IconRed}" Data="F1 M 16,8L 25.3333,8L 25.3333,20L 22.6667,20L 22.6667,9.33333L 18.6667,9.33333L 18.6667,20L 16,20L 16,8 Z " HorizontalAlignment="Left" Margin="13,5.5,0,5.5"/>
+                        <Path Width="6"  x:Name="path1"  Stretch="Fill" Fill="{StaticResource IconRed}" Data="F1 M 25.4583,8.79167L 25.4583,7.45833L 18.7917,7.45833L 18.7917,19.4583L 21.4583,19.4583L 21.4583,14.125L 25.4583,14.125L 25.4583,12.7917L 26.7917,12.7917L 26.7917,8.79167L 25.4583,8.79167 Z M 24.125,12.7917L 21.4583,12.7917L 21.4583,8.79167L 24.125,8.79167L 24.125,12.7917 Z " Height="9" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                        <Path Width="5" x:Name="path2"  Height="9" Stretch="Fill" Fill="{StaticResource IconRed}" Data="F1 M 29.3333,8L 30.6667,8L 30.6667,9.33333L 32,9.33333L 32,10.6667L 33.3333,10.6667L 33.3333,12L 34.6667,12L 34.6667,13.3333L 36,13.3333L 36,14.6667L 34.6667,14.6667L 34.6667,16L 33.3333,16L 33.3333,17.3333L 32,17.3333L 32,18.6667L 30.6667,18.6667L 30.6667,20L 29.3333,20L 29.3333,17.3333L 30.6667,17.3333L 30.6667,16L 32,16L 32,14.6667L 33.3333,14.6667L 33.3333,13.3333L 32,13.3333L 32,12L 30.6667,12L 30.6667,10.6667L 29.3333,10.6667L 29.3333,8 Z " HorizontalAlignment="Left" Margin="23,5.5,0,5.5"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseLightBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ROButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Width="30" Height="20">
+                        <Border Background="Transparent" x:Name="border" Margin="0,1.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1"/>
+                        <Path Width="8" Height="9" Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 26.7917,10.125L 26.7917,8.79167L 25.4583,8.79167L 25.4583,7.45833L 20.125,7.45833L 20.125,8.79167L 18.7917,8.79167L 18.7917,10.125L 17.4583,10.125L 17.4583,16.7917L 18.7917,16.7917L 18.7917,18.125L 20.125,18.125L 20.125,19.4583L 25.4583,19.4583L 25.4583,18.125L 26.7917,18.125L 26.7917,16.7917L 28.125,16.7917L 28.125,10.125L 26.7917,10.125 Z M 25.4583,16.7917L 24.125,16.7917L 24.125,18.125L 21.4583,18.125L 21.4583,16.7917L 20.125,16.7917L 20.125,10.125L 21.4583,10.125L 21.4583,8.79167L 24.125,8.79167L 24.125,10.125L 25.4583,10.125L 25.4583,16.7917 Z " HorizontalAlignment="Left" Margin="12,0,0,0"/>
+                        <Path Width="6"  x:Name="path1"  Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 25.4583,8.79167L 25.4583,7.45833L 18.7917,7.45833L 18.7917,19.4583L 21.4583,19.4583L 21.4583,14.125L 25.4583,14.125L 25.4583,12.7917L 26.7917,12.7917L 26.7917,8.79167L 25.4583,8.79167 Z M 24.125,12.7917L 21.4583,12.7917L 21.4583,8.79167L 24.125,8.79167L 24.125,12.7917 Z " Height="9" Margin="5,0,0,0" HorizontalAlignment="Left"/>
+                        <Path Width="5" x:Name="path2"  Height="9" Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 29.3333,8L 30.6667,8L 30.6667,9.33333L 32,9.33333L 32,10.6667L 33.3333,10.6667L 33.3333,12L 34.6667,12L 34.6667,13.3333L 36,13.3333L 36,14.6667L 34.6667,14.6667L 34.6667,16L 33.3333,16L 33.3333,17.3333L 32,17.3333L 32,18.6667L 30.6667,18.6667L 30.6667,20L 29.3333,20L 29.3333,17.3333L 30.6667,17.3333L 30.6667,16L 32,16L 32,14.6667L 33.3333,14.6667L 33.3333,13.3333L 32,13.3333L 32,12L 30.6667,12L 30.6667,10.6667L 29.3333,10.6667L 29.3333,8 Z " HorizontalAlignment="Left" Margin="23,5.5,0,5.5"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseLightBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SaldoAButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Width="30" Height="20">
+                        <Border Background="Transparent" x:Name="border" Margin="0,1.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1"/>
+                        <Path Width="8" Height="9"  Stretch="Fill" Fill="{StaticResource IconRed}" Data="F1 M 34.7917,16.7917L 34.7917,12.7917L 33.4583,12.7917L 33.4583,8.79167L 32.125,8.79167L 32.125,7.45833L 29.4583,7.45833L 29.4583,8.79167L 28.125,8.79167L 28.125,12.7917L 26.7917,12.7917L 26.7917,16.7917L 25.4583,16.7917L 25.4583,19.4583L 28.125,19.4583L 28.125,16.7917L 29.4583,16.7917L 29.4583,15.4583L 32.125,15.4583L 32.125,16.7917L 33.4583,16.7917L 33.4583,19.4583L 36.125,19.4583L 36.125,16.7917L 34.7917,16.7917 Z M 32.125,14.125L 29.4583,14.125L 29.4583,11.4583L 32.125,11.4583L 32.125,14.125 Z " Margin="17,0,0,0" HorizontalAlignment="Left"/>
+                        <Path Width="8" Height="11"  Stretch="Fill" Fill="{StaticResource IconGreen}" Data="F1 M 13.4583,15.4583L 12.125,15.4583L 12.125,16.7917L 10.7917,16.7917L 10.7917,18.125L 9.45833,18.125L 9.45833,20.7917L 20.125,20.7917L 20.125,18.125L 18.7917,18.125L 18.7917,19.4583L 13.4583,19.4583L 13.4583,18.125L 14.7917,18.125L 14.7917,16.7917L 16.125,16.7917L 16.125,15.4583L 17.4583,15.4583L 17.4583,14.125L 18.7917,14.125L 18.7917,12.7917L 17.4583,12.7917L 17.4583,11.4583L 16.125,11.4583L 16.125,10.125L 14.7917,10.125L 14.7917,8.79167L 13.4583,8.79167L 13.4583,7.45833L 18.7917,7.45833L 18.7917,8.79167L 20.125,8.79167L 20.125,6.125L 9.45833,6.125L 9.45833,8.79167L 10.7917,8.79167L 10.7917,10.125L 12.125,10.125L 12.125,11.4583L 13.4583,11.4583L 13.4583,12.7917L 14.7917,12.7917L 14.7917,14.125L 13.4583,14.125L 13.4583,15.4583 Z " HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseLightBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SaldoRButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Width="30" Height="20">
+                        <Border Background="Transparent" x:Name="border" Margin="0,1.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Transparent" BorderThickness="1"/>
+                        <Path Width="6"  Stretch="Fill" Fill="{StaticResource IconBlue}" Data="F1 M 25.4583,8.79167L 25.4583,7.45833L 18.7917,7.45833L 18.7917,19.4583L 21.4583,19.4583L 21.4583,14.125L 25.4583,14.125L 25.4583,12.7917L 26.7917,12.7917L 26.7917,8.79167L 25.4583,8.79167 Z M 24.125,12.7917L 21.4583,12.7917L 21.4583,8.79167L 24.125,8.79167L 24.125,12.7917 Z " Height="9" Margin="17,0,0,0" HorizontalAlignment="Left"/>
+                        <Path Width="8" Height="11"  Stretch="Fill" Fill="{StaticResource IconGreen}" Data="F1 M 13.4583,15.4583L 12.125,15.4583L 12.125,16.7917L 10.7917,16.7917L 10.7917,18.125L 9.45833,18.125L 9.45833,20.7917L 20.125,20.7917L 20.125,18.125L 18.7917,18.125L 18.7917,19.4583L 13.4583,19.4583L 13.4583,18.125L 14.7917,18.125L 14.7917,16.7917L 16.125,16.7917L 16.125,15.4583L 17.4583,15.4583L 17.4583,14.125L 18.7917,14.125L 18.7917,12.7917L 17.4583,12.7917L 17.4583,11.4583L 16.125,11.4583L 16.125,10.125L 14.7917,10.125L 14.7917,8.79167L 13.4583,8.79167L 13.4583,7.45833L 18.7917,7.45833L 18.7917,8.79167L 20.125,8.79167L 20.125,6.125L 9.45833,6.125L 9.45833,8.79167L 10.7917,8.79167L 10.7917,10.125L 12.125,10.125L 12.125,11.4583L 13.4583,11.4583L 13.4583,12.7917L 14.7917,12.7917L 14.7917,14.125L 13.4583,14.125L 13.4583,15.4583 Z " HorizontalAlignment="Left" Margin="5,0,0,0"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseLightBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    
+    
+    
+    
+    
+    <!--End Каналы-->
+
+
+
+   
+
+    <Style x:Key="SelectLastQualityClick" TargetType="{x:Type Button}">
+        <Style.Resources>
+            <DrawingBrush x:Key="SelectLastQualityBrush">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <DrawingGroup.Children>
+                            <GeometryDrawing Brush="Transparent" Geometry="F1 M 21.3333,21.3333L 9.53674e-007,21.3333L 9.53674e-007,0L 21.3333,0L 21.3333,21.3333 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconRed}" Geometry="F1 M 13.3333,13.3333L 10.6667,13.3333L 10.6667,10.6667L 13.3333,10.6667L 13.3333,13.3333 Z M 14.6667,9.33333L 13.3333,9.33333L 13.3333,10.6667L 14.6667,10.6667L 14.6667,9.33333 Z M 16,8L 14.6667,8L 14.6667,9.33333L 16,9.33333L 16,8 Z M 17.3333,6.66667L 16,6.66667L 16,8L 17.3333,8L 17.3333,6.66667 Z M 18.6667,6.66667L 20,6.66667L 20,4L 18.6667,4L 18.6667,6.66667 Z M 18.6667,5.33333L 17.3333,5.33333L 17.3333,4L 18.6667,4L 18.6667,5.33333 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconRed}" Geometry="F1 M 8,10.6667L 9.53674e-007,10.6667L 9.53674e-007,9.33333L 8,9.33333L 8,10.6667 Z M 8,12L 1.33333,12L 1.33333,13.3333L 8,13.3333L 8,12 Z M 8,14.6667L 4,14.6667L 4,16L 8,16L 8,14.6667 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGray}" Geometry="F1 M 13.3333,1.33333L 14.6667,1.33333L 14.6667,0L 9.33333,0L 9.33333,1.33333L 10.6667,1.33333L 10.6667,2.66667L 12,2.66667L 13.3333,2.66667L 13.3333,1.33333 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGray}" Geometry="F1 M 12,4C 13.4589,4 14.8224,4.39681 16,5.0791L 16,3.5769C 14.7863,2.99943 13.4336,2.66667 12,2.66667C 8.27893,2.66667 5.07585,4.84961 3.57695,8L 5.07906,8C 6.46281,5.61117 9.04065,4 12,4 Z "/>
+                            <GeometryDrawing Brush="{StaticResource IconGray}" Geometry="F1 M 20.4231,8L 18.9209,8C 19.6032,9.17757 20,10.5411 20,12C 20,16.4183 16.4183,20 12,20C 9.63359,20 7.51388,18.9666 6.0492,17.3333L 4.34668,17.3333C 6.03345,19.7493 8.82988,21.3333 12,21.3333C 17.1547,21.3333 21.3333,17.1547 21.3333,12C 21.3333,10.5664 21.0007,9.21371 20.4231,8 Z "/>
+                        </DrawingGroup.Children>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
+        </Style.Resources>
+        <Setter Property="Foreground" Value="{StaticResource IconBlue}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" Background="{StaticResource BaseLightBackground}" BorderThickness="1" BorderBrush="{StaticResource BaseLightBlue}">
+                        <Grid x:Name="grid"  Height="21" >
+                            <StackPanel x:Name="stackPanel" Orientation="Horizontal" Margin="0,0,0,0">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0"/>
+                                <Rectangle Width="16" Height="16" HorizontalAlignment="Right" Fill="{StaticResource SelectLastQualityBrush}" Margin="0,0,5,0"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="Foreground"  Value="{StaticResource BaseMoreDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <!--Непонятная анимация-->
+    <Storyboard x:Key="FadeInAnimation">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="{x:Null}">
+            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="{x:Null}">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}"/>
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="FadeOutAnimation">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="{x:Null}">
+            <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        </DoubleAnimationUsingKeyFrames>
+        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="{x:Null}">
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.0" Value="{x:Static Visibility.Visible}"/>
+            <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--End Непонятная анимация-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

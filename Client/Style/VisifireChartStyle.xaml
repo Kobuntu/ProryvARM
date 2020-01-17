@@ -1,0 +1,384 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vch="VisCompHelp" 
+    xmlns:vc="clr-namespace:Visifire.Charts;assembly=WPFVisifire.Charts"
+    xmlns:Visifire_Commons_Controls="clr-namespace:Visifire.Commons.Controls;assembly=WPFVisifire.Charts" 
+    mc:Ignorable="d">
+    
+<ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="DrawingBrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+<!--Стиль для графика-->
+    <Style x:Key="VcChartButtonStyle" TargetType="{x:Type vch:ChartButton}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type vch:ChartButton}">
+                    <Grid VerticalAlignment="Stretch" Background="{x:Null}"  HorizontalAlignment="Stretch" x:Name="grid" SnapsToDevicePixels="True">
+                        <Border x:Name="border" Background="{StaticResource BaseLightGray}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" >
+                        </Border>
+                        <Border x:Name="border1" Margin="1" BorderBrush="{StaticResource BaseLightBlue}" BorderThickness="1"></Border>
+                        <Rectangle Fill="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"  Stroke="{x:Null}"  Width="30" Height="30"  SnapsToDevicePixels="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="BorderBrush" TargetName="border1" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="VcToggleChartButtonStyle" TargetType="{x:Type vch:ChartButton}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type vch:ChartButton}">
+                    <Grid VerticalAlignment="Stretch" Background="{x:Null}"  HorizontalAlignment="Stretch" x:Name="grid" SnapsToDevicePixels="True">
+                        <Border x:Name="border" Background="{StaticResource BaseDarkGray}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" >
+                        </Border>
+                        <Border x:Name="border1" Margin="1" BorderBrush="{StaticResource BaseLightBlue}" BorderThickness="1" Visibility="Collapsed"></Border>
+                        <Rectangle Fill="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"  Stroke="{x:Null}"  Width="30" Height="30"  SnapsToDevicePixels="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Visibility" TargetName="border1" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Visibility" TargetName="border1" Value="Visible"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MenuChartToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid VerticalAlignment="Stretch" Background="{x:Null}"  HorizontalAlignment="Stretch" x:Name="grid" SnapsToDevicePixels="True">
+                        <Border x:Name="border" Background="{StaticResource BaseLightGray}"  BorderBrush="{StaticResource BaseLightBlue}" BorderThickness="1" >
+                        </Border>
+                        <Border x:Name="border1" Margin="1" Background="{StaticResource BaseDarkGray}" BorderThickness="1" Visibility="Collapsed"></Border>
+                        <Rectangle Fill="{StaticResource tchartMenuIcon}"  Stroke="{x:Null}"  Width="30" Height="30"  SnapsToDevicePixels="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" TargetName="border1" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Visibility" TargetName="border1" Value="Visible"/>
+                            <Setter Property="BorderBrush" TargetName="border1" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+	
+    <Style x:Key="ExpanderButtonChartMenu" TargetType="{x:Type Expander}">
+        <Setter Property="Background" Value="Transparent"/>
+      
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Expander}">
+                 <ControlTemplate.Resources>
+                           <Storyboard x:Key="sbExpand">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:0.25" Storyboard.TargetName="ExpandSite" 
+									Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:0.25" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="sbCollapse">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" 
+								 Duration="00:00:00.45" Storyboard.TargetName="ExpandSite" 
+								  Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:0.45" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                    <Border SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                        <DockPanel >
+                            <ToggleButton  Margin="0" MinHeight="0" MinWidth="0" x:Name="HeaderSite" Style="{StaticResource MenuChartToggleButtonStyle}" Content="{TemplateBinding Header}" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" DockPanel.Dock="Left" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                        	<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" x:Name="ExpandSite" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Focusable="false" Visibility="Collapsed" DockPanel.Dock="Right">
+                        		<!--<ContentPresenter.LayoutTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1" ScaleY="0"/>
+                                            <SkewTransform AngleX="0" AngleY="0"/>
+                                            <RotateTransform Angle="0"/>
+                                            <TranslateTransform X="0" Y="0"/>
+                                        </TransformGroup>
+                                    </ContentPresenter.LayoutTransform>-->
+                        	</ContentPresenter>
+					    </DockPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                       <Trigger Property="IsExpanded" Value="true">
+                            <Trigger.EnterActions>
+           						 <BeginStoryboard>
+              						<Storyboard >	
+ 							<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(ScaleTransform.ScaleY)" Storyboard.TargetName="ExpandSite">
+ 								<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1">
+ 								<EasingDoubleKeyFrame.EasingFunction>
+ 							<CubicEase EasingMode="EaseOut"/>
+ 								</EasingDoubleKeyFrame.EasingFunction>
+								</EasingDoubleKeyFrame>
+ 							</DoubleAnimationUsingKeyFrames>
+							<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ExpandSite">
+ 										<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0">
+ 										<EasingThicknessKeyFrame.EasingFunction>
+ 							<CubicEase EasingMode="EaseOut"/>
+ 								</EasingThicknessKeyFrame.EasingFunction>
+ 								</EasingThicknessKeyFrame>
+ 							</ThicknessAnimationUsingKeyFrames>
+ 								<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ExpandSite">
+ 											<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+ 											<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1"/>
+ 								 </DoubleAnimationUsingKeyFrames>
+ 									</Storyboard>
+           						</BeginStoryboard>
+         				 </Trigger.EnterActions>
+         				 <Trigger.ExitActions>
+            					<BeginStoryboard>
+             						 <Storyboard >
+ 								<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(ScaleTransform.ScaleY)" Storyboard.TargetName="ExpandSite">
+ 									<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+									 <EasingDoubleKeyFrame.EasingFunction>
+								 <CubicEase EasingMode="EaseOut"/>
+ 									</EasingDoubleKeyFrame.EasingFunction>
+ 									</EasingDoubleKeyFrame>
+ 								</DoubleAnimationUsingKeyFrames>
+ 									<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="ExpandSite">
+ 										<EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="-6,0">
+ 										<EasingThicknessKeyFrame.EasingFunction>
+ 										<CubicEase EasingMode="EaseOut"/>
+ 										</EasingThicknessKeyFrame.EasingFunction>
+ 										</EasingThicknessKeyFrame>
+ 										</ThicknessAnimationUsingKeyFrames>
+ 								<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ExpandSite">
+ 										<EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
+ 										<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+ 										<EasingDoubleKeyFrame.EasingFunction>
+ 										<CubicEase EasingMode="EaseOut"/>
+ 										</EasingDoubleKeyFrame.EasingFunction>
+ 										</EasingDoubleKeyFrame>
+								 </DoubleAnimationUsingKeyFrames>
+									 </Storyboard>
+           						 </BeginStoryboard>
+         				 </Trigger.ExitActions>     
+                        </Trigger>
+						<Trigger Property="IsExpanded" Value="true">
+                            <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+                        </Trigger>
+						<!--<Trigger Property="IsExpanded" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource sbExpand}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource sbCollapse}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>-->
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <ControlTemplate x:Key="ChartControlTemplate1" TargetType="{x:Type vc:Chart}">
+        <Grid>
+        	<Grid.Triggers>    
+			  		<EventTrigger RoutedEvent="Expander.Expanded" SourceName="expander">      
+			  			<EventTrigger.Actions>        
+			  				<BeginStoryboard>          
+			  					<Storyboard>            
+			  						<DoubleAnimation From="0" To="1" Duration="0:0:0.25" Storyboard.TargetName="AnimatedStackPanel" Storyboard.TargetProperty="(FrameworkElement.LayoutTransform).(ScaleTransform.ScaleY)"/>
+								</Storyboard>
+							</BeginStoryboard>
+						</EventTrigger.Actions>
+					</EventTrigger>
+			 </Grid.Triggers>
+            <Grid x:Name="RootElement" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Height="{TemplateBinding Height}" Margin="0,-30,0,0" Opacity="{TemplateBinding Opacity}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Width="{TemplateBinding Width}">
+
+                <Grid x:Name="ShadowGrid" Margin="0" Panel.ZIndex="0"/>
+               <Border x:Name="ChartBorder" Background="Transparent" CornerRadius="{TemplateBinding CornerRadius}" Height="{TemplateBinding Height}" Margin="0" Padding="{TemplateBinding Padding}" Width="{TemplateBinding Width}" Panel.ZIndex="1">
+                    <Grid x:Name="ChartAreaGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Rectangle x:Name="ChartLightingBorder" Grid.ColumnSpan="3" Grid.Column="0" Margin="0" Grid.Row="0" Grid.RowSpan="3"
+                                   Visibility="Collapsed" Panel.ZIndex="2" Fill="{x:Null}"><!--не найден StrokeThickness="{TemplateBinding BorderThickness}"-->
+                        </Rectangle>
+                        <StackPanel x:Name="TopOuterPanel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="0" Panel.ZIndex="4">
+                            <StackPanel x:Name="TopOuterTitlePanel" HorizontalAlignment="Stretch"/>
+                            <StackPanel x:Name="TopOuterLegendPanel" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel x:Name="BottomOuterPanel" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Grid.Row="2" Panel.ZIndex="4">
+                            <StackPanel x:Name="BottomOuterLegendPanel"/>
+                            <StackPanel x:Name="BottomOuterTitlePanel"/>
+                        </StackPanel>
+                        <StackPanel x:Name="LeftOuterPanel" Grid.Column="0" Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Stretch" Panel.ZIndex="4">
+                            <StackPanel x:Name="LeftOuterTitlePanel" Orientation="Horizontal"/>
+                            <StackPanel x:Name="LeftOuterLegendPanel" Orientation="Horizontal"/>
+                        </StackPanel>
+                        <StackPanel x:Name="RightOuterPanel" Grid.Column="2" Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Stretch" Panel.ZIndex="4">
+                            <StackPanel x:Name="RightOuterLegendPanel" Orientation="Horizontal"/>
+                            <StackPanel x:Name="RightOuterTitlePanel" Orientation="Horizontal"/>
+                        </StackPanel>
+                        <Grid x:Name="CenterOuterGrid" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Top" Panel.ZIndex="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid x:Name="TopOffsetGrid" Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="0"/>
+                            <Grid x:Name="BottomOffsetGrid" Grid.ColumnSpan="3" Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="2"/>
+                            <Grid x:Name="LeftOffsetGrid" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Stretch"/>
+                            <Grid x:Name="RightOffsetGrid" Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" VerticalAlignment="Stretch"/>
+                            <Grid x:Name="CenterGrid" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid x:Name="TopAxisGrid" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="0" VerticalAlignment="Stretch">
+                                    <StackPanel x:Name="TopAxisContainer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                        <StackPanel x:Name="TopAxisPanel"/>
+                                        <Visifire_Commons_Controls:ZoomBar x:Name="TopAxisScrollBar" Height="17" IsStretchable="False" MinHeight="0" Orientation="Horizontal" ScrollEventFireEnabled="True" Visibility="Collapsed"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid x:Name="LeftAxisGrid" Grid.Column="0" HorizontalAlignment="Stretch" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Stretch">
+                                    <StackPanel x:Name="LeftAxisContainer" HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Stretch">
+                                        <StackPanel x:Name="LeftAxisPanel"/>
+                                        <Visifire_Commons_Controls:ZoomBar x:Name="LeftAxisScrollBar" IsStretchable="False" MinWidth="0" Orientation="Vertical" ScrollEventFireEnabled="True" Visibility="Collapsed" VerticalAlignment="Top" Width="17"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid x:Name="RightAxisGrid" Grid.Column="2" HorizontalAlignment="Stretch" Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Stretch">
+                                    <StackPanel x:Name="RightAxisContainer" HorizontalAlignment="Stretch" Orientation="Horizontal" VerticalAlignment="Stretch">
+                                        <Visifire_Commons_Controls:ZoomBar x:Name="RightAxisScrollBar" IsStretchable="False" MinWidth="0" Orientation="Vertical" ScrollEventFireEnabled="True" Visibility="Collapsed" VerticalAlignment="Top" Width="17"/>
+                                        <StackPanel x:Name="RightAxisPanel"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid x:Name="BottomAxisGrid" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Stretch">
+                                    <StackPanel x:Name="BottomAxisContainer" HorizontalAlignment="Stretch" Orientation="Vertical" VerticalAlignment="Stretch">
+                                        <Visifire_Commons_Controls:ZoomBar x:Name="BottomAxisScrollBar" Height="17" IsStretchable="False" MinHeight="0" Orientation="Horizontal" ScrollEventFireEnabled="True" Visibility="Collapsed"/>
+                                        <StackPanel x:Name="BottomAxisPanel"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid x:Name="CenterInnerGrid" Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Grid.Row="1" VerticalAlignment="Stretch">
+                                    <Canvas x:Name="PlotAreaShadowCanvas" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" Panel.ZIndex="0"/>
+                                    <Grid x:Name="PlotAreaGrid" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" Panel.ZIndex="0">
+                                        <Canvas x:Name="PlotAreaScrollViewer" Margin="0">
+                                            <Canvas x:Name="PlotCanvas">
+                                                <Canvas x:Name="DrawingCanvas" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" Panel.ZIndex="1"/>
+                                            </Canvas>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid x:Name="InnerGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Panel.ZIndex="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel x:Name="TopInnerPanel" Grid.ColumnSpan="3" Grid.Row="0">
+                                            <StackPanel x:Name="TopInnerTitlePanel"/>
+                                            <StackPanel x:Name="TopInnerLegendPanel"/>
+                                        </StackPanel>
+                                        <StackPanel x:Name="BottomInnerPanel" Grid.ColumnSpan="3" Grid.Row="2">
+                                            <StackPanel x:Name="BottomInnerLegendPanel"/>
+                                            <StackPanel x:Name="BottomInnerTitlePanel"/>
+                                        </StackPanel>
+                                        <StackPanel x:Name="LeftInnerPanel" Grid.Column="0" Orientation="Horizontal" Grid.Row="1">
+                                            <StackPanel x:Name="LeftInnerTitlePanel" Orientation="Horizontal"/>
+                                            <StackPanel x:Name="LeftInnerLegendPanel" Orientation="Horizontal"/>
+                                        </StackPanel>
+                                        <StackPanel x:Name="RightInnerPanel" Grid.Column="2" Orientation="Horizontal" Grid.Row="1">
+                                            <StackPanel x:Name="RightInnerLegendPanel" Orientation="Horizontal"/>
+                                            <StackPanel x:Name="RightInnerTitlePanel" Orientation="Horizontal"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                                <Canvas x:Name="ZoomAreaCanvas" Margin="0" Panel.ZIndex="2">
+                                    <Border x:Name="ZoomRectangle" BorderBrush="Black" Background="LightGray" CornerRadius="0" Opacity="0.4" Panel.ZIndex="2"/>
+                                </Canvas>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Canvas x:Name="BevelCanvas" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" Panel.ZIndex="2"/>
+                <StackPanel x:Name="CenterDockInsidePlotAreaPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="3"/>
+                <StackPanel x:Name="CenterDockOutsidePlotAreaPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Panel.ZIndex="4"/>
+                <Canvas x:Name="ToolTipCanvas" HorizontalAlignment="Left" Height="{TemplateBinding Height}" Margin="0" VerticalAlignment="Top" Width="{TemplateBinding Width}" Panel.ZIndex="5"/>
+                <Canvas x:Name="ElementCanvas" Panel.ZIndex="5"/>
+                <Canvas x:Name="ControlsHolder" Height="0" Width="0"/>
+            </Grid>
+			
+            <Expander x:Name="expander" Style="{StaticResource ExpanderButtonChartMenu}" Header="Expander" HorizontalAlignment="Stretch"  Margin="0" VerticalAlignment="Top">
+                <StackPanel Background="Transparent" x:Name="AnimatedStackPanel" Orientation="Horizontal">
+                    <vch:ChartButton Tag="{StaticResource tchart3dIcon}"  Content="3D" Action="Style3d" Width="30" Height="30"  ToolTip="3D" Style="{StaticResource VcToggleChartButtonStyle}"  Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <vch:ChartButton Tag="{StaticResource tchartPrintIcon}" Content="Print" Action="Print" Width="30" Height="30"  ToolTip="Печать" Style="{StaticResource VcChartButtonStyle}"  Margin="5,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <vch:ChartButton Tag="{StaticResource tchartExportIcon}" Content="Export" Action="ExportToJPG" Width="30"  Height="30" ToolTip="Экспорт" Style="{StaticResource VcChartButtonStyle}" Margin="5,0,0,0"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Expander>
+        </Grid>
+    </ControlTemplate>
+  
+
+
+
+</ResourceDictionary>

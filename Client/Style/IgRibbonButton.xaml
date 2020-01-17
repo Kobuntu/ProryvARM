@@ -1,0 +1,313 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:ribbon="http://infragistics.com/Ribbon"
+xmlns:igWindows="http://infragistics.com/Windows"    
+xmlns:local="clr-namespace:Proryv.AskueARM2.Client.Styles.Style">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Прозрачный  RibbonButtonChrome-->
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolHoverCenterFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolHoverBorderDarkFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolHoverBorderLightFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolPressedBorderDarkFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolPressedInnerBorderFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolPressedCenterFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolCheckedBorderFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolCheckedCenterFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolCheckedHottrackBorderFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolCheckedHottrackCenterFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolCheckedHottrackInnerBorderFillKey}"  Color="Transparent"/>
+    <SolidColorBrush x:Key="{x:Static ribbon:RibbonBrushKeys.ButtonToolCheckedInnerBorderFillKey}"  Color="Transparent"/>
+
+
+
+
+    <BooleanToVisibilityConverter x:Key="BoolToVisConverter" />
+    <igWindows:StringWithoutMnemonicsConverter x:Key="stringWithoutMnemonicsConverter" />
+    <Style TargetType="{x:Type ribbon:ButtonTool}">
+        <Setter Property="ToolTipService.ShowDuration" Value="20000" />
+        <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ButtonBase}" >
+                    <ribbon:RibbonButtonChrome   x:Name="chrome" IsPressed="{TemplateBinding IsPressed}" IsChecked="{TemplateBinding ToggleButton.IsChecked}" SnapsToDevicePixels="True">
+                        <Border Name="border" Margin="-2" BorderBrush="Transparent" BorderThickness="1">
+                            <Grid Margin="1" x:Name="chromeContentPanel" HorizontalAlignment="{Binding Path=HorizontalContentAlignment, RelativeSource={x:Static RelativeSource.TemplatedParent}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" x:Name="row0" />
+                                    <RowDefinition Height="Auto" x:Name="row1" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <igWindows:AutoDisabledImage Width="16" Height="16" x:Name="image" ribbon:XamRibbon.KeyTipPlacementType="SmallImage" igWindows:Utilities.SnapElementToDevicePixels="True" Visibility="{Binding Path=(ribbon:ButtonTool.HasImage), RelativeSource={x:Static RelativeSource.TemplatedParent}, Converter={StaticResource BoolToVisConverter}}" Source="{TemplateBinding ribbon:ButtonTool.ImageResolved}" />
+                                <ribbon:OuterGlowDecorator x:Name="textSmallGlow" Grid.Column="1" Margin="3,0,2,1" VerticalAlignment="Center">
+                                    <ContentPresenter x:Name="textSmall" Grid.Column="1" Content="{TemplateBinding ribbon:ButtonTool.Caption, Converter={StaticResource stringWithoutMnemonicsConverter}}" SnapsToDevicePixels="True" TextBlock.TextAlignment="Left" ribbon:RibbonGroupPanel.SizingModeVersion="{TemplateBinding ribbon:RibbonGroupPanel.SizingModeVersion}" />
+                                </ribbon:OuterGlowDecorator>
+                                <ribbon:LargeToolCaptionPresenter x:Name="textLarge" Grid.Row="2" Text="{TemplateBinding ribbon:ButtonTool.Caption, Converter={StaticResource stringWithoutMnemonicsConverter}}" Visibility="Collapsed" />
+                            </Grid>
+                        </Border>
+                    </ribbon:RibbonButtonChrome>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="ToggleButton.IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}" />
+                            <Setter TargetName="border" Property="Background" Value="#ffe6d3ba"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource IconOrange}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource IconOrange}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource IconOrange}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ribbon:ButtonTool.SizingMode" Value="ImageOnly" />
+                                <Condition Property="ribbon:ButtonTool.HasImage" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="textSmallGlow" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ribbon:ButtonTool.SizingMode" Value="ImageAndTextLarge" />
+                                <Condition Property="ribbon:XamRibbon.Location" Value="Ribbon" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="textSmallGlow" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="textLarge" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="image" Property="Width" Value="32" />
+                            <Setter TargetName="image" Property="Height" Value="32" />
+                            <Setter TargetName="image" Property="Margin" Value="0,0,0,2" />
+                            <Setter TargetName="row0" Property="Height" Value="Auto" />
+                            <Setter TargetName="row1" Property="Height" Value="*" />
+                            <Setter TargetName="chromeContentPanel" Property="Margin" Value="1,1,1,0" />
+                        </MultiTrigger>
+
+                        <Trigger Property="ribbon:XamRibbon.Location" Value="Ribbon">
+                            <Setter Property="HorizontalAlignment" Value="Left" />
+                        </Trigger>
+
+                        <Trigger Property="ribbon:XamRibbon.Location" Value="QuickAccessToolbar">
+                            <Setter Property="Margin" Value="0,-2,0,0" />
+                            <Setter TargetName="chrome" Property="Padding" Value="0,2,0,0" />
+                        </Trigger>
+
+                        <!-- AS 12/1/09 TFS24129 - Default margin when in the footer toolbar -->
+                        <Trigger Property="ribbon:XamRibbon.Location" Value="ApplicationMenuFooterToolbar">
+                            <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}" />
+                            <Setter Property="Margin" Value="6,0,0,0" />
+                        </Trigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <!-- AS 2/22/08 BR30647 - Added parens around path -->
+                                <Condition Binding="{Binding Path=(ribbon:XamRibbon.Location), RelativeSource={x:Static RelativeSource.Self}}" Value="QuickAccessToolbar" />
+                                <Condition Binding="{Binding Path=(ribbon:XamRibbon.IsGlassActive), RelativeSource={x:Static RelativeSource.Self}}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}" />
+                        </MultiDataTrigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=Location, RelativeSource={x:Static RelativeSource.Self}}" Value="QuickAccessToolbar" />
+                                <Condition Binding="{Binding Path=IsBelowRibbon, RelativeSource={RelativeSource FindAncestor, {x:Type ribbon:QuickAccessToolbar}, 1}}" Value="False" />
+                                <!-- 8/19/11 TFS83576
+										<Condition Binding="{Binding Path=(ribbon:XamRibbon.IsGlassActive), RelativeSource={x:Static RelativeSource.Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=WindowState, RelativeSource={RelativeSource FindAncestor, {x:Type Window}, 1}}" Value="Normal" />-->
+                                <Condition Binding="{Binding Path=(ribbon:XamRibbon.Ribbon).(ribbon:XamRibbon.IsGlassCaptionGlowVisible), RelativeSource={x:Static RelativeSource.Self}}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <!-- 8/19/11 TFS83576
+								<Setter TargetName="textSmall" Property="BitmapEffect" Value="{igWindows:SafeOuterGlow GlowColor=White, GlowSize=10, Opacity=0.6}" />-->
+                            <Setter TargetName="textSmallGlow" Property="IsGlowVisible" Value="True" />
+                            <!-- 8/19/11 TFS83576 - Large text will never show in the qat
+								<Setter TargetName="textLarge" Property="BitmapEffect" Value="{igWindows:SafeOuterGlow GlowColor=White, GlowSize=10, Opacity=0.6}" />-->
+                        </MultiDataTrigger>
+
+                        <Trigger Property="ribbon:XamRibbon.HideAccessKey" Value="False">
+                            <Setter TargetName="textSmall" Property="RecognizesAccessKey" Value="True" />
+                            <Setter TargetName="textSmall" Property="Content" Value="{Binding Path=(ribbon:ButtonTool.Caption), RelativeSource={x:Static RelativeSource.TemplatedParent}}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=Location, RelativeSource={x:Static RelativeSource.Self}}" Value="QuickAccessToolbar" />
+                    <Condition Binding="{Binding Path=IsBelowRibbon, RelativeSource={RelativeSource FindAncestor, {x:Type ribbon:QuickAccessToolbar}, 1}}" Value="False" />
+                    <Condition Binding="{Binding Path=(ribbon:XamRibbon.IsGlassActive), RelativeSource={x:Static RelativeSource.Self}}" Value="True" />
+                    <Condition Binding="{Binding Path=WindowState, RelativeSource={RelativeSource FindAncestor, {x:Type Window}, 1}}" Value="Normal" />
+                </MultiDataTrigger.Conditions>
+                <!--<Setter Property="BitmapEffect" Value="{igWindows:SafeOuterGlow GlowColor=White, GlowSize=10, Opacity=0.6}" />-->
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" />
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=Location, RelativeSource={x:Static RelativeSource.Self}}" Value="QuickAccessToolbar" />
+                    <Condition Binding="{Binding Path=IsBelowRibbon, RelativeSource={RelativeSource FindAncestor, {x:Type ribbon:QuickAccessToolbar}, 1}}" Value="False" />
+                    <Condition Binding="{Binding Path=(ribbon:XamRibbon.IsGlassActive), RelativeSource={x:Static RelativeSource.Self}}" Value="True" />
+                    <!-- 8/19/11 TFS83576
+										<Condition Binding="{Binding Path=WindowState, RelativeSource={RelativeSource FindAncestor, {x:Type Window}, 1}}" Value="Maximized" />-->
+                    <Condition Binding="{Binding Path=(ribbon:XamRibbon.Ribbon).(ribbon:XamRibbon.IsGlassCaptionGlowVisible), RelativeSource={x:Static RelativeSource.Self}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static ribbon:RibbonBrushKeys.VistaWindowMaximizedTextFillKey}}" />
+            </MultiDataTrigger>
+
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=Location, RelativeSource={x:Static RelativeSource.Self}}" Value="QuickAccessToolbar" />
+                    <Condition Binding="{Binding Path=(ribbon:XamRibbon.IsGlassActive), RelativeSource={x:Static RelativeSource.Self}}" Value="False" />
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static ribbon:RibbonBrushKeys.ToolInQATForegroundTextFillKey}}" />
+            </MultiDataTrigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+    <Style  TargetType="{x:Type ribbon:ToggleButtonTool}">
+        <Setter Property="ToolTipService.ShowDuration" Value="20000"/>
+        <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.ToolEnabledForegroundTextFillKey}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ribbon:ToggleButtonTool}">
+                    <Border Name="border" Margin="0" BorderBrush="Transparent" BorderThickness="1">
+                        <ribbon:RibbonButtonChrome x:Name="chrome" IsPressed="{TemplateBinding IsPressed}" IsChecked="{TemplateBinding IsChecked}" SnapsToDevicePixels="True">
+                            <Grid x:Name="chromeContentPanel" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" Margin="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition x:Name="row0" Height="*"/>
+                                    <RowDefinition x:Name="row1" Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <igWindows:AutoDisabledImage Width="16" Height="16" x:Name="image" ribbon:XamRibbon.KeyTipPlacementType="SmallImage" igWindows:Utilities.SnapElementToDevicePixels="True" Visibility="{Binding Path=(ribbon:ButtonTool.HasImage), RelativeSource={x:Static RelativeSource.TemplatedParent}, Converter={StaticResource BoolToVisConverter}}" Source="{TemplateBinding ribbon:ButtonTool.ImageResolved}" />
+                                <ribbon:OuterGlowDecorator x:Name="textSmallGlow" Grid.Column="1" Margin="3,0,2,1" VerticalAlignment="Center">
+                                    <ContentPresenter x:Name="textSmall" Grid.Column="1" Content="{TemplateBinding ribbon:ButtonTool.Caption, Converter={StaticResource stringWithoutMnemonicsConverter}}" SnapsToDevicePixels="True" TextBlock.TextAlignment="Left" ribbon:RibbonGroupPanel.SizingModeVersion="{TemplateBinding ribbon:RibbonGroupPanel.SizingModeVersion}" />
+                                </ribbon:OuterGlowDecorator>
+                                <ribbon:LargeToolCaptionPresenter x:Name="textLarge" Grid.Row="2" Text="{TemplateBinding ribbon:ButtonTool.Caption, Converter={StaticResource stringWithoutMnemonicsConverter}}" Visibility="Collapsed" />
+                            </Grid>
+                        </ribbon:RibbonButtonChrome>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource IconOrange}"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource IconOrange}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.TextHottrackFillKey}"/>
+                            <Setter TargetName="border" Property="Background" Value="#ffe6d3ba"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource IconOrange}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#ffe6d3ba"/>
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource IconOrange}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.TextHottrackFillKey}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ribbon:RibbonToolHelper.SizingMode" Value="ImageOnly"/>
+                                <Condition Property="ribbon:RibbonToolHelper.HasImage" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="textSmallGlow" Value="Collapsed"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="ribbon:RibbonToolHelper.SizingMode" Value="ImageAndTextLarge"/>
+                                <Condition Property="ribbon:XamRibbon.Location" Value="Ribbon"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="textSmallGlow" Value="Collapsed"/>
+                            <Setter Property="Visibility" TargetName="textLarge" Value="Visible"/>
+                            <Setter Property="Width" TargetName="image" Value="32"/>
+                            <Setter Property="Height" TargetName="image" Value="32"/>
+                            <Setter Property="Margin" TargetName="image" Value="0,0,0,2"/>
+                            <Setter Property="Height" TargetName="row0" Value="Auto"/>
+                            <Setter Property="Height" TargetName="row1" Value="*"/>
+                            <Setter Property="Margin" TargetName="chromeContentPanel" Value="1,1,1,0"/>
+                        </MultiTrigger>
+                        <Trigger Property="ribbon:XamRibbon.Location" Value="Ribbon">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                        </Trigger>
+                        <Trigger Property="ribbon:XamRibbon.Location" Value="QuickAccessToolbar">
+                            <Setter Property="Margin" Value="0,-2,0,0"/>
+                            <Setter Property="Padding" TargetName="chrome" Value="0,2,0,0"/>
+                        </Trigger>
+                        <Trigger Property="ribbon:XamRibbon.Location" Value="ApplicationMenuFooterToolbar">
+                            <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.ToolEnabledForegroundTextFillKey}"/>
+                            <Setter Property="Margin" Value="6,0,0,0"/>
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding (ribbon:XamRibbon.Location), RelativeSource={RelativeSource Self}}" Value="QuickAccessToolbar"/>
+                                <Condition Binding="{Binding (ribbon:XamRibbon.IsGlassActive), RelativeSource={RelativeSource Self}}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.ToolInQATForegroundTextFillKey}"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Location, RelativeSource={RelativeSource Self}}" Value="QuickAccessToolbar"/>
+                                <Condition Binding="{Binding IsBelowRibbon, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ribbon:QuickAccessToolbar}}}" Value="False"/>
+                                <Condition Binding="{Binding (ribbon:XamRibbon.Ribbon).(ribbon:XamRibbon.IsGlassCaptionGlowVisible), RelativeSource={RelativeSource Self}}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsGlowVisible" TargetName="textSmallGlow" Value="True"/>
+                        </MultiDataTrigger>
+                        <Trigger Property="ribbon:XamRibbon.HideAccessKey" Value="False">
+                            <Setter Property="RecognizesAccessKey" TargetName="textSmall" Value="True"/>
+                            <Setter Property="Content" TargetName="textSmall" Value="{Binding (ribbon:RibbonToolHelper.Caption), RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.ToolDisabledForegroundTextFillKey}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Location, RelativeSource={RelativeSource Self}}" Value="QuickAccessToolbar"/>
+                    <Condition Binding="{Binding IsBelowRibbon, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ribbon:QuickAccessToolbar}}}" Value="False"/>
+                    <Condition Binding="{Binding (ribbon:XamRibbon.IsGlassActive), RelativeSource={RelativeSource Self}}" Value="True"/>
+                    <Condition Binding="{Binding WindowState, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type Window}}}" Value="Normal"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"/>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Location, RelativeSource={RelativeSource Self}}" Value="QuickAccessToolbar"/>
+                    <Condition Binding="{Binding IsBelowRibbon, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ribbon:QuickAccessToolbar}}}" Value="False"/>
+                    <Condition Binding="{Binding (ribbon:XamRibbon.IsGlassActive), RelativeSource={RelativeSource Self}}" Value="True"/>
+                    <Condition Binding="{Binding (ribbon:XamRibbon.Ribbon).(ribbon:XamRibbon.IsGlassCaptionGlowVisible), RelativeSource={RelativeSource Self}}" Value="False"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.VistaWindowMaximizedTextFillKey}"/>
+            </MultiDataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Location, RelativeSource={RelativeSource Self}}" Value="QuickAccessToolbar"/>
+                    <Condition Binding="{Binding (ribbon:XamRibbon.IsGlassActive), RelativeSource={RelativeSource Self}}" Value="False"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource RibbonBrushKeys.ToolInQATForegroundTextFillKey}"/>
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

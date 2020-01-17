@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Control colors.-->
+    <Color x:Key="ComboBoxControlLightColor">White</Color>
+    <Color x:Key="ComboBoxControlMediumColor">#FF7381F9</Color>
+
+    <Color x:Key="ComboBoxControlMouseOverColor">#FF3843C4</Color>
+    <Color x:Key="ComboBoxControlPressedColor">#FF211AA9</Color>
+
+
+    <Color x:Key="ComboBoxGlyphColor">#FFD00202</Color>
+
+    <!--Border colors-->
+    <Color x:Key="ComboBoxBorderLightColor">#FF204B80</Color>
+    <Color x:Key="ComboBoxBorderDarkColor">#FF3E5870</Color>
+
+    <Color x:Key="ComboBoxPressedBorderLightColor">#FF888888</Color>
+    <Color x:Key="ComboBoxPressedBorderDarkColor">#FF444444</Color>
+   
+</ResourceDictionary>

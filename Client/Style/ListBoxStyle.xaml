@@ -1,0 +1,79 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                   
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/SimpleScrollBar.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border x:Name="Selection_Border" SnapsToDevicePixels="true" Background="Transparent" CornerRadius="0" BorderBrush="Transparent" Padding="{TemplateBinding Padding}" BorderThickness="1,1,1,1">
+                        <ContentPresenter x:Name="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" Margin="0,0,0,2"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger SourceName="Selection_Border" Property="IsMouseOver" Value="true">
+                            <Setter TargetName="Selection_Border" Property="BorderBrush" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="Background" TargetName="Selection_Border" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter TargetName="Selection_Border" Property="BorderBrush" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="Background" TargetName="Selection_Border" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"/>
+                                <Condition Property="Selector.IsSelectionActive" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Selection_Border" Property="BorderBrush" Value="{StaticResource BaseDarkGray}"/>
+                            <Setter Property="Background" TargetName="Selection_Border" Value="{StaticResource BaseDarkGray}"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="{StaticResource BaseLightControlBackground}"/>
+        <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BaseLightControlBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border SnapsToDevicePixels="true" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"  BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Style="{StaticResource SimpleScrollViewer}" Padding="{TemplateBinding Padding}" Focusable="false">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+        <Style x:Key="AutoFilterDataGridListBoxStyle" BasedOn="{StaticResource {x:Type ListBox}}" TargetType="{x:Type ListBox}"/>
+       
+
+
+</ResourceDictionary>

@@ -1,0 +1,75 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Proryv.ElectroARM.Controls.Styles"
+                    xmlns:wfToolBox="clr-namespace:System.Activities.Presentation.Toolbox;assembly=System.Activities.Presentation"
+                    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/ElectroARM_Styles;component/Style/WWFStyle.xaml"/>
+        <ResourceDictionary Source="TreeViewStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="WWFToolboxControlStyle" TargetType="{x:Type wfToolBox:ToolboxControl}">
+        <Style.Resources>
+            <!--DefaultResource="GenericLeafActivityIcon"-->
+            <arm:ToolboxItemWrapperIconConverter x:Key="iconConverter"/>
+        </Style.Resources>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type wfToolBox:ToolboxControl}">
+                    <Grid Background="{TemplateBinding Background}" MaxWidth="{TemplateBinding MaxWidth}" MaxHeight="{TemplateBinding MaxHeight}" MinWidth="{TemplateBinding MinWidth}" MinHeight="{TemplateBinding MinHeight}" Uid="Grid_1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox x:Name="PART_SearchBox" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" InputMethod.IsInputMethodEnabled="False" MaxLength="15" Grid.Row="0" Uid="PART_SearchBox" Visibility="Collapsed"/>
+                        <TextBlock IsHitTestVisible="False" Tag="{Binding ElementName=PART_SearchBox, Mode=OneTime}" Uid="hintText" Visibility="Collapsed">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                    <Setter Property="Margin" Value="5,0"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="FontStyle" Value="Italic"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Tag.Text, RelativeSource={RelativeSource Self}}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Tag.Text.Length, RelativeSource={RelativeSource Self}}" Value="0">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Tag.IsKeyboardFocusWithin, RelativeSource={RelativeSource Self}}" Value="True">
+                                            <Setter Property="Visibility" Value="Hidden"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style><Run Text="Поиск"/><Run Text="Поиск"/></TextBlock>
+                        <TreeView  x:Name="PART_Tools" arm:FindBar.IsFindEnabled="True" Style="{StaticResource TreeViewDailyOperationStyle}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Grid.Row="1" Uid="PART_Tools"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="#00FFFFFF"/>
+        <Setter Property="BorderBrush" Value="#00D0D7E2"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
+        <Setter Property="ToolTemplate">
+            <Setter.Value>
+                <DataTemplate DataType="{x:Type wfToolBox:ToolboxItemWrapper}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*" SharedSizeGroup="toolLabel"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Rectangle Width="16" Height="16" Margin="2,0,4,0">
+                            <Rectangle.Fill>
+                                <DrawingBrush Drawing="{Binding Converter={StaticResource iconConverter}}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                        <TextBlock Grid.Column="1" Text="{Binding DisplayName}" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,299 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:chart="clr-namespace:Steema.TeeChart.WPF;assembly=Proryv.TeeChart.WPF"
+    xmlns:vch="VisCompHelp"
+    xmlns:microchart="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+     xmlns:mchart="clr-namespace:ActiproSoftware.Windows.Controls.MicroCharts.Primitives;assembly=ActiproSoftware.MicroCharts.Wpf"
+        xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"                    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	x:Class="Proryv.AskueARM2.Client.Visual.TeeChartStyle"
+    mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/DrawingBrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/GradientBrushCollection.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/SelectButtonStyle.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/ComboBoxStyle.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/SimpleScrollBar.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BaseButtonStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+
+
+
+    <!--TChartStyle-->
+    <Style x:Key="TeeChartLegendaButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border"  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" >
+                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style x:Key="TCharButtonStyle" TargetType="{x:Type vch:ChartButton}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type vch:ChartButton}">
+                    <Grid VerticalAlignment="Stretch" Background="{x:Null}"  HorizontalAlignment="Stretch" x:Name="grid" SnapsToDevicePixels="True">
+                        <Border x:Name="border" Background="{StaticResource BaseDarkGray}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" >
+                        </Border>
+                        <Border x:Name="border1" Margin="1" BorderBrush="{StaticResource BaseLightBlue}" BorderThickness="1" Visibility="Collapsed"></Border>
+                        <Rectangle Fill="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"  Stroke="{x:Null}"  Width="30" Height="30"  SnapsToDevicePixels="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Visibility" TargetName="border1" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Visibility" TargetName="border1" Value="Visible"/>
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TCharViewButtonStyle" TargetType="{x:Type vch:ChartButton}">
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type vch:ChartButton}">
+                    <Grid VerticalAlignment="Stretch" Background="{x:Null}"  HorizontalAlignment="Stretch" x:Name="grid" SnapsToDevicePixels="True">
+                        <Border x:Name="border" Background="{StaticResource BaseLightGray}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" />
+                        <Border x:Name="border1" Margin="1" BorderBrush="{StaticResource BaseLightBlue}" BorderThickness="1"></Border>
+                        <Rectangle Fill="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}"  Stroke="{x:Null}"  Width="30" Height="30"  SnapsToDevicePixels="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseDarkGray}"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="true"/>
+                        <Trigger Property="IsPressed" Value="true"/>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.4"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="red"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+   
+
+
+    <Style x:Key="TChartStyle" TargetType="{x:Type chart:TChart}">
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type chart:TChart}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+
+
+                        </Grid.ColumnDefinitions>
+                        <Border SnapsToDevicePixels="true" Padding="{TemplateBinding Padding}" Grid.ColumnSpan="3" Visibility="Visible" Grid.RowSpan="2" >
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <StackPanel Margin="6,6,0,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="1" Grid.RowSpan="2">
+                            <StackPanel Orientation="Horizontal" x:Name="buttons" VerticalAlignment="Top">
+                                <vch:ChartButton Tag="{StaticResource tchart3dIcon}" Content="3D" Action="Style3d" ToolTip="Трехмерный" Style="{StaticResource TCharButtonStyle}" Margin="0,0,5,0"  VerticalContentAlignment="Center"/>
+                                <vch:ChartButton Tag="{StaticResource tchartStairsIcon}" Content="Stair" Action="StyleStair" ToolTip="Лестница" IsChecked="False" Style="{StaticResource TCharButtonStyle}" Margin="0,0,5,0" />
+                                <vch:ChartButton Tag="{StaticResource tchartPointsIcon}" Content="ViewPoints" Action="StyleViewPoints" IsChecked="True" ToolTip="Показать точки" Style="{StaticResource TCharButtonStyle}"  Margin="0,0,5,0" />
+                                <vch:ChartButton Tag="{StaticResource tchartPrintVersionIcon}"  Style="{StaticResource TCharButtonStyle}" Action="DrawSymbols" ToolTip="Печатная версия" Margin="0,0,5,0" />
+                                <vch:ChartButton Tag="{StaticResource tchartShowLegendIcon}" IsChecked="True" Content="Legend" Action="ShowLegend"   ToolTip="Отображать легенду" Style="{StaticResource TCharButtonStyle}"  Margin="0,0,20,0" />
+                                <vch:ChartButton Tag="{StaticResource tchartExportIcon}" Content="Export" Action="ExportToJPG"   ToolTip="Экспорт" Style="{StaticResource TCharButtonStyle}"  Margin="0,0,20,0" />
+                                <ComboBox Name="viewMode"  Margin="30,0" Style="{StaticResource ComboBoxInButtonStyle}" SelectionChanged="viewMode_SelectionChanged" SelectedIndex="0"  Padding="0">
+                                    <ComboBoxItem Padding="0">
+                                        <vch:ChartButton  Tag="{StaticResource tchartView1}" Content="1" Action="But1" Height="30" Width="30" IsHitTestVisible="False" Style="{StaticResource TCharViewButtonStyle}" Margin="0" />
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Padding="0">
+                                        <vch:ChartButton Tag="{StaticResource tchartView2}"  Content="2" Action="But2" Height="30" Width="30" IsHitTestVisible="False" Style="{StaticResource TCharViewButtonStyle}"  Margin="0" />
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Padding="0">
+                                        <vch:ChartButton Tag="{StaticResource tchartView3}" Content="3" Action="But3" Height="30" Width="30" IsHitTestVisible="False" Style="{StaticResource TCharViewButtonStyle}"   Margin="0" />
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Padding="0">
+                                        <vch:ChartButton Tag="{StaticResource tchartView4}" Content="4" Action="But4" Height="30" Width="30"  IsHitTestVisible="False" Style="{StaticResource TCharViewButtonStyle}"  Margin="0"/>
+                                    </ComboBoxItem>
+                                </ComboBox>
+                                <vch:ChartButtonSimple  Action="SelectAll" Background="Transparent"  BorderBrush="{x:Null}" Style="{StaticResource TeeChartLegendaButtonStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="15,10,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Proryv.ElectroARM.Resources;component/Image/ConfirmAllActionBrush.png" Height="16" Width="16"/>
+                                        <Button  Style="{StaticResource SecondButtonStyle}"  Content="Выделить все"   Margin="-20,0,0,0"  />
+                                    </StackPanel>
+                                </vch:ChartButtonSimple>
+                                <vch:ChartButtonSimple  Action="SelectNone" Background="Transparent" BorderBrush="{x:Null}"  Style="{StaticResource TeeChartLegendaButtonStyle}"   Margin="15,10,0,0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Proryv.ElectroARM.Resources;component/Image/UnselectAllActionBrush.png" Height="16" Width="16"/>
+                                        <Button  Style="{StaticResource SecondButtonStyle}"   Content="Снять выделение" Margin="-20,0,0,0"/>
+                                    </StackPanel>
+                                </vch:ChartButtonSimple>
+                            </StackPanel>
+                        </StackPanel>
+                        <ScrollBar Name="verticalSB" Style="{StaticResource SimpleScrollBarVerticalsFixThumb}" Grid.Column="2" HorizontalAlignment="Right" Margin="0,2,2,16" Grid.Row="1" Width="12" Minimum="0" Maximum="365" ValueChanged="verticalSB_ValueChanged" Visibility="{Binding ElementName=horizontalSB, Path=Visibility}" Value="350"/>
+                        <ScrollBar Name="horizontalSB" Style="{StaticResource SimpleScrollBarHorizontalsFixThumb}" Grid.ColumnSpan="3"  Grid.Column="0" HorizontalAlignment="Stretch" Margin="2,0,16,2" Grid.Row="1" VerticalAlignment="Bottom" Width="Auto" Height="12" Orientation="Horizontal" Minimum="0" Maximum="365" ValueChanged="horizontalSB_ValueChanged" Visibility="Collapsed" Value="338"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="TChartStyle2" TargetType="{x:Type chart:TChart}">
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type chart:TChart}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border SnapsToDevicePixels="true" Padding="{TemplateBinding Padding}" Grid.ColumnSpan="3" Visibility="Visible" Grid.RowSpan="2">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <StackPanel Margin="7,6,0,0" Orientation="Horizontal" UseLayoutRounding="True" VerticalAlignment="Top" Grid.ColumnSpan="1" Grid.RowSpan="2">
+                            <StackPanel Orientation="Horizontal" x:Name="buttons" VerticalAlignment="Top">
+                                <vch:ChartButton Tag="{StaticResource tchart3dIcon}" Content="3D" Action="Style3d" ToolTip="Трехмерный" Style="{StaticResource TCharButtonStyle}" Margin="0,0,5,0"  VerticalContentAlignment="Center"/>
+                                <vch:ChartButton Tag="{StaticResource tchartShowLegendIcon}" IsChecked="True" Content="Legend" Action="ShowLegend"   ToolTip="Отображать легенду" Style="{StaticResource TCharButtonStyle}"  Margin="0,0,20,0" />
+                                <vch:ChartButton Tag="{StaticResource tchartExportIcon}" Content="Export" Action="ExportToJPG"   ToolTip="Экспорт" Style="{StaticResource TCharButtonStyle}"  Margin="0,0,20,0" />
+                                <vch:ChartButtonSimple  Action="SelectAll" Background="Transparent" BorderBrush="{x:Null}" Style="{StaticResource TeeChartLegendaButtonStyle}" VerticalAlignment="Bottom" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Proryv.ElectroARM.Resources;component/Image/ConfirmAllActionBrush.png"/>
+                                        <Button  Style="{StaticResource SecondButtonStyle}"  Content="Выделить все"  Margin="-20,0,15,0"  />
+                                    </StackPanel>
+                                </vch:ChartButtonSimple>
+                                <vch:ChartButtonSimple  Action="SelectNone"  Background="Transparent" BorderBrush="{x:Null}" Style="{StaticResource TeeChartLegendaButtonStyle}" VerticalAlignment="Bottom" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="/Proryv.ElectroARM.Resources;component/Image/UnselectAllActionBrush.png"/>
+                                        <Button  Style="{StaticResource SecondButtonStyle}"   Content="Снять выделение"  Margin="-20,0,0,0"/>
+                                    </StackPanel>
+                                </vch:ChartButtonSimple>
+                            </StackPanel>
+                        </StackPanel>
+                        <ScrollBar Name="verticalSB" Style="{StaticResource SimpleScrollBarVerticalsFixThumb}" Grid.Column="2" HorizontalAlignment="Right" Margin="0,2,2,16" Grid.Row="1" Width="12" Minimum="0" Maximum="365" ValueChanged="verticalSB_ValueChanged" Visibility="{Binding ElementName=horizontalSB, Path=Visibility}" Value="350"/>
+                        <ScrollBar Name="horizontalSB" Style="{StaticResource SimpleScrollBarHorizontalsFixThumb}" Grid.ColumnSpan="3"  Grid.Column="0" HorizontalAlignment="Stretch" Margin="2,0,16,2" Grid.Row="1" VerticalAlignment="Bottom" Width="Auto" Height="12" Orientation="Horizontal" Minimum="0" Maximum="365" ValueChanged="horizontalSB_ValueChanged" Visibility="Collapsed" Value="338"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<Style x:Key="TVectorChartStyle" TargetType="{x:Type chart:TChart}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type chart:TChart}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="42"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="810"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="5,2,0,0" Orientation="Horizontal" VerticalAlignment="Top" Grid.ColumnSpan="1" Grid.RowSpan="1" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal" x:Name="buttons" VerticalAlignment="Top">
+                                <vch:ChartButton Tag="{StaticResource tchartExportIcon}" Content="Export" Action="ExportToJPG"   ToolTip="Экспорт" Style="{StaticResource TCharButtonStyle}"  Margin="0,0,60,0" Padding="8,5,8,5"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <!--MChatStyle-->
+    <Style x:Key="microchartButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5" Opacity="1" SnapsToDevicePixels="True" Background="Transparent" Width="10" Height="10">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Path x:Name="path" Data="M15.288138,1.2148046 L20.210014,1.2148046 17.749077,3.9540625 z" Fill="Black" HorizontalAlignment="Center" Height="4" Margin="0" RenderTransformOrigin="0.5,0.5" Stretch="Fill" VerticalAlignment="Center" Width="8" Grid.Column="1" UseLayoutRounding="True"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Width" TargetName="path" Value="10"/>
+                            <Setter Property="Height" TargetName="path" Value="6"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.60"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true"/>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style  TargetType="{x:Type microchart:MicroXYChart}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type microchart:MicroXYChart}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" Margin="1,0,1,0" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
+                        <Grid>
+                            <!--<ContentPresenter x:Name="PART_Canvas" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>-->
+                            <Button x:Name="button" Content="Button"  Style="{StaticResource microchartButton}"  HorizontalAlignment="Right" Height="10" Margin="0,2,2,0" VerticalAlignment="Top" Width="10">
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Экспорт">
+                                            <MenuItem.Icon>
+                                                <Rectangle Fill="{StaticResource     ExportGreedBrush}"  Stroke="{x:Null}"  Width="18" Height="18"  SnapsToDevicePixels="True"/>
+
+                                                <!--<Image Source="/Proryv.ElectroARM.Resources;component/Image/ContextMenu/ContextMenuHalfHourBrush.png" />-->
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
+                            <mchart:MicroChartCanvas x:Name="PART_Canvas" />
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
+
+</ResourceDictionary>

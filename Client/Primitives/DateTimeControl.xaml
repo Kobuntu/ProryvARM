@@ -1,0 +1,21 @@
+﻿<GroupBox x:Class="Proryv.ElectroARM.Controls.Controls.Dialog.Primitives.DateTimeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             mc:Ignorable="d" 
+             VerticalAlignment="Top" HorizontalAlignment="Left" Header="Дата:">
+    <GroupBox.Style>
+        <Style BasedOn="{StaticResource {x:Type GroupBox}}" TargetType="{x:Type GroupBox}"></Style>
+    </GroupBox.Style>
+    
+        <StackPanel Orientation="Horizontal" Height="20" Margin="0,-3">
+            
+            <xcdg:DatePicker x:FieldModifier="public" Height="22" HorizontalContentAlignment="Left"  x:Name="dpDate" VerticalAlignment="Center" 
+                     HorizontalAlignment="Left" Width="95" Margin="2,0"/>
+            
+            <xcdg:MaskedTextBox x:FieldModifier="public" Margin="2,0" x:Name="MtbTime" Mask="##:##" VerticalAlignment="Center" PromptChar="0" Height="20"
+                                HorizontalAlignment="Left" Width="38" TextChanged="MtbTimeOnTextChanged"/>
+        </StackPanel>
+</GroupBox>

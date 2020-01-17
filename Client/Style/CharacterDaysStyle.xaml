@@ -1,0 +1,109 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    mc:Ignorable="d">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+
+    <SolidColorBrush PresentationOptions:Freeze="True" x:Key="defaultCalendarDaysBackground" Color="Transparent"/>
+    <Style x:Key="DelButtonClickStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border HorizontalAlignment="Right" Height="12" x:Name="border" VerticalAlignment="Top" Width="12" BorderThickness="0"  Background="{StaticResource BaseDarkBlue}">
+                        <!--<Grid HorizontalAlignment="Left" Height="10"  VerticalAlignment="Top" Width="10">
+                            <Rectangle Fill="Transparent" HorizontalAlignment="Stretch" Height="Auto" Margin="0" VerticalAlignment="Stretch" Width="Auto"/>
+                            <Path Data="M5,5 L6,5 6,6 5,6 z M0,5 L0.99999994,5 0.99999994,6 0,6 z M4,4 L5,4 5,5 4,5 z M1,4 L2,4 2,5 1,5 z M2,2 L3,2 4,2 4,3 4,4 3,4 2,4 2,3 z M4,1 L5,1 5,2 4,2 z M0.99999994,1 L2,1 2,2 0.99999994,2 z M5,0 L6,0 6,1 5,1 z M0,0 L0.99999994,0 0.99999994,1 0,1 z" Fill="{StaticResource BaseDarkGray}" Margin="2" Stretch="Fill"/>
+                        </Grid>-->
+                        <Grid HorizontalAlignment="Left" Height="12"  VerticalAlignment="Top" Width="12">
+                            <Rectangle Fill="Transparent" x:Name="rectangle" HorizontalAlignment="Stretch" Height="Auto" Margin="0" VerticalAlignment="Stretch" Width="Auto"/>
+                            <Path Data="M5.0929999,5 L6.0929999,5 6.0929999,6 5.0929999,6 z M0,5 L0.99999994,5 0.99999994,6 0,6 z M4,4 L5,4 5,5 4,5 z M0.99999994,4 L2,4 2,5 0.99999994,5 z M2,2 L3,2 4,2 4,3 4,4 3,4 2,4 2,3 z M4,0.99999999 L5,0.99999999 5,2 4,2 z M0.99999994,0.99999999 L2,0.99999999 2,2 0.99999994,2 z M5,0 L6,0 6,0.99999999 5,0.99999999 z M0,0 L0.99999994,0 0.99999994,0.99999999 0,0.99999999 z" Fill="{StaticResource BaseDarkGray}" Margin="3,3,2.907,3" Stretch="Fill"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseMoreDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsEnabled" Value="False"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+    <Style x:Key="DelButtonSmClickStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border HorizontalAlignment="Center" Height="8" x:Name="border" VerticalAlignment="Center" Width="8" BorderThickness="0"  Background="{StaticResource BaseDarkBlue}">
+                        <Grid HorizontalAlignment="Left" Height="8" VerticalAlignment="Top" Width="8">
+                            <Rectangle Fill="Transparent" HorizontalAlignment="Stretch" Height="Auto" Margin="0" VerticalAlignment="Stretch" Width="Auto"/>
+                            <Path Data="M5.0209999,5.0469999 L6.0209999,5.0469999 6.0209999,6.0469999 5.0209999,6.0469999 z M0,5.0469999 L0.99999996,5.0469999 0.99999996,6.0469999 0,6.0469999 z M4,4 L5,4 5,5 4,5 z M0.99999996,4 L2,4 2,5 0.99999996,5 z M2,2 L3,2 4,2 4,3 4,4 3,4 2,4 2,3 z M4,0.99999994 L5,0.99999994 5,2 4,2 z M0.99999996,0.99999994 L2,0.99999994 2,2 0.99999996,2 z M5.0209999,0 L6.0209999,0 6.0209999,0.99999994 5.0209999,0.99999994 z M0,0 L0.99999996,0 0.99999996,0.99999994 0,0.99999994 z" Fill="{StaticResource BaseDarkGray}" Margin="1,1,0.979,0.953" Stretch="Fill"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True"/>
+                        <Trigger Property="IsDefaulted" Value="True"/>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource BaseMoreDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True"/>
+                        <Trigger Property="IsEnabled" Value="False"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+    <Style x:Key="txtYearButton" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0,0,1,1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <Grid HorizontalAlignment="Center" x:Name="grid"  Height="8"  VerticalAlignment="Top" Width="9" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="180"/>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Rectangle Fill="Transparent" x:Name="border"  HorizontalAlignment="Stretch" Height="Auto" Margin="0" VerticalAlignment="Stretch" Width="Auto" d:IsHidden="True"/>
+                        <Path x:Name="path" Data="M3,0 L4,0 4,1 5,1 5,2 6,2 6,2.9999999 7,2.9999999 7,4 6,4 5,4 4,4 3,4 2,4 1,4 0,4 0,2.9999999 1,2.9999999 1,2 2,2 2,1 3,1 z" Fill="{StaticResource BaseLightBlue}" HorizontalAlignment="Stretch" Height="Auto" Margin="1.031,2.188,0.969,1.812" Stretch="Fill" VerticalAlignment="Stretch" Width="Auto"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Fill" TargetName="border" Value="{StaticResource BaseLightGray}"/>
+                            <Setter Property="Fill" TargetName="path" Value="{StaticResource BaseDarkBlue}"/>
+                        </Trigger>
+                        <Trigger Property="ToggleButton.IsChecked" Value="true"/>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+
+
+
+
+
+
+</ResourceDictionary>

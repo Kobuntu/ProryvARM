@@ -1,0 +1,144 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:microchart ="http://schemas.actiprosoftware.com/winfx/xaml/microcharts"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d PresentationOptions">
+
+    <microchart:MicroSeriesPaletteStyleSelector x:Key="TariffSeriesSelector">
+        <microchart:MicroPalette>
+            <!--Пик-->
+            <Color>Red</Color>
+            <!--Полупик-->
+            <Color>Yellow</Color>
+            <!--Ночь-->
+            <Color>DarkGreen</Color>
+        </microchart:MicroPalette>
+    </microchart:MicroSeriesPaletteStyleSelector>
+
+    <!--Сопоставление с БД идет по названию-->
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Пиковая">
+        <Setter Property="Fill" Value="Red" />
+    </Style>
+
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Полупиковая">
+        <Setter Property="Fill" Value="Yellow" />
+    </Style>
+
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Ночная">
+        <Setter Property="Fill" Value="DarkGreen" />
+    </Style>
+
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Одноставочный">
+        <Setter Property="Fill" Value="DarkBlue" />
+    </Style>
+
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Дневная">
+        <Setter Property="Fill" Value="Yellow" />
+    </Style>
+
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Отдача">
+        <Setter Property="Fill" Value="DarkBlue" />
+    </Style>
+
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Потребление">
+        <Setter Property="Fill" Value="DarkRed" />
+    </Style>
+
+    <Style TargetType="Shape" x:Key="MicroBarStyle_Любой">
+        <Setter Property="Fill" Value="DarkBlue" />
+    </Style>
+    
+    <microchart:MicroSeriesPaletteStyleSelector x:Key="MonitoringSeriesSelector">
+        <microchart:MicroPalette>
+            <!--Кол-во точек с полными данными-->
+            <Color>#FF00a65b</Color>
+            <!--Кол-во с недостоверными значениями-->
+            <Color>Red</Color>
+            <!--Кол-во точек с неполными значениями-->
+            <Color>Gray</Color>
+            <!--Кол-во точек с отсутствующими значениями-->
+            <Color>Black</Color>
+            <!--Кол-во точек у которых сумма тарифных каналов не сходится с основным каналом-->
+            <Color>Yellow</Color>
+            <!--Кол-во точек у которых зафиксирован расход по неактивному тарифному каналу-->
+            <Color>MediumVioletRed</Color>
+            <!--Кол-во точек у которых зафиксировано следующее показание менее предыдущего-->
+            <Color>DarkOrange</Color>
+            <!--Общее количество точек-->
+            <Color>DarkBlue</Color>
+        </microchart:MicroPalette>
+    </microchart:MicroSeriesPaletteStyleSelector>
+
+    <microchart:MicroSeriesPaletteStyleSelector x:Key="ValidSeriesSelector">
+        <microchart:MicroPalette>
+            <!--Кол-во точек с полными данными-->
+            <Color>#FF00a65b</Color>
+            <!--Кол-во с недостоверными значениями-->
+            <Color>Red</Color>
+            <!--Кол-во точек с отсутствующими значениями-->
+            <Color>Black</Color>
+        </microchart:MicroPalette>
+    </microchart:MicroSeriesPaletteStyleSelector>
+
+    <microchart:MicroSeriesPaletteStyleSelector x:Key="FactPowerSeriesSelector">
+        <microchart:MicroPalette>
+            <!--Обычный час-->
+            <Color>#FF8398AB</Color>
+            <!--Час системного оператора-->
+            <Color>#E600877E</Color>
+            <!--Максимальная мощность в текущем дне в часах системного оператора-->
+            <Color>DarkBlue</Color>
+        </microchart:MicroPalette>
+    </microchart:MicroSeriesPaletteStyleSelector>
+
+    <microchart:MicroSeriesPaletteStyleSelector x:Key="PowerExcessSeriesSelector">
+        <microchart:MicroPalette>
+            <!--Обычный час-->
+            <Color>#FF8398AB</Color>
+            <!--Час системного оператора-->
+            <Color>#E600877E</Color>
+            <!--Максимальная мощность в текущем дне в часах системного оператора-->
+            <Color>#EE0B5F</Color>
+        </microchart:MicroPalette>
+    </microchart:MicroSeriesPaletteStyleSelector>
+
+    <microchart:MicroSeriesPaletteStyleSelector x:Key="ForecastPlanFactSeriesSelector">
+        <microchart:MicroPalette>
+            <!--План-->
+            <Color>DarkBlue</Color>
+            <!--Факт-->
+            <Color>#FF00a65b</Color>
+            <!--АСКУЕ-->
+            <Color>#FFE6E814</Color>
+        </microchart:MicroPalette>
+    </microchart:MicroSeriesPaletteStyleSelector>
+
+    <microchart:MicroSeriesPaletteStyleSelector x:Key="MultiUnitDigitSelector">
+        <microchart:MicroPalette>
+            <!--Вт-->
+            <Color>#06CE74</Color>
+            <!--кВт-->
+            <Color>#04A15B</Color>
+            <!--МВт-->
+            <Color>#037542</Color>
+        </microchart:MicroPalette>
+    </microchart:MicroSeriesPaletteStyleSelector>
+
+    <Style TargetType="microchart:MicroChartMarker" x:Key="MicroBarStyle_Bad">
+        <Setter  Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style TargetType="microchart:MicroChartMarker" x:Key="MicroBarStyle_Good">
+        <Setter  Property="Foreground" Value="Green" />
+    </Style>
+
+    <Style TargetType="microchart:MicroChartMarker" x:Key="MicroBarStyle_Alarm">
+        <Setter  Property="Foreground" Value="#FFE6E814" />
+    </Style>
+
+    <Style TargetType="microchart:MicroChartMarker" x:Key="MicroBarStyle_Gray">
+        <Setter  Property="Foreground" Value="#FF0C1316" />
+    </Style>
+
+</ResourceDictionary>

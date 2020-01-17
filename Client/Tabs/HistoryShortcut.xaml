@@ -1,0 +1,78 @@
+<!--Элемент истории-->
+<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Proryv.AskueARM2.Client.Visual.HistoryShortcut"
+    MinWidth="40" PreviewMouseDown="UserControl_PreviewMouseDown"  x:Name="userControl" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:visual="clr-namespace:Proryv.AskueARM2.Client.Visual"
+    mc:Ignorable="d" BorderBrush="#005785B1"  Background="{x:Null}" Padding="3">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BTV"> </BooleanToVisibilityConverter>
+        <!--<convertors:BooleanToVisibilityConverterReverse x:Key="BTVR"></convertors:BooleanToVisibilityConverterReverse>-->
+        <Storyboard x:Key="HistoryShortcutAnimationEnter">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                <EasingColorKeyFrame KeyTime="0" Value="#ffccd2e0"/>
+            </ColorAnimationUsingKeyFrames>
+           
+        </Storyboard>
+        <Storyboard x:Key="HistoryShortcutAnimationLeave">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                <EasingColorKeyFrame KeyTime="0" Value="#ffe8eefa"/>
+            </ColorAnimationUsingKeyFrames>
+            
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource HistoryShortcutAnimationEnter}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource HistoryShortcutAnimationLeave}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid Background="{x:Null}" SnapsToDevicePixels="True" MinHeight="32px">
+        <Rectangle x:Name="rectangle"  Fill="{StaticResource BaseLightGray}">
+        </Rectangle>
+        <Rectangle Height="24px" Width="24px" HorizontalAlignment="Left" Margin="4,0,0,0">
+            <Rectangle.Fill>
+                <MultiBinding Converter="{StaticResource IModuleToDrawingBrushIcon}">
+                    <Binding ElementName="userControl" Path="ModuleDrawingBrushName"/>
+                    <Binding ElementName="userControl" Path="ModuleType"/>
+                </MultiBinding>
+            </Rectangle.Fill>
+        </Rectangle>
+
+                   <!--Fill="{Binding ElementName=userControl, Path=ModuleType, Converter={StaticResource IModuleToDrawingBrushIcon}}">-->
+        <TextBlock Margin="34,0,20,2" Text="aaa" Background="{x:Null}" TextWrapping="Wrap" x:Name="caption" MouseEnter="caption_MouseEnter" MouseLeave="caption_MouseLeave" Foreground="#FF000000"  HorizontalAlignment="Left"  TextAlignment="Left" d:LayoutOverrides="HorizontalAlignment, Height" Grid.Column="1"   VerticalAlignment="Center"/>
+        <Button Visibility="{Binding Path=CloseButtonVisibility,RelativeSource={RelativeSource AncestorType=visual:HistoryShortcut,Mode=FindAncestor} }" Tag="{StaticResource FavouritItemDelBrush}"  ToolTip="Закрыть вкладку" Style="{StaticResource FavouritesItemButtonStyle}"    Margin="4,0" VerticalAlignment="Center"  HorizontalAlignment="Right" Click="CloseButtonClick" />
+        <!--<Button Visibility="{Binding Path=CloseButtonVisibility,RelativeSoggurce={RelativeSource AncestorType=visual:HistoryShortcut,Mode=FindAncestor} }" Style="{StaticResource DeleteItemButtonStyle}" ToolTip="Закрыть вкладку" Click="CloseButtonClick"  Width="13" Height="20" Margin="4,0"  HorizontalAlignment="Right" VerticalAlignment="Center" />-->
+
+    </Grid>
+    <UserControl.ContextMenu >
+        <ContextMenu Visibility="{Binding Path=CloseButtonVisibility,RelativeSource={RelativeSource AncestorType=visual:HistoryShortcut,Mode=FindAncestor} }">
+            <MenuItem Header="Удалить из истории" x:FieldModifier="internal" x:Name="DeleteThisFromHistoryButton" Click="DeleteThisFromHistory" Visibility="Collapsed">
+            </MenuItem>
+            <MenuItem Header="Удалить все из истории, кроме этого окна"  x:FieldModifier="internal" x:Name="DeleteFromHistoryButton"  Click="DeleteFromHistoryButton_OnClick" Visibility="Collapsed">
+            </MenuItem>
+            <MenuItem Header="Закрыть все"   Name="closeAll" Click="closeAll_Click">
+            </MenuItem>
+            <MenuItem Header="Закрыть все, кроме этого окна" Name="closeExcept"   Visibility="{Binding ElementName=userControl,Path=ShowHistoryContextMenu,Converter={StaticResource boolToVisibilityConverter}, ConverterParameter=Invert}" Click="closeExcept_Click">
+            </MenuItem>
+            <Separator Style="{StaticResource SeparatorStyle}" Visibility="{Binding ElementName=userControl,Path=ShowHistoryContextMenu,Converter={StaticResource boolToVisibilityConverter}, ConverterParameter=Invert}"/>
+            <MenuItem Header="Добавить в избранное"  Name="addToFavourites" Visibility="{Binding ElementName=userControl,Path=ShowHistoryContextMenu,Converter={StaticResource boolToVisibilityConverter}, ConverterParameter=Invert}" Click="addToFavourites_Click">
+                <MenuItem.Icon>
+                    <Rectangle Height="16" Width="16" Fill="{StaticResource ContextMenuAddToFavouritesBrush}"></Rectangle>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="Скопировать в буфер обмена" Name="copyToClipboard"  Visibility="{Binding ElementName=userControl,Path=ShowHistoryContextMenu,Converter={StaticResource boolToVisibilityConverter}, ConverterParameter=Invert}" Click="copyToClipboard_Click">
+                <MenuItem.Icon>
+                    <Rectangle Height="16" Width="16" Fill="{StaticResource ContextMenuCopyToClipboardBrush}"></Rectangle>
+                </MenuItem.Icon>
+            </MenuItem>
+            <!--<Separator Style="{StaticResource SeparatorStyle}"/>
+            <MenuItem Header="Добавить в избранное" Name="addToFavourites" Click="addToFavourites_Click"/>
+            <MenuItem Header="Скопировать в буфер обмена" Name="copyToClipboard" Click="copyToClipboard_Click"/>-->
+        </ContextMenu>
+    </UserControl.ContextMenu>
+
+</UserControl>

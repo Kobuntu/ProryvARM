@@ -1,0 +1,483 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:igWindows="http://infragistics.com/Windows"
+xmlns:igDP="http://schemas.infragistics.com/xaml/wpf" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+
+
+
+    <Style  TargetType="{x:Type igDP:CustomFilterSelectionControl}">
+        <Style.Resources>
+            <Style x:Key="{x:Type igDP:ComparisonOperatorSelector}" TargetType="{x:Type igDP:ComparisonOperatorSelector}">
+                <Setter Property="DropDownButtonStyle">
+                    <Setter.Value>
+                        <Style TargetType="{x:Type ToggleButton}">
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="MinWidth" Value="0"/>
+                            <Setter Property="MinHeight" Value="0"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="Focusable" Value="False"/>
+                            <Setter Property="Padding" Value="2"/>
+                            <Setter Property="ClickMode" Value="Press"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" igWindows:Utilities.SnapElementToDevicePixels="True">
+                                            <StackPanel Orientation="Horizontal">
+                                                <igDP:AutoDisabledImage HorizontalAlignment="Center" Margin="{TemplateBinding Padding}" MinWidth="14" MinHeight="14" Source="{Binding SelectedOperatorInfo.Image, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type igDP:ComparisonOperatorSelector}}}" Stretch="None" VerticalAlignment="Center"/>
+                                                <TextBlock Margin="4,0,0,0" Text="{Binding SelectedOperatorInfo.Description, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type igDP:ComparisonOperatorSelector}}}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Style.Resources>
+        <Setter Property="MinHeight" Value="240"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="AndLogicalOperatorBrush" Value="{DynamicResource DataPresenterBrushKeys.AndLogicalOperatorBrush}"/>
+        <Setter Property="OrLogicalOperatorBrush" Value="{DynamicResource DataPresenterBrushKeys.OrLogicalOperatorBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type igDP:CustomFilterSelectionControl}">
+                    <Border>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Border>
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFE9EEF7" Offset="0"/>
+                                        <GradientStop Color="#FFE6ECF5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <TextBlock Foreground="Black" FontSize="20" Margin="10" Text="{TemplateBinding FieldDescription}"/>
+                            </Border>
+                            <Border BorderBrush="#FF9FBCDB" BorderThickness="0,1" Grid.Row="1" SnapsToDevicePixels="True">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFD5E5F1"/>
+                                        <GradientStop Color="#FFB2CFE5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Grid x:Name="toolbar">
+                                    <StackPanel Margin="10" Orientation="Horizontal" VerticalAlignment="Top">
+                                        <Button Command="igDP:CustomFilterSelectionControl.AddConditionCommand" Tag="{TemplateBinding AddConditionLabel}">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Foreground" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalForegroundKey}"/>
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                    <Setter Property="MinHeight" Value="20"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalOuterBorderBrush}"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Grid x:Name="Grid">
+                                                                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="-1,1,0,1" Stroke="{TemplateBinding BorderBrush}" Width="1"/>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" Stroke="#59FFFFFF" Width="1"/>
+                                                                            <ContentPresenter x:Name="Image" Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="16" MinHeight="16" VerticalAlignment="Center"/>
+                                                                            <TextBlock x:Name="text" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Text="{TemplateBinding Tag}" VerticalAlignment="Center"/>
+                                                                        </Grid>
+                                                                    </Border>
+                                                                    <Border x:Name="innerStroke" BorderBrush="{DynamicResource DataPresenterBrushKeys.ButtonNormalInnerBorderBrush}" BorderThickness="1" CornerRadius="2" Margin="1" SnapsToDevicePixels="True"/>
+                                                                </Grid>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverCenterBrush}"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsPressed" Value="True">
+                                                                        <Setter Property="Background" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedCenterBrush}"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Foreground" TargetName="text" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledForegroundKey}"/>
+                                                                        <Setter Property="Opacity" TargetName="Image" Value="0.5"/>
+                                                                        <Setter Property="Background" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledCenterBrush}"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                            <Image Stretch="None" igWindows:Utilities.SnapElementToDevicePixels="True">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="pack://application:,,,/Proryv.ElectroARM.Resources;component/Image/IG/IconAdd.png"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </Button>
+                                        <Button Command="igDP:CustomFilterSelectionControl.RemoveSelectedConditionsCommand" Margin="3,0,0,0" Tag="{TemplateBinding RemoveSelectedConditionsLabel}">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Foreground" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalForegroundKey}"/>
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                    <Setter Property="MinHeight" Value="20"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalOuterBorderBrush}"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Grid x:Name="Grid">
+                                                                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="-1,1,0,1" Stroke="{TemplateBinding BorderBrush}" Width="1"/>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" Stroke="#59FFFFFF" Width="1"/>
+                                                                            <ContentPresenter x:Name="Image" Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="16" MinHeight="16" VerticalAlignment="Center"/>
+                                                                            <TextBlock x:Name="text" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Text="{TemplateBinding Tag}" VerticalAlignment="Center"/>
+                                                                        </Grid>
+                                                                    </Border>
+                                                                    <Border x:Name="innerStroke" BorderBrush="{DynamicResource DataPresenterBrushKeys.ButtonNormalInnerBorderBrush}" BorderThickness="1" CornerRadius="2" Margin="1" SnapsToDevicePixels="True"/>
+                                                                </Grid>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#008eb5d5"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsPressed" Value="True">
+                                                                        <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Foreground" TargetName="text" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledForegroundKey}"/>
+                                                                        <Setter Property="Opacity" TargetName="Image" Value="0.5"/>
+                                                                        <Setter Property="Background" Value="#00E8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                            <Image Stretch="None" igWindows:Utilities.SnapElementToDevicePixels="True">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="pack://application:,,,/Proryv.ElectroARM.Resources;component/Image/IG/IconSubtract.png"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </Button>
+                                        <Rectangle x:Name="separatorDark" Fill="#4C000000" Margin="5,0,0,0" Width="1"/>
+                                        <Rectangle x:Name="separatorLight" Fill="White" Width="1"/>
+                                        <TextBlock x:Name="GroupSelected" Foreground="{TemplateBinding Foreground}" Margin="5,0,0,0" TextWrapping="Wrap" Text="{TemplateBinding GroupSelectedLabel}" VerticalAlignment="Center"/>
+                                        <Button Command="igDP:CustomFilterSelectionControl.GroupSelectedConditionsAsAndGroupCommand" Margin="3,0,0,0" Tag="{TemplateBinding GroupSelectedConditionsAsAndGroupLabel}">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Foreground" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalForegroundKey}"/>
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                    <Setter Property="MinHeight" Value="20"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalOuterBorderBrush}"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Grid x:Name="Grid">
+                                                                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="-1,1,0,1" Stroke="{TemplateBinding BorderBrush}" Width="1"/>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" Stroke="#59FFFFFF" Width="1"/>
+                                                                            <ContentPresenter x:Name="Image" Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="16" MinHeight="16" VerticalAlignment="Center"/>
+                                                                            <TextBlock x:Name="text" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Text="{TemplateBinding Tag}" VerticalAlignment="Center"/>
+                                                                        </Grid>
+                                                                    </Border>
+                                                                    <Border x:Name="innerStroke" BorderBrush="{DynamicResource DataPresenterBrushKeys.ButtonNormalInnerBorderBrush}" BorderThickness="1" CornerRadius="2" Margin="1" SnapsToDevicePixels="True"/>
+                                                                </Grid>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#008eb5d5"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsPressed" Value="True">
+                                                                        <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Foreground" TargetName="text" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledForegroundKey}"/>
+                                                                        <Setter Property="Opacity" TargetName="Image" Value="0.5"/>
+                                                                        <Setter Property="Background" Value="#00E8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                            <Image Stretch="None" igWindows:Utilities.SnapElementToDevicePixels="True">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="pack://application:,,,/Proryv.ElectroARM.Resources;component/Image/IG/AndGroupIcon.png"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </Button>
+                                        <Button Command="igDP:CustomFilterSelectionControl.GroupSelectedConditionsAsOrGroupCommand" Margin="3,0,0,0" Tag="{TemplateBinding GroupSelectedConditionsAsOrGroupLabel}">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Foreground" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalForegroundKey}"/>
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                    <Setter Property="MinHeight" Value="20"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalOuterBorderBrush}"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Grid x:Name="Grid">
+                                                                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="-1,1,0,1" Stroke="{TemplateBinding BorderBrush}" Width="1"/>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" Stroke="#59FFFFFF" Width="1"/>
+                                                                            <ContentPresenter x:Name="Image" Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="16" MinHeight="16" VerticalAlignment="Center"/>
+                                                                            <TextBlock x:Name="text" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Text="{TemplateBinding Tag}" VerticalAlignment="Center"/>
+                                                                        </Grid>
+                                                                    </Border>
+                                                                    <Border x:Name="innerStroke" BorderBrush="{DynamicResource DataPresenterBrushKeys.ButtonNormalInnerBorderBrush}" BorderThickness="1" CornerRadius="2" Margin="1" SnapsToDevicePixels="True"/>
+                                                                </Grid>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#008eb5d5"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsPressed" Value="True">
+                                                                        <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Foreground" TargetName="text" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledForegroundKey}"/>
+                                                                        <Setter Property="Opacity" TargetName="Image" Value="0.5"/>
+                                                                        <Setter Property="Background" Value="#00E8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                            <Image Stretch="None" igWindows:Utilities.SnapElementToDevicePixels="True">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="pack://application:,,,/Proryv.ElectroARM.Resources;component/Image/IG/OrGroupIcon.png"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </Button>
+                                        <Button Command="igDP:CustomFilterSelectionControl.ToggleSelectedGroupLogicalOperatorCommand" Margin="3,0,0,0" Tag="{TemplateBinding ToggleOperatorOfSelectedConditionsLabel}">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Foreground" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalForegroundKey}"/>
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                    <Setter Property="MinHeight" Value="20"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalOuterBorderBrush}"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Grid x:Name="Grid">
+                                                                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="-1,1,0,1" Stroke="{TemplateBinding BorderBrush}" Width="1"/>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" Stroke="#59FFFFFF" Width="1"/>
+                                                                            <ContentPresenter x:Name="Image" Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="16" MinHeight="16" VerticalAlignment="Center"/>
+                                                                            <TextBlock x:Name="text" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Text="{TemplateBinding Tag}" VerticalAlignment="Center"/>
+                                                                        </Grid>
+                                                                    </Border>
+                                                                    <Border x:Name="innerStroke" BorderBrush="{DynamicResource DataPresenterBrushKeys.ButtonNormalInnerBorderBrush}" BorderThickness="1" CornerRadius="2" Margin="1" SnapsToDevicePixels="True"/>
+                                                                </Grid>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#008eb5d5"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsPressed" Value="True">
+                                                                        <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Foreground" TargetName="text" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledForegroundKey}"/>
+                                                                        <Setter Property="Opacity" TargetName="Image" Value="0.5"/>
+                                                                        <Setter Property="Background" Value="#00E8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                            <Image Stretch="None" igWindows:Utilities.SnapElementToDevicePixels="True">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="pack://application:,,,/Proryv.ElectroARM.Resources;component/Image/IG/ToggleGroupIcon.png"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </Button>
+                                        <Button Margin="3,0,0,0" Tag="{TemplateBinding UngroupSelectedConditionsLabel}">
+                                            <Button.Command>
+                                                <RoutedCommand/>
+                                            </Button.Command>
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Foreground" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalForegroundKey}"/>
+                                                    <Setter Property="Cursor" Value="Hand"/>
+                                                    <Setter Property="MinHeight" Value="20"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                    <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonNormalOuterBorderBrush}"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Grid x:Name="Grid">
+                                                                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                                                                        <Grid>
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="Auto"/>
+                                                                                <ColumnDefinition Width="*"/>
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="-1,1,0,1" Stroke="{TemplateBinding BorderBrush}" Width="1"/>
+                                                                            <Rectangle Grid.Column="1" HorizontalAlignment="Left" Margin="0,1" Stroke="#59FFFFFF" Width="1"/>
+                                                                            <ContentPresenter x:Name="Image" Content="{TemplateBinding Content}" HorizontalAlignment="Stretch" Margin="5,0" MinWidth="16" MinHeight="16" VerticalAlignment="Center"/>
+                                                                            <TextBlock x:Name="text" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" Text="{TemplateBinding Tag}" VerticalAlignment="Center"/>
+                                                                        </Grid>
+                                                                    </Border>
+                                                                    <Border x:Name="innerStroke" BorderBrush="{DynamicResource DataPresenterBrushKeys.ButtonNormalInnerBorderBrush}" BorderThickness="1" CornerRadius="2" Margin="1" SnapsToDevicePixels="True"/>
+                                                                </Grid>
+                                                                <ControlTemplate.Triggers>
+                                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                                        <Setter Property="Background" Value="#008eb5d5"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonHoverInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsPressed" Value="True">
+                                                                        <Setter Property="Background" Value="#FFE8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonPressedInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                    <Trigger Property="IsEnabled" Value="False">
+                                                                        <Setter Property="Foreground" TargetName="text" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledForegroundKey}"/>
+                                                                        <Setter Property="Opacity" TargetName="Image" Value="0.5"/>
+                                                                        <Setter Property="Background" Value="#00E8EDF6"/>
+                                                                        <Setter Property="BorderBrush" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledOuterBorderBrush}"/>
+                                                                        <Setter Property="BorderBrush" TargetName="innerStroke" Value="{DynamicResource DataPresenterBrushKeys.ButtonDisabledInnerBorderBrush}"/>
+                                                                    </Trigger>
+                                                                </ControlTemplate.Triggers>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                            <Image Stretch="None" igWindows:Utilities.SnapElementToDevicePixels="True">
+                                                <Image.Source>
+                                                    <BitmapImage UriSource="pack://application:,,,/Proryv.ElectroARM.Resources;component/Image/IG/UngroupGroupIcon.png"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </Button>
+                                    </StackPanel>
+                                    <Rectangle Fill="#7FFFFFFF" Height="1" VerticalAlignment="Bottom"/>
+                                    <Rectangle Fill="#7FFFFFFF" Height="1" VerticalAlignment="Top"/>
+                                </Grid>
+                            </Border>
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="0.3*"/>
+                                </Grid.RowDefinitions>
+                                <Border>
+
+                                    <igDP:XamDataGrid x:Name="PART_ConditionsGrid"  GroupByAreaLocation="None" IsManipulationEnabled="True" Stylus.IsFlicksEnabled="False" >
+                                        <igDP:XamDataGrid.Resources>
+                                            <Style x:Key="{x:Type igDP:DataRecordPresenter}" TargetType="{x:Type igDP:DataRecordPresenter}">
+                                                <Setter Property="Margin" Value="0"/>
+                                                <Setter Property="HeaderAreaBackground" Value="#ffbed6e9"/>
+                                                <Setter Property="NestedContentBackground" Value="Transparent"/>
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderBrush" Value="#FFCCCCCC"/>
+                                            </Style>
+                                            <Style  TargetType="{x:Type igDP:XamDataGrid}">
+                                                <Setter Property="Background" Value="White"/>
+                                            </Style>
+                                            <Style  TargetType="{x:Type ScrollViewer}">
+                                                <Setter Property="Template" Value="{DynamicResource ScrollViewerControlTemplate}"/>
+                                            </Style>
+                                        </igDP:XamDataGrid.Resources>
+                                        <igDP:XamDataGrid.GroupByArea>
+                                            <igDP:GroupByArea/>
+                                        </igDP:XamDataGrid.GroupByArea>
+                                    </igDP:XamDataGrid>
+                                </Border>
+                                <Border Background="White" BorderThickness="0,1" Grid.Row="1" BorderBrush="#FF9FBCDB">
+                                    <ScrollViewer Style="{DynamicResource SimpleScrollViewer}" Margin="5,5,0,5" VerticalScrollBarVisibility="Auto">
+                                        <TextBlock TextWrapping="Wrap" Text="{TemplateBinding FilterSummaryDescription}"/>
+                                    </ScrollViewer>
+                                </Border>
+                            </Grid>
+                            <Border x:Name="FooterBackground" Background="#FFE8EEF7" Grid.Row="3">
+                                <DockPanel LastChildFill="False" Margin="5,5,5,5" KeyboardNavigation.TabNavigation="Local" VerticalAlignment="Top">
+                                    <Button Style="{DynamicResource BalanceButton}" Content="{TemplateBinding CancelButtonLabel}" Command="igDP:CustomFilterSelectionControl.CancelChangesCommand" DockPanel.Dock="Right" IsCancel="True" Margin="3,1" MinWidth="100" TabIndex="1" Height="25"/>
+                                    <Button Style="{DynamicResource BalanceButton}" Content="{TemplateBinding OkButtonLabel}" Command="igDP:CustomFilterSelectionControl.CommitChangesCommand" DockPanel.Dock="Right" IsDefault="True" Margin="3,1" MinWidth="100"  TabIndex="0" Height="25"/>
+                                    <Border x:Name="groupContainer">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Margin="5" Orientation="Horizontal">
+                                                <Rectangle Fill="{TemplateBinding AndLogicalOperatorBrush}" Height="10" VerticalAlignment="Center" Width="10"/>
+                                                <TextBlock Margin="5,0,0,0" Text="{TemplateBinding AndGroupLegendDescription}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel Margin="5" Orientation="Horizontal">
+                                                <Rectangle Fill="{TemplateBinding OrLogicalOperatorBrush}" Height="10" VerticalAlignment="Center" Width="10"/>
+                                                <TextBlock Margin="5,0,0,0" Text="{TemplateBinding OrGroupLegendDescription}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </DockPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

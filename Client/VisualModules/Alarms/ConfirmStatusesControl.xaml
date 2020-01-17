@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Proryv.ElectroARM.Alarms.Confirm.ConfirmStatusesControl"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:igDP="http://schemas.infragistics.com/xaml/wpf"
+             xmlns:igWPF="http://schemas.infragistics.com/xaml/wpf"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             xmlns:converters="clr-namespace:Proryv.ElectroARM.Controls.Converters;assembly=Proryv.ElectroARM.Controls">
+
+    <GroupBox  Header="История обработки статусов">
+        <GroupBox.Resources>
+            <converters:AlarmConfirmStatusCategoryConverter x:Key="alarmConfirmStatusCategoryConverter"/>
+            <converters:DateTimeConverter x:Key="DateTimeConverter"/>
+        </GroupBox.Resources>
+        <igDP:XamDataGrid x:Name="alarms" DataSource="{Binding}" GroupByAreaLocation="None"
+                          ScrollingMode="Immediate" RecordContainerGenerationMode="LazyLoad" CellContainerGenerationMode="LazyLoad">
+            <igDP:XamDataGrid.SuppressedEvents>
+                <igDP:RoutedEventWrapper RoutedEvent="igWPF:ValueEditor.TextChanged" />
+                <igDP:RoutedEventWrapper RoutedEvent="igWPF:ValueEditor.ValueChanged" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.AssigningFieldLayoutToItem" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.CellActivating" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.CellActivated" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.CellDeactivating" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.DataValueChanged" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.ExecutingCommand" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.ExecutedCommand" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.InitializeCellValuePresenter" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.RecordActivating" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.RecordActivated" />
+                <igDP:RoutedEventWrapper RoutedEvent="igDP:DataPresenterBase.RecordDeactivating" />
+            </igDP:XamDataGrid.SuppressedEvents>
+
+            <igDP:XamDataGrid.FieldLayoutSettings>
+                <igDP:FieldLayoutSettings AutoGenerateFields="False" AllowDelete="False" AllowAddNew="False" AllowRecordFixing="No" />
+            </igDP:XamDataGrid.FieldLayoutSettings>
+
+            <igDP:XamDataGrid.FieldSettings>
+                <igDP:FieldSettings AllowEdit="False" AllowGroupBy="False" AllowFixing="No" AllowRecordFiltering="False" AllowSummaries="False"
+                                    ForceCellVirtualization="True" LabelClickAction="Nothing"/>
+            </igDP:XamDataGrid.FieldSettings>
+
+            <igDP:XamDataGrid.FieldLayouts>
+                <igDP:FieldLayout>
+                    <igDP:FieldLayout.FieldSettings>
+                        <igDP:FieldSettings CellClickAction="SelectCell" CellHeight="25"/>
+                    </igDP:FieldLayout.FieldSettings>
+                    <igDP:FieldLayout.Fields>
+
+                        <igDP:DateTimeField Name="ConfirmStatusDateTime" Label="Дата изменения статуса" DataType="{x:Type system:DateTime}"
+                                            ToolTip="{Binding Label, RelativeSource={RelativeSource Self}}"/>
+
+                        <igDP:TemplateField Name="AlarmConfirmStatusCategory_ID" Label="Статус подтверждения" Width="230"
+                                            ToolTip="{Binding Label, RelativeSource={RelativeSource Self}}">
+                            <igDP:TemplateField.DisplayTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Converter={StaticResource alarmConfirmStatusCategoryConverter}}" TextWrapping="Wrap"
+                                                    Margin="10,0,0,0" ToolTip="Текущий статус отработки тревоги"/>
+                                </DataTemplate>
+                            </igDP:TemplateField.DisplayTemplate>
+                        </igDP:TemplateField>
+
+                        <igDP:TextField Name="Comment" Label="Комментарий" Width="230"  ToolTip="{Binding Label, RelativeSource={RelativeSource Self}}"
+                                   />
+
+                        <igDP:DateTimeField Name="DateTime1" Label="*"/>
+
+                        <igDP:TextField Name="String1" Label="*" ToolTip="{Binding}"/>
+
+                        <igDP:TextField Name="UserName" Label="Пользователь" ToolTip="{Binding Label, RelativeSource={RelativeSource Self}}"/>
+
+                    </igDP:FieldLayout.Fields>
+                </igDP:FieldLayout>
+            </igDP:XamDataGrid.FieldLayouts>
+
+        </igDP:XamDataGrid>
+    </GroupBox>
+</UserControl>

@@ -1,0 +1,144 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	x:Class="Proryv.AskueARM2.Client.Visual.SetsManager" 
+    xmlns:arm="clr-namespace:Proryv.AskueARM2.Client.Visual"
+    xmlns:converters="clr-namespace:Proryv.ElectroARM.Controls.Controls.GlobalSet.Converters"
+    mc:Ignorable="d" SnapsToDevicePixels="True">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ElectroARM_Styles;component/Style/NewDrawingBrushResource.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Proryv.ElectroARM.Controls;component/Converters.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:ReadOnlyToBrushConverter x:Key="ReadOnlyToBrushConverter"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid UseLayoutRounding="True">
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition   Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="5,0,5,0" SnapsToDevicePixels="True" UseLayoutRounding="True">
+            <Button x:Name="btnReload" Click="btnReload_Click"  ToolTipService.ToolTip="Обновить список" Margin="1,0" Height="21" Width="21" Tag="{StaticResource ReloadActionBrush}" Style="{StaticResource BaseActionButton}"/>
+            <Button ToolTip="Добавить набор" x:Name="butAdd" Click="butAdd_Click" Height="21" Width="21" SnapsToDevicePixels="True" Margin="1,0" Tag="{StaticResource AddActionBrush}" Style="{StaticResource BaseActionButton}"/>
+            <Button ToolTip="Удалить набор" Height="21"  x:Name="bDelete"  Style="{StaticResource BaseActionButton}" Margin="1,0" Tag="{StaticResource DellActionBrush}"  Click="delete_Click" Width="21"/>
+            <Button ToolTip="Сохранить набор"  x:Name="bSave" Content="save" Style="{StaticResource BaseActionButton}" Margin="1,0,0,0" Tag="{StaticResource SaveActionBrush}" Height="21" Click="save_Click"  Width="21"/>
+            <CheckBox x:FieldModifier="public" Name="cbIsGlobalSet" Margin="4,0,0,0" VerticalAlignment="Center" Click="isGlobalSet_Click" 
+                      ToolTip="Глобальный набор. Доступен всем пользователям." />
+            <CheckBox x:FieldModifier="public" Name="cbIsReadOnly" Margin="1,0,0,0" VerticalAlignment="Center" ToolTipService.ShowOnDisabled="True" ToolTipService.ShowDuration="15000"
+                       IsEnabled = "False" Visibility="{Binding ElementName=cbIsGlobalSet, Path=Visibility}">
+                <CheckBox.ToolTip>
+                    <TextBlock>
+                        Набор может редактировать только создавший его пользователь
+                        <LineBreak />
+                        Только для глобальных наборов
+                    </TextBlock>
+                </CheckBox.ToolTip>
+            </CheckBox>
+        </StackPanel>
+
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.Column="1" MinWidth="70" Height="22" Margin="4,0,0,0">
+
+            <ToggleButton HorizontalAlignment="Stretch"  Height="21" VerticalAlignment="Center"  x:Name="selectType" 
+                          Click="selectType_Click" Style="{DynamicResource ComboBoxToggleButtonStyle}" />
+
+            <StackPanel Orientation="Horizontal" Margin="3,0,23,2" x:Name="tbSelectSet">
+                <Image HorizontalAlignment="Left" Height="11" Visibility="{Binding IsGlobalSet, 
+                                            Converter={StaticResource boolToVisibilityConverter}, FallbackValue=Collapsed, IsAsync=True, Mode=OneWay}" 
+                   Source="/Proryv.ElectroARM.Resources;component/Image/Globe.png" Stretch="Fill" Width="11"
+                   ToolTip="Набор доступен всем пользователям" VerticalAlignment="Center"/>
+
+                <TextBox Text="{Binding SetName}" VerticalAlignment="Center" Margin="3,0,0,0" MinWidth="270"
+                         Foreground="{Binding Path=IsReadOnly, Converter={StaticResource ReadOnlyToBrushConverter}}"
+                         Style="{DynamicResource SelectedText}" IsReadOnly="{Binding Path=IsReadOnly}" MaxLength="255"/>
+            </StackPanel>
+        </Grid>
+
+        <Popup x:Name="popup" Placement="Bottom" PlacementTarget="{Binding ElementName=tbSelectSet}" Grid.RowSpan="3" StaysOpen="False"
+               Closed="PopupOnClosed" Unloaded="PopupOnClosed">
+            <!--VirtualizingStackPanel.IsVirtualizing="True" VirtualizingStackPanel.VirtualizationMode="Recycling"-->
+            <Border BorderBrush="{StaticResource BaseLightBorder}" BorderThickness="1" Background="{StaticResource BaseLightBackground}">
+                <Grid MinHeight="300" MinWidth="{Binding ElementName=tbSelectSet, Path=ActualWidth}">
+                    <ListView x:Name="lvSets" Background="{x:Null}" Style="{StaticResource ListViewFilterSelector }" SelectionMode="Single" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                              BorderBrush="{x:Null}" arm:VisualEx.IsExcessScrollDisabled="True" arm:FindBar.IsFindEnabled="True" arm:FindBar.IsExtEnabled="OnlyStandart">
+                        <ListView.Resources>
+                            <Style TargetType="{x:Type ListViewItem}" >
+                                <Setter Property="Padding" Value="3,0,0,0"/>
+                                <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+                            </Style>
+
+                            <DataTemplate x:Key="GroupHeader">
+                                <TextBlock Text="{Binding Name}" FontSize="{StaticResource BaseFontSizeXL}"  Foreground="{StaticResource BaseLightBorder}"/>
+                            </DataTemplate>
+                            <Style TargetType="{x:Type GroupItem}" x:Key="ContainerStyle">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Expander IsExpanded="True" >
+                                                <Expander.Header>
+                                                    <Border  VerticalAlignment="Center" Height="25"  Opacity="0.8" CornerRadius="2">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <ContentControl Content="{Binding Path=Name, Converter = {StaticResource HierarchyDbTreeObjectConverter}}"  VerticalAlignment="Center"/>
+                                                            <TextBlock Text="(" Foreground="{DynamicResource SelectionFontColor}" FontStyle="Italic" VerticalAlignment="Center"  Margin="5,0,0,0"/>
+                                                            <TextBlock Text="{Binding ItemCount}" Foreground="{DynamicResource SelectionFontColor}"  FontStyle="Italic" VerticalAlignment="Center" />
+                                                            <TextBlock Text=") шт." Foreground="{DynamicResource SelectionFontColor}" FontStyle="Italic" VerticalAlignment="Center" />
+                                                            <Separator Foreground="Black"/>
+                                                        </StackPanel>
+                                                    </Border>
+                                                </Expander.Header>
+                                                <ItemsPresenter Margin="25,0,0,0"/>
+                                            </Expander>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.Resources>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+
+                        <ListView.GroupStyle>
+                            <GroupStyle ContainerStyle="{StaticResource ContainerStyle}" HeaderTemplate="{StaticResource GroupHeader}"/>
+                        </ListView.GroupStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel LastChildFill="True" PreviewMouseDown="OnChangedSet" Height="18">
+                                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                                        <Image HorizontalAlignment="Left" Height="11" Visibility="{Binding IsGlobalSet, 
+                                            Converter={StaticResource boolToVisibilityConverter}, FallbackValue=Collapsed, IsAsync=True, Mode=OneWay}" 
+                                           Source="/Proryv.ElectroARM.Resources;component/Image/Globe.png" Stretch="Fill" Width="11" 
+                                           ToolTip="Набор доступен всем пользователям" VerticalAlignment="Center"/>
+
+                                        <Image HorizontalAlignment="Left" Height="11" DockPanel.Dock="Left" Visibility="{Binding IsReadOnly, 
+                                            Converter={StaticResource boolToVisibilityConverter}, FallbackValue=Collapsed, IsAsync=True, Mode=OneWay}" 
+                                               Source="/Proryv.ElectroARM.Resources;component/Image/ReadOnly_Brush.png" Stretch="Fill" Width="11" Margin="1,0"
+                                               ToolTip="Недоступен для редактирования" VerticalAlignment="Center"/>
+                                    </StackPanel>
+
+                                    <Label  DockPanel.Dock="Right" Content="{Binding Path=UserName, Mode=OneWay}" Foreground="{StaticResource SelectionFontColor}"  FontSize="{StaticResource BaseFontSizeXS}" Margin="5,-4"  ToolTip="Пользователь"/>
+
+                                    <Label Content="{Binding Path= SetName}"  Foreground="{Binding Path=IsReadOnly, Converter={StaticResource ReadOnlyToBrushConverter}, Mode=OneWay}" 
+                                                   Margin="2,-4" VerticalAlignment="Center" ToolTip="Название набора"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

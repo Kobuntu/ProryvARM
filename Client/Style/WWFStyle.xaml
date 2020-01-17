@@ -1,0 +1,1244 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:arm="ARMVisual"  
+    xmlns:wfToolBox="clr-namespace:System.Activities.Presentation.Toolbox;assembly=System.Activities.Presentation"
+    xmlns:PresentationOptions="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    mc:Ignorable="d" x:Class="Proryv.AskueARM2.Client.Visual.WWFHelper"
+    xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BrushResource.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/TreeViewStyle.xaml"/>
+        <ResourceDictionary Source="/ElectroARM_Styles;Component/Style/BaseButtonStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="{x:Type sap:ActivityDesigner}">
+        <Setter Property="Background" Value="#ffd9e5ef"/>
+    </Style>
+
+    <ControlTemplate x:Key="WFActivitiesControlTemplate" TargetType="{x:Type TreeViewItem}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="19" Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ToggleButton Style="{StaticResource SimpleTreeViewItemToggleButton}" x:Name="Expander" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+            </ToggleButton>
+            <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="1" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True" CornerRadius="2">
+                <ContentPresenter x:Name="PART_Header" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentStringFormat="{TemplateBinding HeaderStringFormat}" ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" DataContextChanged="UserControl_DataContextChanged"/>
+            </Border>
+            <ItemsPresenter x:Name="ItemsHost" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="1"/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsExpanded" Value="False">
+                <Setter Property="Visibility" TargetName="ItemsHost" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="HasItems" Value="False">
+                <Setter Property="Visibility" TargetName="Expander" Value="Hidden"/>
+            </Trigger>
+
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+
+
+    <Style x:Key="WFActivitiesTreeViewItemStyle" TargetType="{x:Type TreeViewItem}">
+        <Setter Property="IsExpanded" Value="True"/>
+        <Setter Property="Background" Value="#00E9ECEE"/>
+
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="Template" Value="{StaticResource WFActivitiesControlTemplate}"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderBrush" Value="#00E5C365"/>
+                <Setter Property="Background" Value="{StaticResource BaseDarkGray}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+
+
+
+
+
+    <DrawingBrush x:Key="sendemailactivityicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/sendemailactivityicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="pingactivityicon"  PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/pingactivity.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="alarmgetbalancepsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/AlarmGetBalancePSqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="alarmgetformulsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/AlarmGetFormulsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="alarmgetmaster61968slavesystemsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/AlarmGetMaster61968SlaveSystemsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+    <DrawingBrush x:Key="alarmgettiicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/AlarmGetTIqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="alarmgetusersicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/AlarmGetUsersqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="generatebalancepsexcelicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GenerateBalancePSExcelqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="get_ps_list_idicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Get_PS_List_Idqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="getalarmsettingsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetAlarmSettingsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="getalltijournalsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetAllTIJournalsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getarchiveintegralvalueicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetArchiveIntegralValuequeryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="getarchiveintegralvalueexicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetArchiveIntegralValueExqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+    <DrawingBrush x:Key="getarchivevaluesicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetArchiveValuesqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="getarchtechqualityvaluelisttiicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetArchTechQualityValueListTIqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getarchtechqualityvaluetiicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetArchTechQualityValueTIqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+    <DrawingBrush x:Key="getbalancelisticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetBalanceListqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="getbalancevalidationicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetBalanceValidationqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getbalanspsresultandhtmldocumenticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetBalansPSResultAndHtmlDocumentqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+
+
+
+
+
+
+    <DrawingBrush x:Key="getformulaparamsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetFormulaParamsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getformularesulticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetFormulaResultqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getlistformulsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetListFormulsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getobjectnameicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetObjectNamequeryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getpsbalanceexceldocumenticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetPSBalanceExcelDocumentqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="getfreehierarchybalanceexceldocumenticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetFreeHierarchyBalanceExcelDocumentqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="getpsbalancevalidationlisticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetPSBalanceValidationListqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="getbalancefreehierarchylisticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetBalanceFreeHierarchyValidationListqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="getbalancefreehierarchybyobjectlisticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetBalanceFreeHierarchyByObjectValidationListqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="loginicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Loginlqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="nsigettilistforpsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/NSIGetTIListForPSqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="analysiscloseddataicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/AnalysisClosedDataicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="scriptcodeactivityicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/ScriptCodeActivityqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="sendemailtousericon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/SendEmailToUserlqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+
+
+
+
+
+    <DrawingBrush x:Key="sendreportobjectclasstoemailicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/SendReportObjectClassToEmaillqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="sendreporttoemailicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/SendReportToEmaillqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="sendbusinessobjectsreporttoemailicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/SendBusinessObjectsReportsToEmaillqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="writealarm_61968slavesystemsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/WriteAlarm_61968SlaveSystemsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="writealarm_balancepsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/WriteAlarm_BalancePSqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="writealarm_formulsicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/WriteAlarm_Formulsqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="writealarm_tiicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/WriteAlarm_TIqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <DrawingBrush x:Key="writealarm_usersicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/WriteAlarm_Usersqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="xmlexportgetais80020icon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/XMLExportGetAIS80020queryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+    <DrawingBrush x:Key="xmlexportgetaislist80020icon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/XMLExportGetAISList80020queryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="xmlexportgetps80020icon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/XMLExportGetPS80020queryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="xmlexportgetpslist80020icon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/XMLExportGetPSList80020queryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="xmlexportgetsection80020fordateperiodicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/XMLExportGetSection80020ForDatePeriodqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+    <DrawingBrush x:Key="xmlexportgetsection80020icon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/XMLExportGetSection80020queryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="xmlexportgetsectionlist80020icon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/XMLExportGetSectionList80020queryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="sendreporttoftpicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/SendReportToFtpqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="sendreportobjectclasstoftpicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/SendReportObjectClassToFtpqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="dbopensqlqueryicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/DBOpenSqlQueryqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="dbquerybywcficon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/DBQueryByWcfqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="executesqlnonqueryicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/executesqlnonqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="executesqlqueryicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/executesqlqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+
+
+    <DrawingBrush x:Key="debugmessagetologicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/DebugMessageToLogqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="foreachwithbodyfactoryicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/ForEachWithBodyFactoryqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="parallelforeachwithbodyfactoryicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/ParallelForEachWithBodyFactoryqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="writelineactivityicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/WriteLineActivityqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="commentouticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/CommentOutqueryicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="dowhileicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/DoWhileicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+    <DrawingBrush x:Key="ificon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Ificon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="parallelicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Parallelicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="pickicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Pickicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="pickbranchicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/PickBranchicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="sequenceicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Sequenceicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="switchicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Switchicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="whileicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Whileicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="flowcharticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Flowcharticon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="flowdecisionicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/FlowDecisionicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="flowswitchicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/FlowSwitchicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="correlationscopeicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/CorrelationScopeicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="initializecorrelationicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/InitializeCorrelationicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+
+
+
+
+
+    <DrawingBrush x:Key="sendreplyicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/SendReplyicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="transactedreceivescopeicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/TransactedReceiveScopeicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="persisticon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Persisticon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="receiveicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Receiveicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="sendicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Sendicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="receivereplyicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/ReceiveReplyicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="predefinedreportdocicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/PredefinedReportDoc.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+  
+
+
+    <DrawingBrush x:Key="terminateworkflowicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/TerminateWorkflowicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="assignicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Assignicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="delayicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Delayicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="invokemethodicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/InvokeMethodicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+    <DrawingBrush x:Key="cancellationscopeicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/CancellationScopeicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="compensableactivityicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/CompensableActivityicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="compensateicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Compensateicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="confirmicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/Confirmicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="fixicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/fix.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="fixchildicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/fix_child.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="fixchildnotallicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/fix_child_not-all.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="unfixicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/unfix.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="transactionscopeicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/TransactionScopeicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="addtocollectionicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/AddToCollectionicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="clearcollectionicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/ClearCollectionicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="existsincollectionicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/ExistsInCollectionicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="removefromcollectionicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/RemoveFromCollectionicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+
+
+    <DrawingBrush x:Key="rethrowicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Rethrowicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="throwicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/Throwicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="trycatchicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/TryCatchicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <DrawingBrush x:Key="writereporttoarchiveicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/WriteReportToArchiveicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="managedeviceparametersicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/ManageDeviceParametersicon.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+
+    <DrawingBrush x:Key="getpsstatisticinfoicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/GetPsStatisticInfo.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="ftpuploadfileicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/FtpUploadFile.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+    <DrawingBrush x:Key="inserttoexpluserjournalicon" PresentationOptions:Freeze="True" Viewbox="0,0,16,16" ViewboxUnits="Absolute">
+        <DrawingBrush.Drawing>
+            <ImageDrawing Rect="0,0,16,16">
+                <ImageDrawing.ImageSource>
+                    <BitmapImage  UriSource="/Proryv.ElectroARM.Resources;component/Image/WorkflowIcon/InsertToExplUserJournal.png"/>
+                </ImageDrawing.ImageSource>
+            </ImageDrawing>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+ 
+</ResourceDictionary>

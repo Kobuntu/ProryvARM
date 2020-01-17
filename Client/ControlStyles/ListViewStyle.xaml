@@ -1,0 +1,124 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                   
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="SimpleScrollBar.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/ElectroARM_Styles;component/Style/TreeViewStyle.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/ElectroARM_Styles;component/Style/ListViewStyle.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style   x:Key="ListViewFilterSelector" TargetType="{x:Type ListView}">
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"/>
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="Foreground" Value="{StaticResource BaseDarkFontColor}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Padding" Value="0,5,0,5"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListView}">
+                    <Border SnapsToDevicePixels="True" x:Name="Bd" Background="{TemplateBinding Background}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Style="{StaticResource ScrollViewerSearchButton}" Focusable="{TemplateBinding Focusable}" x:Name="PART_ContentHost" IsTabStop="true" TabIndex="1"  Grid.Column="0" Grid.Row="0" CanContentScroll="{TemplateBinding ScrollViewer.CanContentScroll}"  Background="{TemplateBinding Background}" Margin="0" d:LayoutOverrides="Width, Height">
+                            <ItemsPresenter  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="true"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style   x:Key="ListViewExpanderStyle"  BasedOn="{StaticResource ListViewFilterSelector}" TargetType="{x:Type ListView}">
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"/>
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListView}">
+                    <Border SnapsToDevicePixels="True" x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Focusable="{TemplateBinding Focusable}" x:Name="PART_ContentHost" IsTabStop="true" TabIndex="1"  Style="{StaticResource ScrollViewerSearchButton}" Grid.Column="0" Grid.Row="1"  Background="{x:Null}" Margin="4,0,2,2">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewExpanderItemStyle}">
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="ListViewExpanderGroupItemStyle" BasedOn="{StaticResource ListViewExpanderItemStyle}" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Background" Value="{StaticResource BaseLightBackground}" />
+    </Style>
+    <Style   x:Key="ListViewExpanderGroupStyle"  BasedOn="{StaticResource ListViewExpanderStyle}" TargetType="{x:Type ListView}">
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ListViewExpanderGroupItemStyle}"/>
+    </Style>
+
+    <Style   x:Key="ListViewTabsStyle"  BasedOn="{StaticResource ListViewFilterSelector}" TargetType="{x:Type ListView}">
+        <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"/>
+        <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling"/>
+        <Setter Property="Padding" Value="0"/>
+        <!--<Setter Property="Padding" Value="4,0,2,2"/>-->
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListView}">
+                    <Border SnapsToDevicePixels="True" x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Focusable="{TemplateBinding Focusable}" x:Name="PART_ContentHost" IsTabStop="true" TabIndex="1"  Style="{StaticResource SimpleScrollViewer}" Grid.Column="0" Grid.Row="1"  Background="{x:Null}" Margin="{TemplateBinding Padding}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="FontSize" Value="11"/>
+                    <Setter Property="FontWeight" Value="Normal" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border SnapsToDevicePixels="true" x:Name="Bag" BorderThickness="1,1,1,1" CornerRadius="0" BorderBrush="{x:Null}" Padding="0">
+                                    <ContentPresenter Margin="5,0,0,1" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="Bag" Property="BorderBrush" Value="{StaticResource BaseLightGray}"/>
+                                        <Setter Property="Background" TargetName="Bag" Value="{StaticResource BaseLightGray}"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="true">
+
+                                        <Setter TargetName="Bag" Property="BorderBrush" Value="{StaticResource  BaseDarkGray}"/>
+                                        <Setter Property="Background" TargetName="Bag" Value="{StaticResource BaseDarkGray}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+
+                            </ControlTemplate>
+
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
